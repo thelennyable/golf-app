@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1B5E20">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
+    <title>Karake Hybrid Golf</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-body: linear-gradient(135deg, #1a2a1a 0%, #0d1f2d 100%);
+            --bg-card: #fff;
+            --bg-controls: #F8F9FA;
+            --bg-input-col: #FAFFFE;
+            --bg-hover-row: #FAFFF9;
+            --bg-input-focus: #E8F5E9;
+            --bg-note-focus: #E3F2FD;
+            --bg-player-setup: #F8F9FA;
+            --bg-tab: #F5F5F5;
+            --bg-tab-hover: #EEEEEE;
+            --bg-tab-active: #fff;
+            --bg-nine-summary: linear-gradient(90deg, #F1F8E9, #E3F2FD);
+            --bg-score-summary: #F8F9FA;
+            --bg-leaderboard: linear-gradient(135deg, #F9FBE7, #E8F5E9);
+            --bg-lb-row: white;
+            --bg-lb-row-hover: #F5F5F5;
+            --bg-history-panel: #FAFAFA;
+            --bg-history-item: white;
+            --bg-h-stat: #F5F5F5;
+            --bg-modal: white;
+            --bg-modal-pre: #F8F9FA;
+            --bg-modal-close: #F5F5F5;
+            --bg-friend-item: #F8F9FA;
+            --bg-friend-hover: #E8F5E9;
+            --bg-toggle-btn: #ECEFF1;
+            --bg-toggle-active: #E8F5E9;
+            --bg-par-display: #E8F5E9;
+            --bg-reset-btn: #FFF;
+            --bg-reset-hover: #FFEBEE;
+            --bg-history-toggle: #F5F5F5;
+            --bg-th: #ECEFF1;
+
+            --text-primary: #333;
+            --text-heading: #263238;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --text-faint: #90A4AE;
+            --text-controls-label: #555;
+            --text-tab: #888;
+            --text-tab-active: #222;
+            --text-hole: #263238;
+            --text-score-input: #222;
+            --text-putt-input: #555;
+            --text-gir-input: #1565C0;
+            --text-note-input: #607D8B;
+            --text-note-placeholder: #CFD8DC;
+            --text-nine-val: #263238;
+            --text-h-date: #263238;
+            --text-h-course: #888;
+            --text-h-stat: #555;
+            --text-h-stat-strong: #263238;
+            --text-modal-h3: #263238;
+            --text-modal-p: #666;
+            --text-modal-close: #555;
+            --text-friend-name: #263238;
+            --text-friend-hcp: #90A4AE;
+            --text-friend-delete: #BDBDBD;
+            --text-toggle-btn: #607D8B;
+            --text-toggle-active: #2E7D32;
+            --text-par-display: #2E7D32;
+            --text-reset-btn: #d32f2f;
+            --text-history-toggle: #455A64;
+            --text-lb-name: #263238;
+            --text-th: #607D8B;
+
+            --border-controls: #E8EAED;
+            --border-input: #E0E0E0;
+            --border-tab-bottom: #F0F0F0;
+            --border-td: #F5F5F5;
+            --border-col: #F0F0F0;
+            --border-col-thick: #E0E0E0;
+            --border-nine: #E0E0E0;
+            --border-history: #eee;
+            --border-modal-pre: #E0E0E0;
+            --border-toggle: #CFD8DC;
+            --border-toggle-active: #A5D6A7;
+            --border-reset: #FFCDD2;
+            --border-friend-delete-hover-bg: #FFEBEE;
+
+            --shadow-card: 0 8px 32px rgba(0,0,0,0.3);
+            --shadow-history-item: 0 1px 4px rgba(0,0,0,0.08);
+            --shadow-lb-row: 0 1px 4px rgba(0,0,0,0.06);
+            --shadow-modal: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        [data-theme="dark"] {
+            --bg-body: linear-gradient(135deg, #0a0f0a 0%, #060d14 100%);
+            --bg-card: #1a1a2e;
+            --bg-controls: #16213e;
+            --bg-input-col: #1a1a2e;
+            --bg-hover-row: #1e2a40;
+            --bg-input-focus: #1b3a1b;
+            --bg-note-focus: #162a4a;
+            --bg-player-setup: #16213e;
+            --bg-tab: #0f3460;
+            --bg-tab-hover: #1a4080;
+            --bg-tab-active: #1a1a2e;
+            --bg-nine-summary: linear-gradient(90deg, #1b2e1b, #16213e);
+            --bg-score-summary: #16213e;
+            --bg-leaderboard: linear-gradient(135deg, #1b2e1b, #16213e);
+            --bg-lb-row: #1a1a2e;
+            --bg-lb-row-hover: #1e2a40;
+            --bg-history-panel: #111;
+            --bg-history-item: #1a1a2e;
+            --bg-h-stat: #16213e;
+            --bg-modal: #1a1a2e;
+            --bg-modal-pre: #16213e;
+            --bg-modal-close: #16213e;
+            --bg-friend-item: #16213e;
+            --bg-friend-hover: #1b3a1b;
+            --bg-toggle-btn: #16213e;
+            --bg-toggle-active: #1b3a1b;
+            --bg-par-display: #1b3a1b;
+            --bg-reset-btn: #1a1a2e;
+            --bg-reset-hover: #2a1515;
+            --bg-history-toggle: #16213e;
+            --bg-th: #0f3460;
+
+            --text-primary: #e0e0e0;
+            --text-heading: #e8e8e8;
+            --text-secondary: #b0b0b0;
+            --text-muted: #888;
+            --text-faint: #607D8B;
+            --text-controls-label: #b0b0b0;
+            --text-tab: #777;
+            --text-tab-active: #e0e0e0;
+            --text-hole: #e0e0e0;
+            --text-score-input: #e0e0e0;
+            --text-putt-input: #b0b0b0;
+            --text-gir-input: #64B5F6;
+            --text-note-input: #90A4AE;
+            --text-note-placeholder: #455A64;
+            --text-nine-val: #e0e0e0;
+            --text-h-date: #e0e0e0;
+            --text-h-course: #888;
+            --text-h-stat: #b0b0b0;
+            --text-h-stat-strong: #e0e0e0;
+            --text-modal-h3: #e0e0e0;
+            --text-modal-p: #b0b0b0;
+            --text-modal-close: #b0b0b0;
+            --text-friend-name: #e0e0e0;
+            --text-friend-hcp: #607D8B;
+            --text-friend-delete: #607D8B;
+            --text-toggle-btn: #90A4AE;
+            --text-toggle-active: #81C784;
+            --text-par-display: #81C784;
+            --text-reset-btn: #ef5350;
+            --text-history-toggle: #b0b0b0;
+            --text-lb-name: #e0e0e0;
+            --text-th: #90A4AE;
+
+            --border-controls: #1e2a40;
+            --border-input: #2a3a5a;
+            --border-tab-bottom: #1e2a40;
+            --border-td: #1e2a40;
+            --border-col: #1e2a40;
+            --border-col-thick: #2a3a5a;
+            --border-nine: #2a3a5a;
+            --border-history: #1e2a40;
+            --border-modal-pre: #2a3a5a;
+            --border-toggle: #2a3a5a;
+            --border-toggle-active: #2E7D32;
+            --border-reset: #5a2a2a;
+            --border-friend-delete-hover-bg: #2a1515;
+
+            --shadow-card: 0 8px 32px rgba(0,0,0,0.6);
+            --shadow-history-item: 0 1px 4px rgba(0,0,0,0.3);
+            --shadow-lb-row: 0 1px 4px rgba(0,0,0,0.3);
+            --shadow-modal: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); min-height: 100vh; margin: 0; padding: 8px; color: var(--text-primary); }
+        .card { background: var(--bg-card); border-radius: 16px; box-shadow: var(--shadow-card); overflow: hidden; max-width: 850px; margin: 0 auto; }
+
+        /* HEADER */
+        .sticky-header { position: sticky; top: 0; z-index: 100; background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #1565C0 100%); color: white; padding: 12px 10px 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        .header-title { text-align: center; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.8; margin-bottom: 8px; }
+        .header-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
+        .stat-box { background: rgba(255,255,255,0.12); border-radius: 10px; padding: 6px 4px; text-align: center; backdrop-filter: blur(4px); }
+        .stat-box .label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.75; letter-spacing: 0.8px; font-weight: 600; }
+        .stat-box .value { font-size: 1.3rem; font-weight: 800; margin-top: 2px; }
+        .stat-box.pts .value { color: #A5D6A7; }
+        .stat-box.net .value { color: #90CAF9; }
+
+        /* CONTROLS */
+        .controls { padding: 10px 12px; background: var(--bg-controls); border-bottom: 1px solid var(--border-controls); display: flex; align-items: center; gap: 8px; font-size: 0.85rem; flex-wrap: wrap; }
+        .controls label { font-weight: 600; color: var(--text-controls-label); font-size: 0.8rem; }
+        .controls input[type="number"] { width: 52px; padding: 6px; font-size: 0.95rem; text-align: center; border: 2px solid var(--border-input); border-radius: 8px; font-weight: 600; background: var(--bg-card); color: var(--text-primary); }
+        .controls input[type="date"] { padding: 6px 8px; font-size: 0.8rem; border: 2px solid var(--border-input); border-radius: 8px; background: var(--bg-card); color: var(--text-primary); }
+        .controls select { padding: 6px 8px; font-size: 0.8rem; border: 2px solid var(--border-input); border-radius: 8px; background: var(--bg-card); color: var(--text-primary); font-weight: 500; max-width: 140px; }
+        .controls input:focus, .controls select:focus { border-color: #2E7D32; outline: none; }
+        #parDisplay { margin-left: auto; background: var(--bg-par-display); color: var(--text-par-display); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+
+        /* PLAYER TABS */
+        .player-tabs { display: flex; gap: 6px; padding: 10px 10px 0; flex-wrap: wrap; background: var(--bg-card); border-bottom: 2px solid var(--border-tab-bottom); }
+        .player-tab { display: flex; align-items: center; gap: 6px; padding: 6px 14px 10px; border-radius: 10px 10px 0 0; border: none; border-bottom: 3px solid transparent; background: var(--bg-tab); font-size: 0.8rem; font-weight: 700; cursor: pointer; color: var(--text-tab); transition: all 0.15s; margin-bottom: -2px; }
+        .player-tab:hover { background: var(--bg-tab-hover); }
+        .player-tab.active { background: var(--bg-tab-active); color: var(--text-tab-active); border-bottom-color: var(--tab-color, #2E7D32); box-shadow: 0 -2px 8px rgba(0,0,0,0.06); }
+        .player-tab.add-btn { background: none; border: 2px dashed #CCC; border-radius: 20px; padding: 4px 12px; margin-bottom: 6px; color: #AAA; font-size: 0.8rem; align-self: center; }
+        .player-tab.add-btn:hover { border-color: #2E7D32; color: #2E7D32; }
+        .tab-avatar { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; color: white; flex-shrink: 0; }
+
+        .player-setup { padding: 10px 12px; background: var(--bg-player-setup); border-bottom: 1px solid var(--border-history); display: flex; gap: 6px; align-items: center; }
+        .player-setup input { flex: 1; padding: 8px 10px; border: 2px solid var(--border-input); border-radius: 8px; font-size: 0.85rem; background: var(--bg-card); color: var(--text-primary); }
+        .player-setup input:focus { border-color: #2E7D32; outline: none; }
+        .player-setup input.hcp-input { width: 58px; flex: none; }
+        .player-setup button { padding: 8px 14px; background: #2E7D32; color: white; border: none; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+        .player-setup button.cancel-btn { background: #EEE; color: #666; }
+
+        .active-player-bar { padding: 7px 12px; border-bottom: 1px solid var(--border-history); font-size: 0.8rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+        .remove-player-btn { background: #FFF0F0; border: none; color: #d32f2f; font-size: 0.75rem; font-weight: 600; cursor: pointer; padding: 3px 8px; border-radius: 6px; }
+
+        /* TABLE */
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { min-width: 700px; width: 100%; border-collapse: collapse; table-layout: fixed; }
+        th { background: var(--bg-th); padding: 8px 2px; font-size: 0.58rem; color: var(--text-th); text-transform: uppercase; text-align: center; font-weight: 700; letter-spacing: 0.5px; }
+        td { border-bottom: 1px solid var(--border-td); padding: 3px 2px; text-align: center; height: 40px; vertical-align: middle; }
+        tr:hover td { background: var(--bg-hover-row); }
+
+        input.score-input { width: 100%; height: 100%; border: none; text-align: center; font-size: 1.2rem; background: transparent; padding: 0; font-weight: 800; color: var(--text-score-input); }
+        input.putt-input { width: 100%; height: 100%; border: none; text-align: center; font-size: 1.05rem; background: transparent; padding: 0; color: var(--text-putt-input); font-weight: 500; }
+        input.gir-input { width: 100%; height: 100%; border: none; text-align: center; font-size: 1.05rem; background: transparent; padding: 0; color: var(--text-gir-input); font-weight: 600; }
+        input.fwy-input { width: 100%; height: 100%; border: none; text-align: center; font-size: 1.05rem; background: transparent; padding: 0; color: #2E7D32; font-weight: 600; }
+        input:focus { background: var(--bg-input-focus) !important; outline: none; border-radius: 6px; }
+
+        .hole-num { font-weight: 800; font-size: 0.9rem; color: var(--text-hole); }
+        .small-info { font-size: 0.72rem; color: var(--text-faint); font-weight: 500; }
+        .fwy-na { font-size: 0.6rem; color: var(--text-faint); font-style: italic; }
+
+        /* Score badges */
+        .res-pts { font-weight: 800; font-size: 1.05rem; }
+        .pts-0 { color: #BDBDBD; }
+        .pts-1 { color: #78909C; }
+        .pts-2 { color: #43A047; }
+        .pts-3 { color: #1E88E5; }
+        .pts-4 { color: #8E24AA; }
+        .pts-5plus { color: #E53935; }
+
+        .res-par { font-size: 0.78rem; font-weight: 700; padding: 2px 5px; border-radius: 5px; display: inline-block; }
+        .res-par.over { color: #d32f2f; background: #FFEBEE; }
+        .res-par.under { color: #2E7D32; background: #E8F5E9; }
+        .res-par.even { color: #757575; background: #F5F5F5; }
+
+        .col-hole { width: 5%; }
+        .col-info { width: 5%; }
+        .col-input { width: 9%; background: var(--bg-input-col); border-left: 1px solid var(--border-col); }
+        .col-res { width: 8%; }
+        .col-notes { width: 18%; }
+
+        /* SCORE SUMMARY BAR */
+        .score-summary { display: flex; gap: 4px; padding: 8px 10px; background: var(--bg-score-summary); border-bottom: 1px solid #EEEEEE; flex-wrap: wrap; justify-content: center; }
+        .score-pill { display: flex; flex-direction: column; align-items: center; padding: 4px 8px; border-radius: 8px; min-width: 40px; }
+        .score-pill .sp-count { font-size: 1rem; font-weight: 800; }
+        .score-pill .sp-label { font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.75; margin-top: 1px; }
+        .pill-eagle  { background: #EDE7F6; color: #6A1B9A; }
+        .pill-birdie { background: #E3F2FD; color: #1565C0; }
+        .pill-par    { background: #E8F5E9; color: #2E7D32; }
+        .pill-bogey  { background: #FFF8E1; color: #E65100; }
+        .pill-double { background: #FFEBEE; color: #C62828; }
+        .pill-worse  { background: #880E4F; color: #FFFFFF; }
+        .sub-header { background: linear-gradient(90deg, #263238, #37474F); font-size: 0.7rem; font-weight: 800; color: #B0BEC5; padding: 7px 12px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* NINE SUMMARY */
+        .nine-summary { background: var(--bg-nine-summary); font-size: 0.82rem; font-weight: 700; color: #37474F; padding: 10px; display: flex; justify-content: space-around; border-bottom: 3px solid var(--border-nine); flex-wrap: wrap; gap: 4px; }
+        .nine-summary span { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .nine-summary .s-label { font-size: 0.58rem; opacity: 0.6; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+        .nine-summary .s-val { font-size: 1.05rem; font-weight: 800; color: var(--text-nine-val); }
+
+        /* BUTTONS */
+        .btn-row { display: flex; gap: 8px; padding: 10px; }
+        .save-btn { flex: 1; padding: 13px; background: linear-gradient(135deg, #1565C0, #1976D2); color: white; border: none; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-radius: 10px; box-shadow: 0 2px 8px rgba(21,101,192,0.3); }
+        .share-btn { flex: 1; padding: 13px; background: linear-gradient(135deg, #1B8A3E, #25D366); color: white; border: none; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-radius: 10px; box-shadow: 0 2px 8px rgba(37,211,102,0.3); display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .reset-btn { width: calc(100% - 20px); margin: 0 10px 8px; padding: 12px; background: var(--bg-reset-btn); color: var(--text-reset-btn); border: 2px solid var(--border-reset); font-size: 0.85rem; font-weight: 700; cursor: pointer; border-radius: 10px; }
+        .reset-btn:hover { background: var(--bg-reset-hover); }
+        .history-toggle { width: calc(100% - 20px); margin: 0 10px 10px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; }
+
+        /* HISTORY */
+        .history-panel { display: none; padding: 10px; border-top: 1px solid var(--border-history); background: var(--bg-history-panel); }
+        .history-panel.open { display: block; }
+        .history-item { background: var(--bg-history-item); border-radius: 10px; padding: 12px; margin-bottom: 8px; font-size: 0.85rem; box-shadow: var(--shadow-history-item); border-left: 4px solid #2E7D32; }
+        .history-item .h-date { font-weight: 700; color: var(--text-h-date); margin-bottom: 2px; }
+        .history-item .h-course { font-size: 0.72rem; color: var(--text-h-course); margin-bottom: 6px; }
+        .history-item .h-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+        .history-item .h-stat { background: var(--bg-h-stat); padding: 3px 8px; border-radius: 6px; font-size: 0.78rem; color: var(--text-h-stat); }
+        .history-item .h-stat strong { color: var(--text-h-stat-strong); }
+        .no-history { color: #AAA; font-size: 0.85rem; text-align: center; padding: 24px; }
+
+        /* MODALS */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 200; justify-content: center; align-items: center; backdrop-filter: blur(3px); }
+        .modal-overlay.open { display: flex; }
+        .modal { background: var(--bg-modal); border-radius: 16px; padding: 22px; max-width: 320px; width: 90%; max-height: 85vh; overflow-y: auto; display: flex; flex-direction: column; box-shadow: var(--shadow-modal); }
+        .modal.wide-modal { max-width: 500px; }
+        .modal h3 { margin: 0 0 14px; color: var(--text-modal-h3); font-size: 1rem; font-weight: 800; }
+        .modal pre { background: var(--bg-modal-pre); padding: 12px; border-radius: 10px; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; max-height: 200px; overflow-y: auto; border: 1px solid var(--border-modal-pre); line-height: 1.6; color: var(--text-primary); }
+        .modal-btn { width: 100%; padding: 12px; background: #263238; color: white; border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .modal-close { width: 100%; padding: 10px; background: var(--bg-modal-close); color: var(--text-modal-close); border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 6px; }
+        .modal-danger { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .modal-danger:disabled { background: #E0E0E0; color: #AAA; cursor: not-allowed; }
+        .modal input[type="text"] { width: 100%; padding: 10px; border: 2px solid #FFCDD2; border-radius: 10px; font-size: 1rem; text-align: center; box-sizing: border-box; margin-top: 10px; letter-spacing: 4px; font-weight: 800; background: var(--bg-card); color: var(--text-primary); }
+        .modal input[type="text"]:focus { border-color: #d32f2f; outline: none; }
+        .modal p { font-size: 0.84rem; color: var(--text-modal-p); margin: 8px 0 0; line-height: 1.5; }
+        .btn-copy-img { background: #1565C0; color: white; border: none; border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; padding: 10px; width: 100%; margin-top: 6px; }
+
+        /* FRIENDS */
+        .friends-list { margin-bottom: 10px; max-height: 250px; overflow-y: auto; }
+        .friend-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--bg-friend-item); border-radius: 10px; margin-bottom: 6px; cursor: pointer; transition: background 0.15s; }
+        .friend-item:hover { background: var(--bg-friend-hover); }
+        .friend-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: white; flex-shrink: 0; }
+        .friend-info { flex: 1; }
+        .friend-name { font-size: 0.9rem; font-weight: 700; color: var(--text-friend-name); }
+        .friend-hcp { font-size: 0.72rem; color: var(--text-friend-hcp); font-weight: 500; display: flex; align-items: center; gap: 4px; }
+        .friend-hcp input { width: 42px; padding: 2px 4px; font-size: 0.72rem; border: 1px solid var(--border-input); border-radius: 4px; text-align: center; background: var(--bg-card); color: var(--text-primary); font-weight: 600; }
+        .friend-delete { background: none; border: none; color: var(--text-friend-delete); font-size: 1rem; cursor: pointer; padding: 4px 8px; border-radius: 6px; }
+        .friend-delete:hover { color: #d32f2f; background: var(--border-friend-delete-hover-bg); }
+        .no-friends { color: #AAA; font-size: 0.85rem; text-align: center; padding: 20px; }
+        .friend-add-form { display: flex; gap: 6px; margin-bottom: 12px; }
+        .friend-add-form input { flex: 1; padding: 8px 10px; border: 2px solid var(--border-input); border-radius: 8px; font-size: 0.85rem; background: var(--bg-card); color: var(--text-primary); }
+        .friend-add-form input:focus { border-color: #2E7D32; outline: none; }
+        .friend-add-form input.hcp-input { width: 58px; flex: none; }
+        .friend-add-form button { padding: 8px 14px; background: #2E7D32; color: white; border: none; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+
+        /* LEADERBOARD */
+        .leaderboard { padding: 10px 12px; background: var(--bg-leaderboard); border-bottom: 2px solid var(--border-nine); }
+        .leaderboard-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #558B2F; margin-bottom: 8px; text-align: center; }
+        .lb-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: var(--bg-lb-row); border-radius: 10px; margin-bottom: 5px; box-shadow: var(--shadow-lb-row); cursor: pointer; transition: background 0.15s; }
+        .lb-row:last-child { margin-bottom: 0; }
+        .lb-row:hover { background: var(--bg-lb-row-hover); }
+        .lb-row.active { outline: 2px solid var(--lb-color, #2E7D32); background: var(--bg-hover-row); }
+        .lb-rank { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: white; flex-shrink: 0; }
+        .lb-rank.rank-1 { background: linear-gradient(135deg, #F9A825, #F57F17); }
+        .lb-rank.rank-2 { background: linear-gradient(135deg, #90A4AE, #607D8B); }
+        .lb-rank.rank-3 { background: linear-gradient(135deg, #A1887F, #6D4C41); }
+        .lb-rank.rank-other { background: #BDBDBD; }
+        .lb-name { flex: 1; font-size: 0.85rem; font-weight: 700; color: var(--text-lb-name); }
+        .lb-stats { display: flex; gap: 10px; align-items: center; }
+        .lb-stat { text-align: center; }
+        .lb-stat .lb-val { font-size: 0.95rem; font-weight: 800; color: var(--text-heading); }
+        .lb-stat .lb-lbl { font-size: 0.5rem; text-transform: uppercase; color: var(--text-faint); font-weight: 600; letter-spacing: 0.5px; }
+        .lb-stat.pts-col .lb-val { color: #2E7D32; }
+        .lb-thru { font-size: 0.7rem; color: #9E9E9E; font-weight: 600; min-width: 28px; text-align: center; }
+
+        /* COLUMN TOGGLE */
+        .col-toggle-btn { padding: 5px 12px; background: var(--bg-toggle-btn); color: var(--text-toggle-btn); border: 1px solid var(--border-toggle); border-radius: 20px; font-size: 0.7rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+        .col-toggle-btn.active { background: var(--bg-toggle-active); color: var(--text-toggle-active); border-color: var(--border-toggle-active); }
+        .col-hideable { display: none; }
+        .show-extra .col-hideable { display: table-cell; }
+
+        /* HOLE NOTES */
+        input.note-input { width: 100%; height: 100%; border: none; text-align: left; font-size: 0.7rem; background: transparent; padding: 0 4px; color: var(--text-note-input); font-weight: 500; }
+        input.note-input::placeholder { color: var(--text-note-placeholder); font-style: italic; }
+        input.note-input:focus { background: var(--bg-note-focus) !important; outline: none; border-radius: 6px; }
+
+        /* DARK MODE TOGGLE */
+        .dark-toggle-btn { padding: 5px 12px; background: var(--bg-toggle-btn); color: var(--text-toggle-btn); border: 1px solid var(--border-toggle); border-radius: 20px; font-size: 0.7rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+        .dark-toggle-btn.active { background: #263238; color: #FFC107; border-color: #455A64; }
+
+        /* STATS DASHBOARD */
+        .stats-toggle { width: calc(100% - 20px); margin: 0 10px 10px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; }
+        .stats-panel { display: none; padding: 14px; border-top: 1px solid var(--border-history); background: var(--bg-history-panel); }
+        .stats-panel.open { display: block; }
+        .stats-section { margin-bottom: 16px; }
+        .stats-section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-faint); margin-bottom: 8px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+        .stats-card { background: var(--bg-card); border-radius: 10px; padding: 10px; text-align: center; box-shadow: var(--shadow-history-item); }
+        .stats-card .sc-val { font-size: 1.2rem; font-weight: 800; color: var(--text-heading); }
+        .stats-card .sc-label { font-size: 0.6rem; text-transform: uppercase; color: var(--text-faint); font-weight: 600; letter-spacing: 0.5px; margin-top: 2px; }
+        .trend-chart { display: flex; align-items: flex-end; gap: 4px; height: 80px; padding: 8px 0; }
+        .trend-bar { flex: 1; background: linear-gradient(180deg, #2E7D32, #81C784); border-radius: 4px 4px 0 0; min-width: 16px; position: relative; transition: height 0.3s; }
+        .trend-bar .tb-val { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; font-weight: 700; color: var(--text-secondary); white-space: nowrap; }
+        .course-breakdown { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+        .course-breakdown th { background: var(--bg-th); padding: 6px 8px; text-align: left; font-size: 0.65rem; color: var(--text-th); text-transform: uppercase; font-weight: 700; }
+        .course-breakdown td { padding: 6px 8px; border-bottom: 1px solid var(--border-td); color: var(--text-primary); }
+        .no-stats { color: #AAA; font-size: 0.85rem; text-align: center; padding: 24px; }
+
+        /* COMPARE ROUNDS */
+        .compare-toggle { width: calc(100% - 20px); margin: 0 10px 10px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; }
+        .compare-selects { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; flex-wrap: wrap; }
+        .compare-selects select { flex: 1; padding: 8px; border: 2px solid var(--border-input); border-radius: 8px; font-size: 0.8rem; background: var(--bg-card); color: var(--text-primary); min-width: 120px; }
+        .compare-selects button { padding: 8px 16px; background: #1565C0; color: white; border: none; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        .compare-table th { background: var(--bg-th); padding: 8px; text-align: center; font-size: 0.65rem; color: var(--text-th); text-transform: uppercase; font-weight: 700; }
+        .compare-table td { padding: 8px; text-align: center; border-bottom: 1px solid var(--border-td); color: var(--text-primary); font-weight: 600; }
+        .compare-table td.better { background: #E8F5E9; color: #2E7D32; }
+        .compare-table td.worse { background: #FFEBEE; color: #d32f2f; }
+        .compare-table td.neutral { background: var(--bg-h-stat); }
+        .compare-table td.metric-label { text-align: left; font-weight: 700; color: var(--text-heading); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="sticky-header">
+        <div class="header-title" id="headerTitle">⛳ Karake Hybrid Golf</div>
+        <div class="header-grid">
+            <div class="stat-box"><div class="label">Gross</div><div class="value" id="headGross">0</div></div>
+            <div class="stat-box net"><div class="label">Net</div><div class="value" id="headNet">0</div></div>
+            <div class="stat-box pts"><div class="label">Points</div><div class="value" id="headPts">0</div></div>
+            <div class="stat-box"><div class="label">Putts</div><div class="value" id="headPutts">0</div></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label>Hcp:</label>
+        <input type="number" id="handicap" value="28" inputmode="numeric" oninput="calculateAll()">
+        <select id="courseSelect" onchange="changeCourse()"></select>
+        <input type="date" id="roundDate">
+        <button class="col-toggle-btn" id="colToggleBtn" onclick="toggleExtraCols()">All Cols</button>
+        <button class="dark-toggle-btn" id="darkToggleBtn" onclick="toggleDarkMode()">Dark</button>
+        <span style="margin-left:auto; font-size:0.8rem; color:var(--text-muted);" id="parDisplay">Par 72</span>
+    </div>
+
+    <div id="playerTabs" class="player-tabs"></div>
+    <div id="playerSetup" class="player-setup" style="display:none;">
+        <input type="text" id="newPlayerName" placeholder="Player name" maxlength="15">
+        <input type="number" id="newPlayerHcp" class="hcp-input" placeholder="Hcp" inputmode="numeric" min="0" max="54">
+        <button onclick="addPlayer()">Add</button>
+        <button onclick="openFriends()" style="padding:8px 14px; background:#1565C0; color:white; border:none; border-radius:8px; font-size:0.8rem; font-weight:700; cursor:pointer;">Friends</button>
+        <button onclick="hidePlayerSetup()" class="cancel-btn">Cancel</button>
+    </div>
+    <div id="activePlayerBar" class="active-player-bar" style="display:none;"></div>
+    <div id="scoreSummary" class="score-summary" style="display:none;"></div>
+    <div id="leaderboard" class="leaderboard" style="display:none;"></div>
+
+    <div id="scorecard-body"></div>
+
+    <div class="btn-row">
+        <button class="save-btn" onclick="saveRound()">Save CSV</button>
+        <button class="share-btn" onclick="shareRound()" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.004 2C6.465 2 2 6.462 2 12.001c0 1.738.453 3.37 1.241 4.793L2 22l5.353-1.218A9.97 9.97 0 0 0 12.004 22C17.54 22 22 17.538 22 12.001 22 6.462 17.54 2 12.004 2zm0 1.8a8.2 8.2 0 0 1 8.196 8.201c0 4.523-3.674 8.199-8.196 8.199a8.17 8.17 0 0 1-4.287-1.209l-.308-.186-3.177.723.756-3.083-.203-.318A8.17 8.17 0 0 1 3.8 12.001 8.2 8.2 0 0 1 12.004 3.8zm-2.44 4.087c-.193 0-.507.072-.773.359-.265.288-1.012.988-1.012 2.407s1.035 2.793 1.179 2.986c.145.192 2.012 3.22 4.965 4.385.694.267 1.235.427 1.657.547.696.198 1.33.17 1.83.103.558-.074 1.72-.703 1.963-1.382.242-.68.242-1.263.17-1.385-.073-.12-.265-.193-.556-.338-.29-.145-1.72-.849-1.986-.946-.266-.097-.46-.145-.653.145-.193.29-.749.946-.917 1.14-.169.192-.338.216-.628.072-.29-.145-1.223-.45-2.33-1.438-.861-.769-1.443-1.717-1.612-2.007-.169-.29-.018-.447.127-.591.13-.13.29-.338.435-.507.144-.169.192-.29.289-.483.096-.192.048-.362-.024-.507-.073-.145-.654-1.574-.896-2.155-.235-.563-.476-.487-.654-.496l-.556-.01z"/>
+            </svg>
+            SHARE
+        </button>
+    </div>
+    <button class="reset-btn" onclick="clearScores()">Start New Round</button>
+    <button class="history-toggle" onclick="toggleHistory()">Round History</button>
+    <div class="history-panel" id="historyPanel"></div>
+    <button class="stats-toggle" onclick="toggleStats()">Stats Dashboard</button>
+    <div class="stats-panel" id="statsPanel"></div>
+    <button class="compare-toggle" onclick="toggleCompare()">Compare Rounds</button>
+    <div class="stats-panel" id="comparePanel"></div>
+    <div style="display:flex;gap:8px;margin:0 10px 10px;"><button class="history-toggle" style="margin:0;flex:1" onclick="exportData()">Export Data</button><button class="history-toggle" style="margin:0;flex:1" onclick="document.getElementById('importFile').click()">Import Data</button></div>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+</div>
+
+<div class="modal-overlay" id="friendsModal">
+    <div class="modal">
+        <h3>Friends</h3>
+        <div class="friend-add-form">
+            <input type="text" id="friendNameInput" placeholder="Name" maxlength="15">
+            <input type="number" id="friendHcpInput" class="hcp-input" placeholder="Hcp" inputmode="numeric" min="0" max="54">
+            <button onclick="saveFriend()">Save</button>
+        </div>
+        <div class="friends-list" id="friendsList"></div>
+        <button class="modal-close" onclick="closeFriends()">Close</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="shareModal">
+    <div class="modal">
+        <h3>Share on WhatsApp</h3>
+        <pre id="shareText"></pre>
+        <a id="waShareLink" href="#" target="_blank" style="display:block; width:100%; box-sizing:border-box; padding:12px; background:#25D366; color:white; text-align:center; border-radius:6px; font-weight:bold; font-size:0.9rem; text-decoration:none; margin-top:10px;">Open in WhatsApp</a>
+        <button class="btn-copy-img" style="width:100%; margin-top:6px;" onclick="copyShare()">Copy Text</button>
+        <button class="modal-close" onclick="closeShare()">Close</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="resetModal">
+    <div class="modal">
+        <h3>Start New Round?</h3>
+        <p>This will clear all scores for the current round. Type <strong>NEW</strong> to confirm.</p>
+        <input type="text" id="resetConfirmInput" placeholder="Type NEW" oninput="checkResetInput()">
+        <button class="modal-danger" id="resetConfirmBtn" disabled onclick="confirmReset()">Clear & Start New Round</button>
+        <button class="modal-close" onclick="closeResetModal()">Cancel</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="compareModal">
+    <div class="modal wide-modal">
+        <h3>Compare Rounds</h3>
+        <div class="compare-selects">
+            <select id="compareA"></select>
+            <span style="font-weight:700; color:var(--text-muted);">vs</span>
+            <select id="compareB"></select>
+            <button onclick="runComparison()">Compare</button>
+        </div>
+        <div id="compareResult"></div>
+        <button class="modal-close" onclick="closeCompare()">Close</button>
+    </div>
+</div>
+
+<script>
+    const courses = {
+        "Kigali Golf Club": [
+            { par: 5, si: 8 }, { par: 3, si: 14 }, { par: 4, si: 10 }, { par: 4, si: 2 }, { par: 4, si: 16 }, { par: 5, si: 12 }, { par: 4, si: 6 }, { par: 3, si: 18 }, { par: 5, si: 4 },
+            { par: 4, si: 15 }, { par: 4, si: 9 }, { par: 4, si: 17 }, { par: 5, si: 13 }, { par: 3, si: 5 }, { par: 4, si: 3 }, { par: 4, si: 1 }, { par: 3, si: 7 }, { par: 4, si: 11 }
+        ],
+        "Entebbe Golf Club": [
+            { par: 5, si: 5 }, { par: 3, si: 15 }, { par: 4, si: 13 }, { par: 4, si: 1 }, { par: 4, si: 3 }, { par: 3, si: 17 }, { par: 5, si: 9 }, { par: 3, si: 7 }, { par: 4, si: 11 },
+            { par: 3, si: 6 }, { par: 5, si: 8 }, { par: 3, si: 16 }, { par: 4, si: 12 }, { par: 4, si: 18 }, { par: 5, si: 10 }, { par: 3, si: 4 }, { par: 4, si: 2 }, { par: 5, si: 14 }
+        ],
+        "Kitante Golf Club": [
+            { par: 5, si: 10 }, { par: 4, si: 4 }, { par: 5, si: 8 }, { par: 3, si: 16 }, { par: 5, si: 12 }, { par: 3, si: 6 }, { par: 4, si: 2 }, { par: 5, si: 18 }, { par: 3, si: 14 },
+            { par: 4, si: 9 }, { par: 3, si: 11 }, { par: 4, si: 1 }, { par: 5, si: 15 }, { par: 4, si: 13 }, { par: 4, si: 3 }, { par: 4, si: 5 }, { par: 3, si: 17 }, { par: 4, si: 7 }
+        ],
+        "Lake Victoria Serena": [
+            { par: 4, si: 17 }, { par: 5, si: 7 }, { par: 4, si: 1 }, { par: 3, si: 15 }, { par: 4, si: 13 }, { par: 4, si: 5 }, { par: 3, si: 3 }, { par: 5, si: 11 }, { par: 4, si: 9 },
+            { par: 4, si: 10 }, { par: 3, si: 6 }, { par: 4, si: 18 }, { par: 5, si: 4 }, { par: 4, si: 12 }, { par: 3, si: 16 }, { par: 4, si: 2 }, { par: 5, si: 8 }, { par: 4, si: 14 }
+        ]
+    };
+
+    let currentCourse = "Kigali Golf Club";
+    let courseHoles = courses[currentCourse];
+    let activePlayerIdx = 0;
+
+    // Players: [{ name, hcp, scores, putts, gir, fairways, notes }]
+    function defaultPlayer(name, hcp) {
+        return { name, hcp: hcp || 28, scores: new Array(18).fill(''), putts: new Array(18).fill(''), gir: new Array(18).fill(''), fairways: new Array(18).fill(''), notes: new Array(18).fill('') };
+    }
+
+    let appData = {
+        handicap: 28, course: currentCourse,
+        date: new Date().toISOString().split('T')[0],
+        scores: new Array(18).fill(''),
+        putts: new Array(18).fill(''),
+        gir: new Array(18).fill(''),
+        fairways: new Array(18).fill(''),
+        notes: new Array(18).fill(''),
+        players: []
+    };
+
+    function getActivePlayer() {
+        if (appData.players.length === 0) return appData; // solo mode
+        return appData.players[activePlayerIdx] || appData.players[0];
+    }
+
+    function populateCourseSelect() {
+        const sel = document.getElementById('courseSelect');
+        sel.innerHTML = '';
+        Object.keys(courses).forEach(name => {
+            const opt = document.createElement('option');
+            opt.value = name; opt.textContent = name;
+            if (name === currentCourse) opt.selected = true;
+            sel.appendChild(opt);
+        });
+    }
+
+    function changeCourse() {
+        currentCourse = document.getElementById('courseSelect').value;
+        courseHoles = courses[currentCourse];
+        appData.course = currentCourse;
+        updateParDisplay();
+        saveAppData(); renderApp();
+    }
+
+    function updateParDisplay() {
+        const total = courses[currentCourse].reduce((sum, h) => sum + h.par, 0);
+        document.getElementById('parDisplay').innerText = 'Par ' + total;
+        const titleEl = document.getElementById('headerTitle');
+        if (appData.players.length === 0) titleEl.textContent = currentCourse;
+    }
+
+    function loadData() {
+        const savedData = localStorage.getItem('golfHybrid_v3');
+        if (savedData) {
+            appData = JSON.parse(savedData);
+            if (!appData.gir) appData.gir = new Array(18).fill('');
+            if (!appData.notes) appData.notes = new Array(18).fill('');
+            if (!appData.fairways) appData.fairways = new Array(18).fill('');
+            if (!appData.players) appData.players = [];
+            appData.players.forEach(p => {
+                if (!p.notes) p.notes = new Array(18).fill('');
+                if (!p.fairways) p.fairways = new Array(18).fill('');
+            });
+            currentCourse = appData.course || "Kigali Golf Club";
+            courseHoles = courses[currentCourse] || courses["Kigali Golf Club"];
+        }
+        if (activePlayerIdx >= appData.players.length && appData.players.length > 0) activePlayerIdx = 0;
+    }
+
+    function saveAppData() { localStorage.setItem('golfHybrid_v3', JSON.stringify(appData)); }
+
+    const PLAYER_COLORS = ['#2E7D32','#1565C0','#AD1457','#E65100','#4527A0','#00695C','#6D4C41'];
+
+    function getPlayerColor(idx) { return PLAYER_COLORS[idx % PLAYER_COLORS.length]; }
+
+    function renderPlayerTabs() {
+        const tabsEl = document.getElementById('playerTabs');
+        const barEl = document.getElementById('activePlayerBar');
+
+        const titleEl = document.getElementById('headerTitle');
+        if (appData.players.length > 0) {
+            const p = appData.players[activePlayerIdx];
+            const color = getPlayerColor(activePlayerIdx);
+            titleEl.innerHTML = `<span style="color:${color}">&#9679;</span> ${p.name} — ${currentCourse}`;
+        } else {
+            titleEl.textContent = currentCourse;
+        }
+
+        if (appData.players.length === 0) {
+            tabsEl.innerHTML = `<button class="player-tab add-btn" onclick="showPlayerSetup()">+ Add Players</button>`;
+            barEl.style.display = 'none';
+            return;
+        }
+
+        let html = appData.players.map((p, i) => {
+            const color = getPlayerColor(i);
+            const initials = p.name.substring(0, 2).toUpperCase();
+            const isActive = i === activePlayerIdx;
+            return `<button class="player-tab ${isActive ? 'active' : ''}"
+                style="${isActive ? `--tab-color:${color}` : ''}"
+                onclick="switchPlayer(${i})">
+                <span class="tab-avatar" style="background:${color}">${initials}</span>
+                ${p.name}
+            </button>`;
+        }).join('');
+        html += `<button class="player-tab add-btn" onclick="showPlayerSetup()">+ Add</button>`;
+        tabsEl.innerHTML = html;
+
+        const p = appData.players[activePlayerIdx];
+        const color = getPlayerColor(activePlayerIdx);
+        barEl.style.display = 'flex';
+        barEl.style.borderLeft = `4px solid ${color}`;
+        barEl.style.background = color + '10';
+        barEl.innerHTML = `<span style="color:${color}; font-weight:700;">${p.name}</span><span style="color:var(--text-muted); font-size:0.75rem; margin-left:6px;">Hcp ${p.hcp}</span>
+            <button class="remove-player-btn" onclick="removePlayer(${activePlayerIdx})">&#10005; Remove</button>`;
+    }
+
+    function showPlayerSetup() {
+        document.getElementById('playerSetup').style.display = 'flex';
+        document.getElementById('newPlayerName').focus();
+    }
+
+    function hidePlayerSetup() {
+        document.getElementById('playerSetup').style.display = 'none';
+        document.getElementById('newPlayerName').value = '';
+        document.getElementById('newPlayerHcp').value = '';
+    }
+
+    function addPlayer() {
+        const name = document.getElementById('newPlayerName').value.trim();
+        const hcp = parseInt(document.getElementById('newPlayerHcp').value) || 28;
+        if (!name) return;
+
+        if (appData.players.length === 0) {
+            const me = defaultPlayer('Me', appData.handicap);
+            me.scores = [...appData.scores];
+            me.putts = [...appData.putts];
+            me.gir = [...appData.gir];
+            me.fairways = [...appData.fairways];
+            me.notes = [...appData.notes];
+            appData.players.push(me);
+        }
+
+        appData.players.push(defaultPlayer(name, hcp));
+        activePlayerIdx = appData.players.length - 1;
+
+        const friends = getFriends();
+        if (!friends.some(f => f.name.toLowerCase() === name.toLowerCase())) {
+            friends.push({ name, hcp });
+            saveFriends(friends);
+        }
+
+        saveAppData();
+        hidePlayerSetup();
+        renderPlayerTabs();
+        renderApp();
+    }
+
+    function switchPlayer(idx) {
+        activePlayerIdx = idx;
+        renderPlayerTabs();
+        renderApp();
+    }
+
+    function removePlayer(idx) {
+        appData.players.splice(idx, 1);
+        if (activePlayerIdx >= appData.players.length) activePlayerIdx = Math.max(0, appData.players.length - 1);
+        saveAppData();
+        renderPlayerTabs();
+        renderApp();
+    }
+
+    function renderApp() {
+        loadData();
+        const player = getActivePlayer();
+        document.getElementById('handicap').value = player.hcp || appData.handicap;
+        document.getElementById('roundDate').value = appData.date || new Date().toISOString().split('T')[0];
+        populateCourseSelect();
+        updateParDisplay();
+        renderPlayerTabs();
+
+        const container = document.getElementById('scorecard-body');
+        container.innerHTML = '';
+
+        const createNine = (start, end, title) => {
+            let html = `<div class="sub-header">${title}</div>
+                <div class="table-wrap"><table><thead><tr>
+                    <th class="col-hole">#</th><th class="col-info col-hideable">Par</th><th class="col-info col-hideable">SI</th>
+                    <th class="col-input" style="border-left:2px solid var(--border-col-thick)">Score</th>
+                    <th class="col-input">Putts</th><th class="col-input col-hideable">GIR</th>
+                    <th class="col-input col-hideable">FWY</th>
+                    <th class="col-res col-hideable" style="border-left:2px solid var(--border-col-thick)">Pts</th>
+                    <th class="col-res">+/-</th>
+                    <th class="col-notes">Notes</th>
+                </tr></thead><tbody>`;
+
+            for (let i = start; i <= end; i++) {
+                let h = courseHoles[i];
+                let isPar3 = h.par === 3;
+                let fwyCell;
+                if (isPar3) {
+                    fwyCell = `<td class="col-input col-hideable"><span class="fwy-na">n/a</span></td>`;
+                } else {
+                    fwyCell = `<td class="col-input col-hideable">
+                        <input type="number" inputmode="numeric" class="fwy-input" value="${player.fairways[i]}" placeholder="—" min="0" max="1" oninput="updateState(${i},'fairways',this.value)">
+                    </td>`;
+                }
+                html += `<tr>
+                    <td class="hole-num">${i+1}</td>
+                    <td class="small-info col-hideable">${h.par}</td>
+                    <td class="small-info col-hideable">${h.si}</td>
+                    <td class="col-input" style="border-left:2px solid var(--border-col-thick)">
+                        <input type="number" inputmode="numeric" class="score-input" data-hole="${i}" value="${player.scores[i]}" placeholder="—" oninput="updateState(${i},'scores',this.value); autoAdvance(${i})">
+                    </td>
+                    <td class="col-input">
+                        <input type="number" inputmode="numeric" class="putt-input" value="${player.putts[i]}" placeholder="—" oninput="updateState(${i},'putts',this.value)">
+                    </td>
+                    <td class="col-input col-hideable">
+                        <input type="number" inputmode="numeric" class="gir-input" value="${player.gir[i]}" placeholder="—" min="0" max="1" oninput="updateState(${i},'gir',this.value)">
+                    </td>
+                    ${fwyCell}
+                    <td id="res-pts-${i}" class="res-pts col-hideable" style="border-left:2px solid var(--border-col-thick)">—</td>
+                    <td id="res-rel-${i}" class="res-par">—</td>
+                    <td class="col-notes">
+                        <input type="text" class="note-input" value="${player.notes[i] || ''}" placeholder="note" oninput="updateState(${i},'notes',this.value)">
+                    </td>
+                </tr>`;
+            }
+            html += `</tbody></table></div>
+                <div class="nine-summary">
+                    <span><div class="s-label">Gross</div><div class="s-val" id="nine-gross-${start}">—</div></span>
+                    <span><div class="s-label">Points</div><div class="s-val" id="nine-pts-${start}">—</div></span>
+                    <span><div class="s-label">Putts</div><div class="s-val" id="nine-putts-${start}">—</div></span>
+                    <span><div class="s-label">GIR</div><div class="s-val" id="nine-gir-${start}">—</div></span>
+                    <span><div class="s-label">FWY</div><div class="s-val" id="nine-fwy-${start}">—</div></span>
+                </div>`;
+            return html;
+        };
+
+        container.innerHTML += createNine(0, 8, 'FRONT 9');
+        container.innerHTML += createNine(9, 17, 'BACK 9');
+        calculateAll();
+    }
+
+    function updateState(index, type, value) {
+        const player = getActivePlayer();
+        player[type][index] = value;
+        appData.date = document.getElementById('roundDate').value;
+        saveAppData(); calculateAll();
+    }
+
+    // Feature 4: Auto-scroll to next empty hole
+    function autoAdvance(holeIndex) {
+        const player = getActivePlayer();
+        if (!player.scores[holeIndex]) return;
+        for (let i = holeIndex + 1; i < 18; i++) {
+            if (!player.scores[i]) {
+                setTimeout(() => {
+                    const nextInput = document.querySelector(`input.score-input[data-hole="${i}"]`);
+                    if (nextInput) {
+                        nextInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        setTimeout(() => nextInput.focus(), 300);
+                    }
+                }, 150);
+                return;
+            }
+        }
+    }
+
+    document.getElementById('handicap').addEventListener('input', function(e) {
+        const player = getActivePlayer();
+        player.hcp = parseInt(e.target.value);
+        if (appData.players.length === 0) appData.handicap = player.hcp;
+        saveAppData(); calculateAll();
+    });
+    document.getElementById('roundDate').addEventListener('change', function(e) {
+        appData.date = e.target.value; saveAppData();
+    });
+
+    function calculateAll() {
+        const player = getActivePlayer();
+        let hcp = player.hcp || 0;
+        let base = Math.floor(hcp/18), rem = hcp%18;
+        let totals = { gross:0, pts:0, putts:0, gir:0, fwy:0, holes:0, net:0 };
+        let nine = { 0:{gross:0,pts:0,putts:0,gir:0,fwy:0,holes:0}, 9:{gross:0,pts:0,putts:0,gir:0,fwy:0,holes:0} };
+        let scoreCounts = { eagle:0, birdie:0, par:0, bogey:0, double:0, worse:0 };
+
+        courseHoles.forEach((hole, i) => {
+            let gross = parseInt(player.scores[i]);
+            let putts = parseInt(player.putts[i]);
+            let gir = parseInt(player.gir[i]);
+            let fwy = parseInt(player.fairways ? player.fairways[i] : '');
+            let ns = i < 9 ? 0 : 9;
+            let elPts = document.getElementById(`res-pts-${i}`);
+            let elRel = document.getElementById(`res-rel-${i}`);
+
+            if (!isNaN(putts)) { totals.putts += putts; nine[ns].putts += putts; }
+            if (gir === 0 || gir === 1) { totals.gir += gir; nine[ns].gir += gir; }
+            if ((fwy === 0 || fwy === 1) && hole.par !== 3) { totals.fwy += fwy; nine[ns].fwy += fwy; }
+
+            if (isNaN(gross)) { elPts.innerText = "—"; elPts.className = "res-pts pts-0"; elRel.innerText = "—"; elRel.className = "res-par"; }
+            else {
+                totals.gross += gross; totals.holes++; nine[ns].gross += gross; nine[ns].holes++;
+                let strokesOnHole = base + (hole.si <= rem ? 1 : 0);
+                totals.net += (gross - strokesOnHole);
+
+                let diff = gross - hole.par;
+                elRel.innerText = diff === 0 ? "E" : (diff > 0 ? "+"+diff : diff);
+                elRel.className = "res-par " + (diff===0?"even":diff>0?"over":"under");
+
+                if (diff <= -2) scoreCounts.eagle++;
+                else if (diff === -1) scoreCounts.birdie++;
+                else if (diff === 0) scoreCounts.par++;
+                else if (diff === 1) scoreCounts.bogey++;
+                else if (diff === 2) scoreCounts.double++;
+                else scoreCounts.worse++;
+
+                let pts = Math.max(0, 2 + (hole.par - (gross - strokesOnHole)));
+                elPts.innerText = pts;
+                elPts.className = "res-pts pts-" + (pts >= 5 ? "5plus" : pts);
+                totals.pts += pts; nine[ns].pts += pts;
+            }
+        });
+
+        document.getElementById('headGross').innerText = totals.gross || 0;
+        document.getElementById('headPts').innerText = totals.pts || 0;
+        document.getElementById('headPutts').innerText = totals.putts || 0;
+        document.getElementById('headNet').innerText = totals.holes > 0 ? totals.net : 0;
+
+        [0,9].forEach(s => {
+            let d = nine[s];
+            document.getElementById(`nine-gross-${s}`).innerText = d.holes > 0 ? d.gross : '—';
+            document.getElementById(`nine-pts-${s}`).innerText = d.holes > 0 ? d.pts : '—';
+            document.getElementById(`nine-putts-${s}`).innerText = d.putts > 0 ? d.putts : '—';
+            document.getElementById(`nine-gir-${s}`).innerText = d.holes > 0 ? d.gir : '—';
+            document.getElementById(`nine-fwy-${s}`).innerText = d.holes > 0 ? d.fwy : '—';
+        });
+
+        // Score summary bar
+        const summaryEl = document.getElementById('scoreSummary');
+        if (totals.holes === 0) { summaryEl.style.display = 'none'; return; }
+        summaryEl.style.display = 'flex';
+        const pills = [
+            { key:'eagle',  label:'Eagle',  cls:'pill-eagle'  },
+            { key:'birdie', label:'Birdie', cls:'pill-birdie' },
+            { key:'par',    label:'Par',    cls:'pill-par'    },
+            { key:'bogey',  label:'Bogey',  cls:'pill-bogey'  },
+            { key:'double', label:'Double', cls:'pill-double' },
+            { key:'worse',  label:'Worse',  cls:'pill-worse'  },
+        ];
+        summaryEl.innerHTML = pills
+            .filter(p => scoreCounts[p.key] > 0)
+            .map(p => `<div class="score-pill ${p.cls}">
+                <span class="sp-count">${scoreCounts[p.key]}</span>
+                <span class="sp-label">${p.label}</span>
+            </div>`).join('');
+
+        renderLeaderboard();
+    }
+
+    // FRIENDS
+    function getFriends() { return JSON.parse(localStorage.getItem('golfFriends') || '[]'); }
+    function saveFriends(list) { localStorage.setItem('golfFriends', JSON.stringify(list)); }
+
+    function openFriends() {
+        renderFriendsList();
+        document.getElementById('friendsModal').classList.add('open');
+    }
+
+    function closeFriends() {
+        document.getElementById('friendsModal').classList.remove('open');
+        document.getElementById('friendNameInput').value = '';
+        document.getElementById('friendHcpInput').value = '';
+    }
+
+    function saveFriend() {
+        const name = document.getElementById('friendNameInput').value.trim();
+        const hcp = parseInt(document.getElementById('friendHcpInput').value) || 28;
+        if (!name) return;
+        const friends = getFriends();
+        friends.push({ name, hcp });
+        saveFriends(friends);
+        document.getElementById('friendNameInput').value = '';
+        document.getElementById('friendHcpInput').value = '';
+        renderFriendsList();
+    }
+
+    function deleteFriend(idx) {
+        const friends = getFriends();
+        friends.splice(idx, 1);
+        saveFriends(friends);
+        renderFriendsList();
+    }
+
+    // Feature 3: Edit friend handicaps inline
+    function updateFriendHcp(idx, value) {
+        const friends = getFriends();
+        friends[idx].hcp = parseInt(value) || 0;
+        saveFriends(friends);
+    }
+
+    function addFriendToRound(idx) {
+        const friends = getFriends();
+        const f = friends[idx];
+
+        if (appData.players.length === 0) {
+            const me = defaultPlayer('Me', appData.handicap);
+            me.scores = [...appData.scores];
+            me.putts = [...appData.putts];
+            me.gir = [...appData.gir];
+            me.fairways = [...appData.fairways];
+            me.notes = [...appData.notes];
+            appData.players.push(me);
+        }
+
+        appData.players.push(defaultPlayer(f.name, f.hcp));
+        activePlayerIdx = appData.players.length - 1;
+        saveAppData();
+        closeFriends();
+        hidePlayerSetup();
+        renderPlayerTabs();
+        renderApp();
+    }
+
+    function renderFriendsList() {
+        const friends = getFriends();
+        const el = document.getElementById('friendsList');
+        if (friends.length === 0) {
+            el.innerHTML = '<div class="no-friends">No friends saved yet.<br>Add someone above to get started.</div>';
+            return;
+        }
+        el.innerHTML = friends.map((f, i) => {
+            const color = PLAYER_COLORS[i % PLAYER_COLORS.length];
+            const initials = f.name.substring(0, 2).toUpperCase();
+            return `<div class="friend-item" onclick="addFriendToRound(${i})">
+                <div class="friend-avatar" style="background:${color}">${initials}</div>
+                <div class="friend-info">
+                    <div class="friend-name">${f.name}</div>
+                    <div class="friend-hcp">Hcp <input type="number" value="${f.hcp}" min="0" max="54" inputmode="numeric" onclick="event.stopPropagation()" oninput="event.stopPropagation(); updateFriendHcp(${i}, this.value)"></div>
+                </div>
+                <button class="friend-delete" onclick="event.stopPropagation(); deleteFriend(${i})">&#10005;</button>
+            </div>`;
+        }).join('');
+    }
+
+    let showExtraCols = false;
+    function toggleExtraCols() {
+        showExtraCols = !showExtraCols;
+        document.querySelectorAll('.table-wrap table').forEach(t => t.classList.toggle('show-extra', showExtraCols));
+        document.getElementById('colToggleBtn').classList.toggle('active', showExtraCols);
+    }
+
+    // Feature 1: Dark Mode
+    function toggleDarkMode() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('golfDarkMode', 'false');
+            document.getElementById('darkToggleBtn').classList.remove('active');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('golfDarkMode', 'true');
+            document.getElementById('darkToggleBtn').classList.add('active');
+        }
+    }
+
+    function loadDarkMode() {
+        if (localStorage.getItem('golfDarkMode') === 'true') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('darkToggleBtn').classList.add('active');
+        }
+    }
+
+    function getPlayerSummary(player) {
+        let hcp = player.hcp || 0;
+        let base = Math.floor(hcp/18), rem = hcp%18;
+        let gross=0, pts=0, holes=0, net=0;
+        courseHoles.forEach((hole,i) => {
+            let g = parseInt(player.scores[i]);
+            if (!isNaN(g)) {
+                gross += g; holes++;
+                let strokesOnHole = base + (hole.si <= rem ? 1 : 0);
+                net += (g - strokesOnHole);
+                pts += Math.max(0, 2+(hole.par-(g-strokesOnHole)));
+            }
+        });
+        return { gross, pts, holes, net };
+    }
+
+    function renderLeaderboard() {
+        const lbEl = document.getElementById('leaderboard');
+        if (appData.players.length < 2) { lbEl.style.display = 'none'; return; }
+        lbEl.style.display = 'block';
+
+        let entries = appData.players.map((p, i) => {
+            let s = getPlayerSummary(p);
+            return { name: p.name, idx: i, pts: s.pts, gross: s.gross, net: s.net, holes: s.holes };
+        });
+
+        entries.sort((a, b) => b.pts - a.pts || a.net - b.net);
+
+        let rank = 0, prevPts = -1;
+        entries.forEach((e, i) => {
+            if (e.pts !== prevPts) { rank = i + 1; prevPts = e.pts; }
+            e.rank = rank;
+        });
+
+        let html = '<div class="leaderboard-title">Leaderboard</div>';
+        html += entries.map(e => {
+            const color = getPlayerColor(e.idx);
+            const rankCls = e.rank <= 3 ? `rank-${e.rank}` : 'rank-other';
+            const isActive = e.idx === activePlayerIdx ? 'active' : '';
+            return `<div class="lb-row ${isActive}" style="--lb-color:${color}" onclick="switchPlayer(${e.idx})">
+                <div class="lb-rank ${rankCls}">${e.rank}</div>
+                <span class="lb-name" style="color:${color}">${e.name}</span>
+                <div class="lb-stats">
+                    <div class="lb-stat pts-col"><div class="lb-val">${e.pts}</div><div class="lb-lbl">Pts</div></div>
+                    <div class="lb-stat"><div class="lb-val">${e.gross || '—'}</div><div class="lb-lbl">Gross</div></div>
+                    <div class="lb-stat"><div class="lb-val">${e.holes > 0 ? e.net : '—'}</div><div class="lb-lbl">Net</div></div>
+                </div>
+                <span class="lb-thru">${e.holes > 0 ? e.holes + '/18' : '—'}</span>
+            </div>`;
+        }).join('');
+
+        lbEl.innerHTML = html;
+    }
+
+    function getRoundSummary() {
+        const player = getActivePlayer();
+        let hcp = player.hcp || 0;
+        let base = Math.floor(hcp/18), rem = hcp%18;
+        let gross=0, pts=0, putts=0, gir=0, fwy=0, holes=0, net=0;
+        courseHoles.forEach((hole,i) => {
+            let g = parseInt(player.scores[i]), p = parseInt(player.putts[i]), gr = parseInt(player.gir[i]);
+            let fw = parseInt(player.fairways ? player.fairways[i] : '');
+            if (!isNaN(p)) putts += p;
+            if (gr===0||gr===1) gir += gr;
+            if ((fw===0||fw===1) && hole.par !== 3) fwy += fw;
+            if (!isNaN(g)) {
+                gross += g; holes++;
+                let strokesOnHole = base + (hole.si <= rem ? 1 : 0);
+                net += (g - strokesOnHole);
+                pts += Math.max(0, 2+(hole.par-(g-strokesOnHole)));
+            }
+        });
+        return { hcp, gross, pts, putts, gir, fwy, holes, net };
+    }
+
+    function saveRound() {
+        const player = getActivePlayer();
+        let s = getRoundSummary();
+        let date = appData.date || new Date().toISOString().split('T')[0];
+        let hcp = s.hcp, base = Math.floor(hcp/18), rem = hcp%18;
+        let name = appData.players.length > 0 ? player.name : 'Player';
+        let csv = `Karake Hybrid Golf - ${date}\nCourse,${currentCourse}\nPlayer,${name}\nHandicap,${hcp}\n\nHole,Par,SI,Score,Putts,GIR,FWY,Points,+/-,Notes\n`;
+        courseHoles.forEach((hole,i) => {
+            let g = parseInt(player.scores[i]);
+            let pts='-', rel='-';
+            if (!isNaN(g)) {
+                let diff = g-hole.par;
+                rel = diff===0?"E":(diff>0?"+"+diff:String(diff));
+                pts = Math.max(0,2+(hole.par-(g-(base+(hole.si<=rem?1:0)))));
+            }
+            let fwyVal = hole.par === 3 ? 'n/a' : (player.fairways && player.fairways[i] !== '' ? player.fairways[i] : '-');
+            let note = (player.notes && player.notes[i]) ? '"' + player.notes[i].replace(/"/g,'""') + '"' : '';
+            csv += `${i+1},${hole.par},${hole.si},${player.scores[i]||'-'},${player.putts[i]||'-'},${player.gir[i]||'-'},${fwyVal},${pts},${rel},${note}\n`;
+        });
+        csv += `\nTotals,,,${s.gross},${s.putts},${s.gir},${s.fwy},${s.pts},\nNet Score,,,${s.net},,,,\n`;
+
+        const blob = new Blob([csv],{type:'text/csv'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href=url; a.download=`golf-${name}-${date}.csv`; a.click();
+        URL.revokeObjectURL(url);
+        saveToHistory(s, date);
+    }
+
+    function saveToHistory(s, date) {
+        if (s.holes === 0) return;
+        let history = JSON.parse(localStorage.getItem('golfHistory')||'[]');
+        history.unshift({ date, course: currentCourse, hcp:s.hcp, gross:s.gross, pts:s.pts, putts:s.putts, gir:s.gir, fwy: s.fwy || 0 });
+        if (history.length > 20) history = history.slice(0,20);
+        localStorage.setItem('golfHistory', JSON.stringify(history));
+    }
+
+    function toggleHistory() {
+        const panel = document.getElementById('historyPanel');
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) renderHistory();
+    }
+
+    function renderHistory() {
+        const panel = document.getElementById('historyPanel');
+        let history = JSON.parse(localStorage.getItem('golfHistory')||'[]');
+        if (!history.length) { panel.innerHTML = '<div class="no-history">No rounds saved yet.<br>Save a round to see history here.</div>'; return; }
+        panel.innerHTML = history.map((r, idx) => {
+            const color = PLAYER_COLORS[idx % PLAYER_COLORS.length];
+            return `<div class="history-item" style="border-left-color:${color}">
+                <div class="h-date">${r.date}</div>
+                <div class="h-course">${r.course} · Hcp ${r.hcp}</div>
+                <div class="h-stats">
+                    <span class="h-stat">Gross <strong>${r.gross}</strong></span>
+                    <span class="h-stat">Pts <strong>${r.pts}</strong></span>
+                    <span class="h-stat">Putts <strong>${r.putts}</strong></span>
+                    <span class="h-stat">GIR <strong>${r.gir}</strong></span>
+                    <span class="h-stat">FWY <strong>${r.fwy || 0}</strong></span>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    function shareRound() {
+        const player = getActivePlayer();
+        let s = getRoundSummary();
+        let date = appData.date || new Date().toISOString().split('T')[0];
+        let name = appData.players.length > 0 ? player.name : '';
+        let text = `${currentCourse}\n${date}${name ? '\n' + name : ''}\n\nGross: ${s.gross}\nNet: ${s.net}\nPoints: ${s.pts}\nPutts: ${s.putts}\nGIR: ${s.gir}/18\nFWY: ${s.fwy}\nHandicap: ${s.hcp}\n\n#KarakaGolf`;
+        document.getElementById('shareText').innerText = text;
+        const waUrl = 'https://wa.me/?text=' + encodeURIComponent(text);
+        document.getElementById('waShareLink').href = waUrl;
+        document.getElementById('shareModal').classList.add('open');
+    }
+
+    function copyShare() {
+        navigator.clipboard.writeText(document.getElementById('shareText').innerText).then(() => {
+            const btn = document.querySelector('.btn-copy-img');
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Text', 2000);
+        });
+    }
+
+    function closeShare() { document.getElementById('shareModal').classList.remove('open'); }
+
+    function clearScores() {
+        document.getElementById('resetConfirmInput').value = '';
+        document.getElementById('resetConfirmBtn').disabled = true;
+        document.getElementById('resetModal').classList.add('open');
+    }
+
+    function checkResetInput() {
+        const val = document.getElementById('resetConfirmInput').value.trim().toUpperCase();
+        document.getElementById('resetConfirmBtn').disabled = val !== 'NEW';
+    }
+
+    function confirmReset() {
+        appData.scores = new Array(18).fill('');
+        appData.putts = new Array(18).fill('');
+        appData.gir = new Array(18).fill('');
+        appData.fairways = new Array(18).fill('');
+        appData.notes = new Array(18).fill('');
+        appData.date = new Date().toISOString().split('T')[0];
+        appData.players.forEach(p => {
+            p.scores = new Array(18).fill('');
+            p.putts = new Array(18).fill('');
+            p.gir = new Array(18).fill('');
+            p.fairways = new Array(18).fill('');
+            p.notes = new Array(18).fill('');
+        });
+        saveAppData();
+        closeResetModal();
+        renderApp();
+    }
+
+    function closeResetModal() { document.getElementById('resetModal').classList.remove('open'); }
+
+    // Feature 5: Stats Dashboard
+    function toggleStats() {
+        const panel = document.getElementById('statsPanel');
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) renderStats();
+    }
+
+    function renderStats() {
+        const panel = document.getElementById('statsPanel');
+        let history = JSON.parse(localStorage.getItem('golfHistory') || '[]');
+        if (history.length === 0) {
+            panel.innerHTML = '<div class="no-stats">No rounds saved yet.<br>Save rounds to see stats here.</div>';
+            return;
+        }
+
+        const n = history.length;
+        const avgGross = (history.reduce((s, r) => s + r.gross, 0) / n).toFixed(1);
+        const avgPts = (history.reduce((s, r) => s + r.pts, 0) / n).toFixed(1);
+        const avgPutts = (history.reduce((s, r) => s + r.putts, 0) / n).toFixed(1);
+        const avgGir = (history.reduce((s, r) => s + r.gir, 0) / n).toFixed(1);
+        const avgFwy = (history.reduce((s, r) => s + (r.fwy || 0), 0) / n).toFixed(1);
+
+        const bestGross = Math.min(...history.map(r => r.gross));
+        const bestPts = Math.max(...history.map(r => r.pts));
+        const bestPutts = Math.min(...history.map(r => r.putts));
+
+        // Trend: last 10 rounds (reversed so oldest is left)
+        const last10 = history.slice(0, 10).reverse();
+        const maxPts = Math.max(...last10.map(r => r.pts), 1);
+
+        let trendHtml = '';
+        if (last10.length >= 2) {
+            trendHtml = `<div class="stats-section">
+                <div class="stats-section-title">Points Trend (Last ${last10.length} rounds)</div>
+                <div class="trend-chart">
+                    ${last10.map(r => {
+                        const pct = Math.max(5, (r.pts / maxPts) * 100);
+                        return `<div class="trend-bar" style="height:${pct}%"><span class="tb-val">${r.pts}</span></div>`;
+                    }).join('')}
+                </div>
+            </div>`;
+        }
+
+        // Per-course breakdown
+        const courseMap = {};
+        history.forEach(r => {
+            if (!courseMap[r.course]) courseMap[r.course] = { rounds: 0, gross: 0, pts: 0, putts: 0 };
+            courseMap[r.course].rounds++;
+            courseMap[r.course].gross += r.gross;
+            courseMap[r.course].pts += r.pts;
+            courseMap[r.course].putts += r.putts;
+        });
+        const courseNames = Object.keys(courseMap);
+        let courseHtml = '';
+        if (courseNames.length > 1) {
+            courseHtml = `<div class="stats-section">
+                <div class="stats-section-title">Per-Course Breakdown</div>
+                <div style="overflow-x:auto;">
+                <table class="course-breakdown">
+                    <thead><tr><th>Course</th><th>Rounds</th><th>Avg Gross</th><th>Avg Pts</th><th>Avg Putts</th></tr></thead>
+                    <tbody>
+                    ${courseNames.map(c => {
+                        const d = courseMap[c];
+                        return `<tr>
+                            <td style="font-weight:600;">${c}</td>
+                            <td>${d.rounds}</td>
+                            <td>${(d.gross / d.rounds).toFixed(1)}</td>
+                            <td>${(d.pts / d.rounds).toFixed(1)}</td>
+                            <td>${(d.putts / d.rounds).toFixed(1)}</td>
+                        </tr>`;
+                    }).join('')}
+                    </tbody>
+                </table>
+                </div>
+            </div>`;
+        }
+
+        panel.innerHTML = `
+            <div class="stats-section">
+                <div class="stats-section-title">Averages (${n} rounds)</div>
+                <div class="stats-grid">
+                    <div class="stats-card"><div class="sc-val">${avgGross}</div><div class="sc-label">Gross</div></div>
+                    <div class="stats-card"><div class="sc-val">${avgPts}</div><div class="sc-label">Points</div></div>
+                    <div class="stats-card"><div class="sc-val">${avgPutts}</div><div class="sc-label">Putts</div></div>
+                    <div class="stats-card"><div class="sc-val">${avgGir}</div><div class="sc-label">GIR</div></div>
+                    <div class="stats-card"><div class="sc-val">${avgFwy}</div><div class="sc-label">FWY</div></div>
+                </div>
+            </div>
+            <div class="stats-section">
+                <div class="stats-section-title">Personal Bests</div>
+                <div class="stats-grid">
+                    <div class="stats-card"><div class="sc-val" style="color:#2E7D32;">${bestGross}</div><div class="sc-label">Lowest Gross</div></div>
+                    <div class="stats-card"><div class="sc-val" style="color:#1565C0;">${bestPts}</div><div class="sc-label">Highest Points</div></div>
+                    <div class="stats-card"><div class="sc-val" style="color:#E65100;">${bestPutts}</div><div class="sc-label">Fewest Putts</div></div>
+                </div>
+            </div>
+            ${trendHtml}
+            ${courseHtml}
+        `;
+    }
+
+    // Feature 6: Round Comparison
+    function toggleCompare() {
+        const panel = document.getElementById('comparePanel');
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) {
+            let history = JSON.parse(localStorage.getItem('golfHistory') || '[]');
+            if (history.length < 2) {
+                panel.innerHTML = '<div class="no-stats">Need at least 2 saved rounds to compare.</div>';
+                return;
+            }
+            populateCompareModal(history);
+            document.getElementById('compareModal').classList.add('open');
+            panel.classList.remove('open');
+        }
+    }
+
+    function populateCompareModal(history) {
+        const selA = document.getElementById('compareA');
+        const selB = document.getElementById('compareB');
+        const opts = history.map((r, i) =>
+            `<option value="${i}">${r.date} — ${r.course} (${r.gross})</option>`
+        ).join('');
+        selA.innerHTML = opts;
+        selB.innerHTML = opts;
+        if (history.length > 1) selB.selectedIndex = 1;
+        document.getElementById('compareResult').innerHTML = '';
+    }
+
+    function runComparison() {
+        let history = JSON.parse(localStorage.getItem('golfHistory') || '[]');
+        const a = history[document.getElementById('compareA').value];
+        const b = history[document.getElementById('compareB').value];
+        if (!a || !b) return;
+
+        const metrics = [
+            { label: 'Gross', keyA: a.gross, keyB: b.gross, lower: true },
+            { label: 'Points', keyA: a.pts, keyB: b.pts, lower: false },
+            { label: 'Putts', keyA: a.putts, keyB: b.putts, lower: true },
+            { label: 'GIR', keyA: a.gir, keyB: b.gir, lower: false },
+            { label: 'FWY', keyA: a.fwy || 0, keyB: b.fwy || 0, lower: false },
+            { label: 'Handicap', keyA: a.hcp, keyB: b.hcp, lower: true },
+        ];
+
+        let html = `<table class="compare-table">
+            <thead><tr>
+                <th>Metric</th>
+                <th>${a.date}</th>
+                <th>${b.date}</th>
+                <th>Delta</th>
+            </tr></thead><tbody>`;
+
+        metrics.forEach(m => {
+            const delta = m.keyA - m.keyB;
+            let clsA = 'neutral', clsB = 'neutral', clsDelta = 'neutral';
+            if (delta !== 0) {
+                if (m.lower) {
+                    clsA = delta < 0 ? 'better' : 'worse';
+                    clsB = delta > 0 ? 'better' : 'worse';
+                } else {
+                    clsA = delta > 0 ? 'better' : 'worse';
+                    clsB = delta < 0 ? 'better' : 'worse';
+                }
+                clsDelta = clsA;
+            }
+            const sign = delta > 0 ? '+' : '';
+            html += `<tr>
+                <td class="metric-label">${m.label}</td>
+                <td class="${clsA}">${m.keyA}</td>
+                <td class="${clsB}">${m.keyB}</td>
+                <td class="${clsDelta}">${delta === 0 ? '—' : sign + delta}</td>
+            </tr>`;
+        });
+
+        html += '</tbody></table>';
+        document.getElementById('compareResult').innerHTML = html;
+    }
+
+    function closeCompare() {
+        document.getElementById('compareModal').classList.remove('open');
+    }
+
+    // Export/Import
+    function exportData() {
+        const data = { exportDate: new Date().toISOString() };
+        ['golfHybrid_v3','golfHistory','golfFriends','golfDarkMode'].forEach(k => {
+            const v = localStorage.getItem(k);
+            if (v !== null) data[k] = v;
+        });
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const date = new Date().toISOString().slice(0,10);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'karake-golf-backup-' + date + '.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        // iPhone Safari fallback: if download attribute unsupported, open in new tab
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+            if (!('download' in document.createElement('a'))) {
+                const w = window.open(); if (w) { w.document.write('<pre>'+JSON.stringify(data,null,2)+'</pre>'); w.document.close(); }
+            }
+        }, 100);
+    }
+
+    function importData(e) {
+        const file = e.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            try {
+                const data = JSON.parse(ev.target.result);
+                const keys = ['golfHybrid_v3','golfHistory','golfFriends','golfDarkMode'];
+                if (!keys.some(k => k in data)) { alert('Invalid backup file — no recognized data found.'); return; }
+                keys.forEach(k => { if (k in data) localStorage.setItem(k, data[k]); });
+                loadDarkMode();
+                appData = JSON.parse(localStorage.getItem('golfHybrid_v3') || 'null') || appData;
+                renderApp();
+                alert('Data restored successfully!');
+            } catch(err) { alert('Error reading backup: ' + err.message); }
+        };
+        reader.readAsText(file);
+        e.target.value = '';
+    }
+
+    // Init
+    loadDarkMode();
+    renderApp();
+
+    // Feature 7: PWA - Register Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+</script>
+</body>
+</html>
