@@ -962,8 +962,12 @@
         if (cardViewActive) {
             document.getElementById('holeCardView').style.display = 'block';
             document.getElementById('scorecard-body').style.display = 'none';
-            calculateAll();
-            renderHoleCard();
+            try {
+                calculateAll();
+                renderHoleCard();
+            } catch(e) {
+                document.getElementById('holeCardView').innerHTML = '<div style="color:red;padding:20px;">Card render error: ' + e.message + '</div>';
+            }
             return;
         }
 
@@ -2386,8 +2390,11 @@
 
     // Init
     loadDarkMode();
-    alert('cardViewActive=' + cardViewActive + ', holeCard display=' + document.getElementById('holeCardView').style.display + ', scorecard display=' + document.getElementById('scorecard-body').style.display);
-    renderApp();
+    try {
+        renderApp();
+    } catch(e) {
+        alert('renderApp error: ' + e.message + ' at line ' + (e.stack || ''));
+    }
     window.addEventListener('resize', updateStickyOffsets);
 
     // Feature 7: PWA - Register Service Worker
