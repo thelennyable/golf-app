@@ -2379,8 +2379,13 @@
     // Init
     loadDarkMode();
     renderApp();
-    // Start in card view
-    switchView('card');
+    // Force card view on startup
+    cardViewActive = true;
+    document.getElementById('holeCardView').style.display = 'block';
+    document.getElementById('scorecard-body').style.display = 'none';
+    document.getElementById('viewSegCard').classList.add('active');
+    document.getElementById('viewSegTable').classList.remove('active');
+    renderHoleCard();
     window.addEventListener('resize', updateStickyOffsets);
 
     // Feature 7: PWA - Register Service Worker
