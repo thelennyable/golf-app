@@ -581,6 +581,17 @@
         .live-name-input:focus { border-color: #2E7D32; outline: none; }
         .live-config-link { font-size: 0.7rem; color: var(--text-muted); text-align: center; cursor: pointer; text-decoration: underline; margin-top: 8px; }
 
+        /* INSTALL BANNER */
+        .install-banner { display: none; margin: 8px; padding: 14px 16px; background: linear-gradient(135deg, #1B5E20, #1565C0); color: white; border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+        .install-banner.visible { display: block; }
+        .install-banner-title { font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; }
+        .install-banner-text { font-size: 0.78rem; line-height: 1.5; opacity: 0.9; margin-bottom: 10px; }
+        .install-banner-steps { font-size: 0.75rem; line-height: 1.6; opacity: 0.85; margin-bottom: 12px; padding-left: 4px; }
+        .install-banner-btns { display: flex; gap: 8px; }
+        .install-banner-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-align: center; }
+        .install-banner-btn.primary { background: white; color: #1B5E20; }
+        .install-banner-btn.dismiss { background: rgba(255,255,255,0.15); color: white; }
+
         /* UNDO BUTTON */
         .undo-btn { position: fixed; bottom: 24px; right: 24px; z-index: 150; background: #263238; color: white; border: none; border-radius: 50px; padding: 12px 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: none; align-items: center; gap: 8px; transition: opacity 0.2s, transform 0.2s; }
         .undo-btn.visible { display: flex; animation: undo-pop 0.2s ease-out; }
@@ -589,6 +600,16 @@
     </style>
 </head>
 <body>
+
+<div class="install-banner" id="installBanner">
+    <div class="install-banner-title">Install Karake Golf</div>
+    <div class="install-banner-text">Add this app to your home screen for the best experience — full screen, faster, works offline.</div>
+    <div class="install-banner-steps" id="installSteps"></div>
+    <div class="install-banner-btns">
+        <button class="install-banner-btn primary" id="installAction" onclick="installApp()">Install</button>
+        <button class="install-banner-btn dismiss" onclick="dismissInstall()">Not now</button>
+    </div>
+</div>
 
 <button class="undo-btn" id="undoBtn" onclick="undoLastEntry()">
     <span>↩</span> Undo
@@ -2382,6 +2403,61 @@
     // Start in card view
     switchView('card');
     window.addEventListener('resize', updateStickyOffsets);
+
+    // Install banner
+    let deferredInstallPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', e => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+    });
+
+    function showInstallBanner() {
+        if (localStorage.getItem('golf_install_dismissed')) return;
+        if (window.matchMedia('(display-mode: standalone)').matches) return;
+        if (navigator.standalone) return; // iOS standalone
+
+        const banner = document.getElementById('installBanner');
+        const steps = document.getElementById('installSteps');
+        const btn = document.getElementById('installAction');
+        const ua = navigator.userAgent;
+
+        if (deferredInstallPrompt) {
+            // Android Chrome — can install directly
+            steps.textContent = '';
+            btn.textContent = 'Install';
+        } else if (/iPhone|iPad/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS/.test(ua)) {
+            // iPhone Safari
+            steps.innerHTML = 'Tap the <strong>Share</strong> button (square with arrow) at the bottom, then tap <strong>"Add to Home Screen"</strong>';
+            btn.textContent = 'Got it';
+        } else if (/iPhone|iPad/.test(ua) && /CriOS/.test(ua)) {
+            // iPhone Chrome
+            steps.innerHTML = 'For the best experience, open this page in <strong>Safari</strong>, tap the <strong>Share</strong> button, then <strong>"Add to Home Screen"</strong>';
+            btn.textContent = 'Got it';
+        } else {
+            // Desktop or other
+            steps.innerHTML = 'Tap your browser menu and look for <strong>"Install app"</strong> or <strong>"Add to Home Screen"</strong>';
+            btn.textContent = 'Got it';
+        }
+
+        banner.classList.add('visible');
+    }
+
+    function installApp() {
+        if (deferredInstallPrompt) {
+            deferredInstallPrompt.prompt();
+            deferredInstallPrompt.userChoice.then(() => { deferredInstallPrompt = null; });
+        }
+        dismissInstall();
+    }
+
+    function dismissInstall() {
+        document.getElementById('installBanner').classList.remove('visible');
+        localStorage.setItem('golf_install_dismissed', 'true');
+    }
+
+    // Show after a short delay so the page loads first
+    setTimeout(showInstallBanner, 2000);
 
     // Feature 7: PWA - Register Service Worker
     if ('serviceWorker' in navigator) {
