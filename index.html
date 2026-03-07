@@ -959,7 +959,13 @@
         updateParDisplay();
         renderPlayerTabs();
 
-        if (cardViewActive) { calculateAll(); return; }
+        if (cardViewActive) {
+            document.getElementById('holeCardView').style.display = 'block';
+            document.getElementById('scorecard-body').style.display = 'none';
+            calculateAll();
+            renderHoleCard();
+            return;
+        }
 
         const container = document.getElementById('scorecard-body');
         container.innerHTML = '';
@@ -1115,8 +1121,8 @@
         cardViewActive = mode === 'card';
         document.getElementById('viewSegTable').classList.toggle('active', !cardViewActive);
         document.getElementById('viewSegCard').classList.toggle('active', cardViewActive);
-        document.getElementById('scorecard-body').classList.toggle('visible', !cardViewActive);
-        document.getElementById('holeCardView').classList.toggle('hidden', !cardViewActive);
+        document.getElementById('scorecard-body').style.display = cardViewActive ? 'none' : 'block';
+        document.getElementById('holeCardView').style.display = cardViewActive ? 'block' : 'none';
         if (cardViewActive) {
             renderHoleCard();
         } else {
@@ -2379,13 +2385,6 @@
     // Init
     loadDarkMode();
     renderApp();
-    // Force card view on startup
-    cardViewActive = true;
-    document.getElementById('holeCardView').style.display = 'block';
-    document.getElementById('scorecard-body').style.display = 'none';
-    document.getElementById('viewSegCard').classList.add('active');
-    document.getElementById('viewSegTable').classList.remove('active');
-    renderHoleCard();
     window.addEventListener('resize', updateStickyOffsets);
 
     // Feature 7: PWA - Register Service Worker
