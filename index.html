@@ -1041,8 +1041,8 @@
                         <input type="text" inputmode="numeric" pattern="[0-1]" class="gir-input" value="${player.gir[i]}" placeholder="—" onfocus="this.select()" oninput="this.value=this.value.replace(/[^01]/g,'').slice(0,1); updateState(${i},'gir',this.value)">
                     </td>
                     ${fwyCell}
-                    <td id="res-pts-${i}" class="res-pts col-hideable" style="border-left:2px solid var(--border-col-thick)">—</td>
-                    <td id="res-rel-${i}" class="res-par">—</td>
+                    <td id="res-pts-${i}" class="res-pts col-hideable" style="border-left:2px solid var(--border-col-thick)"></td>
+                    <td id="res-rel-${i}" class="res-par"></td>
                     <td class="col-notes" onclick="openNoteOverlay(${i})" style="cursor:pointer;">
                         <span class="note-input" id="note-display-${i}">${player.notes[i] ? player.notes[i] : '<span style=&quot;color:var(--text-note-placeholder);font-style:italic&quot;>note</span>'}</span>
                     </td>
@@ -1509,8 +1509,8 @@
             if ((fwy === 0 || fwy === 1) && hole.par !== 3) { totals.fwy += fwy; nine[ns].fwy += fwy; }
 
             if (isNaN(gross)) {
-                if (elPts) { elPts.innerText = "—"; elPts.className = "res-pts pts-0"; }
-                if (elRel) { elRel.innerText = "—"; elRel.className = "res-par"; }
+                if (elPts) { elPts.innerText = ""; elPts.className = "res-pts pts-0"; }
+                if (elRel) { elRel.innerText = ""; elRel.className = "res-par"; }
             } else {
                 totals.gross += gross; totals.holes++; nine[ns].gross += gross; nine[ns].holes++;
                 let strokesOnHole = base + (hole.si <= rem ? 1 : 0);
