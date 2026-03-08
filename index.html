@@ -303,6 +303,18 @@
         .reset-btn:hover { background: var(--bg-reset-hover); }
 
         /* MORE SECTION */
+        .mantras-toggle { width: calc(100% - 20px); margin: 8px 10px 4px; padding: 10px; background: linear-gradient(135deg, #2E7D32, #388E3C); color: white; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .mantras-toggle .mantras-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+        .mantras-toggle.open .mantras-arrow { transform: rotate(180deg); }
+        .mantras-panel { display: none; margin: 0 10px 8px; padding: 12px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border-td); }
+        .mantras-panel.open { display: block; }
+        .mantras-list { list-style: none; padding: 0; margin: 0 0 8px; }
+        .mantras-list li { padding: 8px 0; border-bottom: 1px solid var(--border-td); font-size: 0.9rem; color: var(--text-primary); font-style: italic; line-height: 1.4; }
+        .mantras-list li:last-child { border-bottom: none; }
+        .mantras-edit-btn { width: 100%; padding: 8px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 8px; }
+        .mantras-textarea { width: 100%; min-height: 120px; padding: 10px; border: 1px solid var(--border-input); border-radius: 8px; font-size: 0.85rem; font-family: inherit; background: var(--bg-card); color: var(--text-primary); resize: vertical; box-sizing: border-box; }
+        .mantras-save-btn { width: 100%; margin-top: 8px; padding: 10px; background: #2E7D32; color: white; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 8px; }
+
         .more-toggle { width: calc(100% - 20px); margin: 0 10px 4px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .more-toggle .more-arrow { transition: transform 0.2s; font-size: 0.7rem; }
         .more-toggle.open .more-arrow { transform: rotate(180deg); }
@@ -652,6 +664,11 @@
     <div id="holeCardView" style="display:block"></div>
     <div id="scorecard-body" style="display:none"></div>
     <div id="leaderboard" class="leaderboard" style="display:none;"></div>
+
+    <button class="mantras-toggle" id="mantrasToggle" onclick="toggleMantras()">
+        My Mantras <span class="mantras-arrow">&#9660;</span>
+    </button>
+    <div class="mantras-panel" id="mantrasPanel"></div>
 
     <div class="btn-row">
         <button class="share-btn" onclick="shareRound()">
@@ -1773,6 +1790,46 @@
         history.unshift({ date, course: currentCourse, hcp:s.hcp, gross:s.gross, pts:s.pts, putts:s.putts, gir:s.gir, fwy: s.fwy || 0 });
         if (history.length > 20) history = history.slice(0,20);
         localStorage.setItem('golfHistory', JSON.stringify(history));
+    }
+
+    // === MANTRAS ===
+    function getMantras() {
+        return JSON.parse(localStorage.getItem('golf_mantras') || '[]');
+    }
+    function saveMantras(list) {
+        localStorage.setItem('golf_mantras', JSON.stringify(list));
+    }
+    function toggleMantras() {
+        const panel = document.getElementById('mantrasPanel');
+        const toggle = document.getElementById('mantrasToggle');
+        panel.classList.toggle('open');
+        toggle.classList.toggle('open');
+        if (panel.classList.contains('open')) renderMantras();
+    }
+    function renderMantras(editing) {
+        const panel = document.getElementById('mantrasPanel');
+        const mantras = getMantras();
+        if (editing) {
+            panel.innerHTML = `
+                <textarea class="mantras-textarea" id="mantrasInput" placeholder="One quote or mantra per line...">${mantras.join('\n')}</textarea>
+                <button class="mantras-save-btn" onclick="saveMantrasFromInput()">Save</button>`;
+            document.getElementById('mantrasInput').focus();
+            return;
+        }
+        if (mantras.length === 0) {
+            panel.innerHTML = `<p style="color:var(--text-sub);font-size:0.85rem;margin:0 0 8px;">No mantras yet. Add some to keep your mind right on the course.</p>
+                <button class="mantras-edit-btn" onclick="renderMantras(true)">Add Mantras</button>`;
+            return;
+        }
+        panel.innerHTML = `
+            <ul class="mantras-list">${mantras.map(m => `<li>${m}</li>`).join('')}</ul>
+            <button class="mantras-edit-btn" onclick="renderMantras(true)">Edit</button>`;
+    }
+    function saveMantrasFromInput() {
+        const text = document.getElementById('mantrasInput').value;
+        const list = text.split('\n').map(s => s.trim()).filter(s => s);
+        saveMantras(list);
+        renderMantras();
     }
 
     function toggleMoreSection() {
