@@ -1630,6 +1630,7 @@
     function toggleHeader() {
         headerCollapsed = !headerCollapsed;
         document.getElementById('stickyHeader').classList.toggle('collapsed', headerCollapsed);
+        setTimeout(updateStickyOffsets, 50);
     }
 
     function updateCompactHeader() {
@@ -1647,6 +1648,7 @@
         if (y > 80 && y > lastScrollY && !headerCollapsed) {
             headerCollapsed = true;
             document.getElementById('stickyHeader').classList.add('collapsed');
+            setTimeout(updateStickyOffsets, 50);
         }
         lastScrollY = y;
     }, { passive: true });
