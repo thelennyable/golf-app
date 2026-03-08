@@ -2287,13 +2287,12 @@
 
         if (!hasAny) {
             return `<div class="gps-no-pin">
-                <span>No green marked for hole ${holeIdx + 1}</span>
-                <button class="gps-mark-btn" onclick="markGreen(${holeIdx},'front')">Mark Front</button>
+                <span>Mark green position as you walk past</span>
             </div>
             <div style="display:flex; gap:6px; margin-bottom:12px;">
-                <button class="gps-mark-btn" style="flex:1;" onclick="markGreen(${holeIdx},'front')">Front</button>
-                <button class="gps-mark-btn" style="flex:1;" onclick="markGreen(${holeIdx},'center')">Center</button>
-                <button class="gps-mark-btn" style="flex:1;" onclick="markGreen(${holeIdx},'back')">Back</button>
+                <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'front')">Front</button>
+                <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'center')">Center</button>
+                <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'back')">Back</button>
             </div>`;
         }
 
@@ -2334,12 +2333,12 @@
         if (!green.back) missing.push('back');
         let markHtml = '';
         if (missing.length > 0) {
-            markHtml = `<div style="display:flex; gap:4px; margin-top:6px; justify-content:center;">${missing.map(p =>
-                `<button class="gps-mark-btn" style="font-size:0.65rem; padding:4px 8px;" onclick="markGreen(${holeIdx},'${p}')">Mark ${p[0].toUpperCase() + p.slice(1)}</button>`
+            markHtml = `<div style="display:flex; gap:6px; margin-top:8px; justify-content:center;">${missing.map(p =>
+                `<button class="gps-mark-btn" style="flex:1; padding:8px; font-size:0.8rem;" onclick="markGreen(${holeIdx},'${p}')">Mark ${p[0].toUpperCase() + p.slice(1)}</button>`
             ).join('')}</div>`;
         } else {
-            markHtml = `<div style="text-align:center; margin-top:4px;">
-                <button class="gps-mark-btn" style="font-size:0.6rem; padding:3px 8px; border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.6);" onclick="showRemarkOptions(${holeIdx})">Re-mark</button>
+            markHtml = `<div style="text-align:center; margin-top:6px;">
+                <button class="gps-mark-btn" style="font-size:0.7rem; padding:5px 12px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.7);" onclick="showRemarkOptions(${holeIdx})">Re-mark</button>
             </div>`;
         }
 
