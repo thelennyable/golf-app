@@ -546,9 +546,9 @@
         .gps-secondary { font-size: 0.85rem; font-weight: 600; opacity: 0.7; }
         .gps-icon { font-size: 1.2rem; }
         .gps-no-pin { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; background: var(--bg-player-setup); border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
-        .gps-mark-btn { padding: 8px 16px; border-radius: 10px; border: 2px solid #1565C0; background: transparent; color: #1565C0; font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
-        .gps-mark-btn:active { background: #E3F2FD; }
-        .gps-mark-btn.marking { background: #1565C0; color: white; }
+        .gps-mark-btn { padding: 8px 16px; border-radius: 10px; border: 2px solid white; background: rgba(255,255,255,0.15); color: white; font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap; touch-action: manipulation; }
+        .gps-mark-btn:active { background: rgba(255,255,255,0.35); }
+        .gps-mark-btn.marking { background: white; color: #1a3a1a; }
         .gps-accuracy { font-size: 0.6rem; opacity: 0.6; text-align: center; margin-top: 2px; }
         .gps-toggle-btn { padding: 5px 12px; background: var(--bg-toggle-btn); color: var(--text-toggle-btn); border: 1px solid var(--border-toggle); border-radius: 20px; font-size: 0.7rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
         .gps-toggle-btn.active { background: #E3F2FD; color: #1565C0; border-color: #90CAF9; }
@@ -2333,12 +2333,12 @@
         if (!green.back) missing.push('back');
         let markHtml = '';
         if (missing.length > 0) {
-            markHtml = `<div style="display:flex; gap:6px; margin-top:8px; justify-content:center;">${missing.map(p =>
-                `<button class="gps-mark-btn" style="flex:1; padding:8px; font-size:0.8rem;" onclick="markGreen(${holeIdx},'${p}')">Mark ${p[0].toUpperCase() + p.slice(1)}</button>`
+            markHtml = `<div style="display:flex; gap:6px; margin-top:8px;">${missing.map(p =>
+                `<button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'${p}')">Mark ${p[0].toUpperCase() + p.slice(1)}</button>`
             ).join('')}</div>`;
         } else {
             markHtml = `<div style="text-align:center; margin-top:6px;">
-                <button class="gps-mark-btn" style="font-size:0.7rem; padding:5px 12px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.7);" onclick="showRemarkOptions(${holeIdx})">Re-mark</button>
+                <button class="gps-mark-btn" style="font-size:0.75rem; padding:6px 14px; opacity:0.7;" onclick="showRemarkOptions(${holeIdx})">Re-mark</button>
             </div>`;
         }
 
@@ -2366,9 +2366,9 @@
         row.className = 'remark-row';
         row.style.cssText = 'display:flex; gap:6px; margin-top:6px; justify-content:center;';
         row.innerHTML = `
-            <button class="gps-mark-btn" style="font-size:0.65rem; padding:4px 10px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.8);" onclick="markGreen(${holeIdx},'front')">Front</button>
-            <button class="gps-mark-btn" style="font-size:0.65rem; padding:4px 10px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.8);" onclick="markGreen(${holeIdx},'center')">Center</button>
-            <button class="gps-mark-btn" style="font-size:0.65rem; padding:4px 10px; border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.8);" onclick="markGreen(${holeIdx},'back')">Back</button>`;
+            <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'front')">Front</button>
+            <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'center')">Center</button>
+            <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'back')">Back</button>`;
         el.appendChild(row);
     }
 
