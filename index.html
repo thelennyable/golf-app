@@ -441,6 +441,7 @@
         #scorecard-body.visible { display: block; }
 
         .hole-card { padding: 12px 12px; }
+        .card-hint { background: #E8F5E9; color: #2E7D32; padding: 10px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; text-align: center; margin-bottom: 8px; cursor: pointer; line-height: 1.4; }
         .hole-card-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
         .hole-card-nav button { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.5rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .hole-card-nav button:active { background: var(--bg-input-focus); }
@@ -1278,6 +1279,9 @@
                     <button onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>&#8250;</button>
                 </div>
                 ${playerTabsHtml}
+                ${!localStorage.getItem('cardHintDismissed') ? `<div class="card-hint" id="cardHint" onclick="localStorage.setItem('cardHintDismissed','1');this.remove()">
+                    Tap the green number for par/2 putts. Use +/- for other scores. <b>Got it</b>
+                </div>` : ''}
                 <div class="hole-card-fields">
                     <div class="hc-dual-row">
                         <div class="hc-dual-col">
