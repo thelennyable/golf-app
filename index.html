@@ -577,6 +577,14 @@
         .undo-btn .undo-label { font-size: 0.7rem; opacity: 0.8; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         @keyframes undo-pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
+        /* VOICE INPUT */
+        .voice-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 8px; }
+        .voice-btn { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: all 0.2s; }
+        .voice-btn.listening { border-color: #d32f2f; background: #FFEBEE; animation: voice-pulse 1s infinite; }
+        .voice-btn.no-support { opacity: 0.3; cursor: default; }
+        .voice-result { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); min-width: 80px; }
+        @keyframes voice-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(211,47,47,0.3); } 50% { box-shadow: 0 0 0 10px rgba(211,47,47,0); } }
+
         /* ROUND RATING */
         .rating-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
         .rating-stat { background: var(--bg-player-setup); border-radius: 10px; padding: 10px; text-align: center; }
@@ -1333,6 +1341,10 @@
                             </div>
                         </div>` : ''}
                     </div>
+                    <div class="voice-row">
+                        <button class="voice-btn ${!window.SpeechRecognition && !window.webkitSpeechRecognition ? 'no-support' : ''}" id="voiceBtn" onclick="toggleVoiceInput(${i})">&#127908;</button>
+                        <span class="voice-result" id="voiceResult"></span>
+                    </div>
                     ${isMe ? `<div class="hc-toggle-row">
                         <button class="hc-toggle ${girVal === '1' ? 'on' : ''}" onclick="toggleCardField(${i},'gir',this)">
                             ${girVal === '1' ? '&#10003; ' : ''}GIR
@@ -1353,6 +1365,79 @@
     function renderHoleCardResult() {
         // Quick update of pts/rel without full re-render
         setTimeout(() => renderHoleCard(), 0);
+    }
+
+    // === VOICE INPUT ===
+    let voiceRecognition = null;
+    let voiceListening = false;
+
+    function toggleVoiceInput(holeIdx) {
+        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRec) return;
+
+        if (voiceListening && voiceRecognition) {
+            voiceRecognition.stop();
+            return;
+        }
+
+        voiceRecognition = new SpeechRec();
+        voiceRecognition.lang = 'en-US';
+        voiceRecognition.continuous = false;
+        voiceRecognition.interimResults = false;
+
+        const btn = document.getElementById('voiceBtn');
+        const result = document.getElementById('voiceResult');
+        btn.classList.add('listening');
+        result.textContent = 'Listening...';
+        voiceListening = true;
+
+        voiceRecognition.onresult = (e) => {
+            const raw = e.results[0][0].transcript.toLowerCase().trim();
+            const par = courseHoles[holeIdx].par;
+            const score = parseVoiceScore(raw, par);
+
+            if (score !== null) {
+                result.textContent = '"' + raw + '" → ' + score;
+                cardScoreSet(holeIdx, score);
+                if (navigator.vibrate) navigator.vibrate(20);
+            } else {
+                result.textContent = '"' + raw + '" — not understood';
+            }
+        };
+
+        voiceRecognition.onerror = (e) => {
+            result.textContent = e.error === 'no-speech' ? 'No speech heard' : 'Error: ' + e.error;
+        };
+
+        voiceRecognition.onend = () => {
+            btn.classList.remove('listening');
+            voiceListening = false;
+            voiceRecognition = null;
+        };
+
+        voiceRecognition.start();
+    }
+
+    function parseVoiceScore(text, par) {
+        // Direct numbers
+        const num = parseInt(text);
+        if (!isNaN(num) && num >= 1 && num <= 15) return num;
+
+        // Word numbers
+        const words = { one:1, two:2, three:3, four:4, five:5, six:6, seven:7, eight:8, nine:9, ten:10 };
+        if (words[text]) return words[text];
+
+        // Golf terms relative to par
+        if (text.includes('ace') || text.includes('hole in one')) return 1;
+        if (text.includes('albatross') || text.includes('double eagle')) return par - 3;
+        if (text.includes('eagle')) return par - 2;
+        if (text.includes('birdie')) return par - 1;
+        if (text.includes('par')) return par;
+        if (text.includes('bogey') && text.includes('double')) return par + 2;
+        if (text.includes('bogey') && text.includes('triple')) return par + 3;
+        if (text.includes('bogey')) return par + 1;
+
+        return null;
     }
 
     function cardNav(dir) {
