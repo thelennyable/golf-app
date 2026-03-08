@@ -461,12 +461,14 @@
         .hc-step-btn:active { background: var(--bg-input-focus); border-color: #2E7D32; transform: scale(0.93); }
         .hc-step-btn.minus { color: #d32f2f; }
         .hc-step-btn.minus:active { background: #FFEBEE; border-color: #EF9A9A; }
-        .hc-score-display { text-align: center; min-width: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        .hc-score-display { text-align: center; min-width: 52px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .hc-score-val { font-size: 1.8rem; font-weight: 800; color: var(--text-score-input); line-height: 1; }
-        .hc-score-val.empty { color: var(--text-muted); font-size: 1.1rem; }
         .hc-score-par { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); margin-top: 1px; }
         .hc-score-clear { border: none; background: transparent; color: var(--text-muted); font-size: 0.6rem; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; }
         .hc-score-val.putt-val { font-size: 1.5rem; }
+        .hc-tap-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 52px; min-height: 52px; border-radius: 12px; border: 2px solid #2E7D32; background: #E8F5E9; color: #2E7D32; font-size: 1.2rem; font-weight: 800; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        .hc-tap-btn:active { background: #C8E6C9; }
+        .hc-tap-btn .hc-tap-label { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; margin-top: 1px; }
 
         .hc-field { display: flex; align-items: center; gap: 12px; background: var(--bg-player-setup); border-radius: 10px; padding: 10px 14px; }
         .hc-field-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); min-width: 55px; }
@@ -1282,10 +1284,13 @@
                             <div class="hc-dual-label">Score</div>
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardScoreAdjust(${i},-1)">&minus;</button>
-                                <div class="hc-score-display" onclick="${score === '' || score === undefined ? `cardScoreSet(${i},${h.par})` : ''}" style="${score === '' || score === undefined ? 'cursor:pointer' : ''}">
-                                    <div class="hc-score-val ${score === '' || score === undefined ? 'empty' : ''}">${score !== '' && score !== undefined ? score : 'Par ' + h.par}</div>
-                                    ${score === '' || score === undefined ? `<div class="hc-score-par">tap</div>` : `<div class="hc-score-par">Par ${h.par}</div>`}
-                                </div>
+                                ${score !== '' && score !== undefined ?
+                                    `<div class="hc-score-display">
+                                        <div class="hc-score-val">${score}</div>
+                                        <div class="hc-score-par">Par ${h.par}</div>
+                                    </div>` :
+                                    `<button class="hc-tap-btn" onclick="cardScoreSet(${i},${h.par})">${h.par}<span class="hc-tap-label">par</span></button>`
+                                }
                                 <button class="hc-step-btn" onclick="cardScoreAdjust(${i},1)">+</button>
                             </div>
                             ${score !== '' && score !== undefined ? `<button class="hc-score-clear" onclick="cardScoreClear(${i})">clear</button>` : ''}
@@ -1294,10 +1299,12 @@
                             <div class="hc-dual-label">Putts</div>
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardPuttsAdjust(${i},-1)">&minus;</button>
-                                <div class="hc-score-display" onclick="${putts === '' || putts === undefined ? `cardPuttsSet(${i},2)` : ''}" style="${putts === '' || putts === undefined ? 'cursor:pointer' : ''}">
-                                    <div class="hc-score-val putt-val ${putts === '' || putts === undefined ? 'empty' : ''}">${putts !== '' && putts !== undefined ? putts : '2'}</div>
-                                    <div class="hc-score-par">${putts === '' || putts === undefined ? 'tap' : ''}</div>
-                                </div>
+                                ${putts !== '' && putts !== undefined ?
+                                    `<div class="hc-score-display">
+                                        <div class="hc-score-val putt-val">${putts}</div>
+                                    </div>` :
+                                    `<button class="hc-tap-btn" onclick="cardPuttsSet(${i},2)">2<span class="hc-tap-label">putts</span></button>`
+                                }
                                 <button class="hc-step-btn" onclick="cardPuttsAdjust(${i},1)">+</button>
                             </div>
                             ${putts !== '' && putts !== undefined ? `<button class="hc-score-clear" onclick="cardPuttsClear(${i})">clear</button>` : ''}
@@ -1318,33 +1325,29 @@
                 <div id="gpsContainer">${getGpsHtml(i)}</div>
             </div>`;
 
-        // Add swipe listeners — only on non-interactive areas
+        // Swipe navigation — works everywhere, doesn't interfere with taps
         const card = container.querySelector('.hole-card');
-        let swipeStartX = 0, swipeStartY = 0, swiping = false;
+        let swipeStartX = 0, swipeStartY = 0, swipeIsHoriz = false;
         card.addEventListener('touchstart', e => {
-            // Don't track swipes that start on buttons or inputs
-            const tag = e.target.closest('button, input, textarea, select, .hc-score-display, .hc-toggle');
-            if (tag) { swiping = false; return; }
             swipeStartX = e.touches[0].clientX;
             swipeStartY = e.touches[0].clientY;
-            swiping = true;
+            swipeIsHoriz = false;
         }, { passive: true });
         card.addEventListener('touchmove', e => {
-            if (!swiping) return;
             const dx = Math.abs(e.touches[0].clientX - swipeStartX);
             const dy = Math.abs(e.touches[0].clientY - swipeStartY);
-            if (dx > 50 && dx > dy * 2) {
+            if (dx > 30 && dx > dy * 2) {
+                swipeIsHoriz = true;
                 e.preventDefault();
             }
         }, { passive: false });
         card.addEventListener('touchend', e => {
-            if (!swiping) return;
+            if (!swipeIsHoriz) return;
             const dx = e.changedTouches[0].clientX - swipeStartX;
-            if (Math.abs(dx) > 100) {
+            if (Math.abs(dx) > 80) {
                 if (dx < 0 && currentCardHole < 17) cardNav(1);
                 else if (dx > 0 && currentCardHole > 0) cardNav(-1);
             }
-            swiping = false;
         }, { passive: true });
     }
 
