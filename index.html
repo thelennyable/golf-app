@@ -576,6 +576,31 @@
         .undo-btn.visible { display: flex; animation: undo-pop 0.2s ease-out; }
         .undo-btn .undo-label { font-size: 0.7rem; opacity: 0.8; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         @keyframes undo-pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* ROUND RATING */
+        .rating-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+        .rating-stat { background: var(--bg-player-setup); border-radius: 10px; padding: 10px; text-align: center; }
+        .rating-stat .rs-val { font-size: 1.3rem; font-weight: 800; color: var(--text-heading); }
+        .rating-stat .rs-lbl { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+        .rating-bar { display: flex; gap: 3px; margin: 10px 0; }
+        .rating-bar-seg { flex: 1; height: 8px; border-radius: 4px; }
+        .rating-highlights { margin: 8px 0; padding: 0; list-style: none; }
+        .rating-highlights li { font-size: 0.82rem; color: var(--text-primary); padding: 4px 0; border-bottom: 1px solid var(--border-td); }
+        .rating-highlights li:last-child { border-bottom: none; }
+        .rating-best-worst { display: flex; gap: 8px; margin: 8px 0; }
+        .rating-bw { flex: 1; background: var(--bg-player-setup); border-radius: 10px; padding: 8px; text-align: center; }
+        .rating-bw .rbw-val { font-size: 1rem; font-weight: 800; }
+        .rating-bw .rbw-lbl { font-size: 0.6rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+        /* LANDSCAPE */
+        @media (orientation: landscape) and (min-width: 600px) {
+            .card { max-width: 100%; margin: 0; border-radius: 0; }
+            table { table-layout: auto; }
+            th { font-size: 0.7rem; padding: 6px 4px; }
+            td { padding: 4px; }
+            .col-hideable { display: table-cell !important; }
+            .table-wrap { overflow-x: visible; }
+        }
     </style>
 </head>
 <body>
@@ -659,6 +684,7 @@
     <div class="more-section" id="moreSection">
         <div class="more-grid">
             <button class="more-btn save-csv" onclick="saveRound()">Save CSV</button>
+            <button class="more-btn" onclick="showRoundRating()">Round Rating</button>
             <button class="more-btn" onclick="toggleHistory()">History</button>
             <button class="more-btn" onclick="toggleStats()">Stats</button>
             <button class="more-btn" onclick="toggleCompare()">Compare</button>
@@ -726,6 +752,14 @@
         </div>
         <div id="compareResult"></div>
         <button class="modal-close" onclick="closeCompare()">Close</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="ratingModal" onclick="if(event.target===this)closeRating()">
+    <div class="modal wide-modal">
+        <h3>Round Rating</h3>
+        <div id="ratingContent"></div>
+        <button class="modal-close" onclick="closeRating()">Close</button>
     </div>
 </div>
 
@@ -1449,6 +1483,12 @@
             </div>`).join('');
 
         renderLeaderboard();
+
+        // Auto-show round rating when all 18 scored
+        if (totals.holes === 18 && !window._ratingShown) {
+            window._ratingShown = true;
+            setTimeout(() => showRoundRating(), 500);
+        }
     }
 
     // FRIENDS
@@ -1723,6 +1763,86 @@
         localStorage.setItem('golfHistory', JSON.stringify(history));
     }
 
+
+    // === ROUND RATING ===
+    function showRoundRating() {
+        const player = getActivePlayer();
+        const s = getRoundSummary();
+        if (s.holes === 0) { alert('No scores entered yet.'); return; }
+
+        const hcp = s.hcp, base = Math.floor(hcp/18), rem = hcp%18;
+        let bestHole = null, worstHole = null, bestDiff = 99, worstDiff = -99;
+        let scoreCounts = { eagle:0, birdie:0, par:0, bogey:0, double:0, worse:0 };
+        let totalPar = 0, fwyChances = 0;
+
+        courseHoles.forEach((hole, i) => {
+            const g = parseInt(player.scores[i]);
+            if (isNaN(g)) return;
+            totalPar += hole.par;
+            if (hole.par !== 3) fwyChances++;
+            const diff = g - hole.par;
+            const strokesOnHole = base + (hole.si <= rem ? 1 : 0);
+            const pts = Math.max(0, 2 + (hole.par - (g - strokesOnHole)));
+
+            if (diff < bestDiff) { bestDiff = diff; bestHole = i; }
+            if (diff > worstDiff) { worstDiff = diff; worstHole = i; }
+
+            if (diff <= -2) scoreCounts.eagle++;
+            else if (diff === -1) scoreCounts.birdie++;
+            else if (diff === 0) scoreCounts.par++;
+            else if (diff === 1) scoreCounts.bogey++;
+            else if (diff === 2) scoreCounts.double++;
+            else scoreCounts.worse++;
+        });
+
+        const avgPutts = s.holes > 0 ? (s.putts / s.holes).toFixed(1) : '—';
+        const girPct = s.holes > 0 ? Math.round((s.gir / s.holes) * 100) : 0;
+        const fwyPct = fwyChances > 0 ? Math.round((s.fwy / fwyChances) * 100) : 0;
+        const ptsPerHole = s.holes > 0 ? (s.pts / s.holes).toFixed(1) : '—';
+
+        // Score distribution bar
+        const total = s.holes;
+        const colors = { eagle:'#7B1FA2', birdie:'#1565C0', par:'#2E7D32', bogey:'#E65100', double:'#C62828', worse:'#4E342E' };
+        const barHtml = ['eagle','birdie','par','bogey','double','worse']
+            .filter(k => scoreCounts[k] > 0)
+            .map(k => `<div class="rating-bar-seg" style="flex:${scoreCounts[k]};background:${colors[k]}" title="${k}: ${scoreCounts[k]}"></div>`)
+            .join('');
+
+        // Highlights
+        const highlights = generateCommentary(player);
+
+        // Best/worst hole labels
+        const bestLabel = bestDiff === 0 ? 'Par' : bestDiff === -1 ? 'Birdie' : bestDiff <= -2 ? 'Eagle' : '+' + bestDiff;
+        const worstLabel = worstDiff === 0 ? 'Par' : worstDiff === 1 ? 'Bogey' : worstDiff === 2 ? 'Double' : '+' + worstDiff;
+
+        document.getElementById('ratingContent').innerHTML = `
+            <div class="rating-grid">
+                <div class="rating-stat"><div class="rs-val">${s.gross}</div><div class="rs-lbl">Gross (${s.gross - totalPar >= 0 ? '+' : ''}${s.gross - totalPar})</div></div>
+                <div class="rating-stat"><div class="rs-val">${s.net}</div><div class="rs-lbl">Net</div></div>
+                <div class="rating-stat"><div class="rs-val">${s.pts}</div><div class="rs-lbl">Points (${ptsPerHole}/hole)</div></div>
+                <div class="rating-stat"><div class="rs-val">${s.putts}</div><div class="rs-lbl">Putts (${avgPutts} avg)</div></div>
+                <div class="rating-stat"><div class="rs-val">${girPct}%</div><div class="rs-lbl">GIR (${s.gir}/${s.holes})</div></div>
+                <div class="rating-stat"><div class="rs-val">${fwyPct}%</div><div class="rs-lbl">Fairways (${s.fwy}/${fwyChances})</div></div>
+            </div>
+            <div class="rating-bar">${barHtml}</div>
+            <div style="display:flex; gap:4px; justify-content:center; flex-wrap:wrap; font-size:0.65rem; font-weight:700; margin-bottom:8px;">
+                ${['eagle','birdie','par','bogey','double','worse'].filter(k => scoreCounts[k] > 0).map(k =>
+                    `<span style="color:${colors[k]}">${scoreCounts[k]} ${k}</span>`
+                ).join('<span style="color:var(--text-muted)"> &bull; </span>')}
+            </div>
+            <div class="rating-best-worst">
+                <div class="rating-bw"><div class="rbw-val" style="color:#2E7D32">Hole ${bestHole !== null ? bestHole + 1 : '—'}</div><div class="rbw-lbl">Best (${bestLabel})</div></div>
+                <div class="rating-bw"><div class="rbw-val" style="color:#C62828">Hole ${worstHole !== null ? worstHole + 1 : '—'}</div><div class="rbw-lbl">Worst (${worstLabel})</div></div>
+            </div>
+            ${highlights.length ? `<ul class="rating-highlights">${highlights.map(h => `<li>${h}</li>`).join('')}</ul>` : ''}
+            <div style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:4px;">${s.holes}/18 holes scored</div>`;
+
+        document.getElementById('ratingModal').classList.add('open');
+    }
+
+    function closeRating() {
+        document.getElementById('ratingModal').classList.remove('open');
+    }
 
     function toggleMoreSection() {
         const section = document.getElementById('moreSection');
