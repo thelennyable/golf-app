@@ -441,7 +441,6 @@
         #scorecard-body.visible { display: block; }
 
         .hole-card { padding: 12px 12px; }
-        .card-hint { background: #E8F5E9; color: #2E7D32; padding: 10px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; text-align: center; margin-bottom: 8px; cursor: pointer; line-height: 1.4; }
         .hole-card-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
         .hole-card-nav button { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.5rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .hole-card-nav button:active { background: var(--bg-input-focus); }
@@ -467,9 +466,6 @@
         .hc-score-par { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); margin-top: 1px; }
         .hc-score-clear { border: none; background: transparent; color: var(--text-muted); font-size: 0.6rem; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; }
         .hc-score-val.putt-val { font-size: 1.5rem; }
-        .hc-tap-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 52px; min-height: 52px; border-radius: 12px; border: 2px solid #2E7D32; background: #E8F5E9; color: #2E7D32; font-size: 1.2rem; font-weight: 800; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-        .hc-tap-btn:active { background: #C8E6C9; }
-        .hc-tap-btn .hc-tap-label { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; margin-top: 1px; }
 
         .hc-field { display: flex; align-items: center; gap: 12px; background: var(--bg-player-setup); border-radius: 10px; padding: 10px 14px; }
         .hc-field-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); min-width: 55px; }
@@ -1279,39 +1275,28 @@
                     <button onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>&#8250;</button>
                 </div>
                 ${playerTabsHtml}
-                ${!localStorage.getItem('cardHintDismissed') ? `<div class="card-hint" id="cardHint" onclick="localStorage.setItem('cardHintDismissed','1');this.remove()">
-                    Tap the green number for par/2 putts. Use +/- for other scores. <b>Got it</b>
-                </div>` : ''}
                 <div class="hole-card-fields">
                     <div class="hc-dual-row">
                         <div class="hc-dual-col">
                             <div class="hc-dual-label">Score</div>
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardScoreAdjust(${i},-1)">&minus;</button>
-                                ${score !== '' && score !== undefined ?
-                                    `<div class="hc-score-display">
-                                        <div class="hc-score-val">${score}</div>
-                                        <div class="hc-score-par">Par ${h.par}</div>
-                                    </div>` :
-                                    `<button class="hc-tap-btn" onclick="cardScoreSet(${i},${h.par})">${h.par}<span class="hc-tap-label">par</span></button>`
-                                }
+                                <div class="hc-score-display">
+                                    <div class="hc-score-val">${score !== '' && score !== undefined ? score : h.par}</div>
+                                    <div class="hc-score-par">${score !== '' && score !== undefined ? 'Par ' + h.par : 'par'}</div>
+                                </div>
                                 <button class="hc-step-btn" onclick="cardScoreAdjust(${i},1)">+</button>
                             </div>
-                            ${score !== '' && score !== undefined ? `<button class="hc-score-clear" onclick="cardScoreClear(${i})">clear</button>` : ''}
                         </div>
                         ${isMe ? `<div class="hc-dual-col">
                             <div class="hc-dual-label">Putts</div>
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardPuttsAdjust(${i},-1)">&minus;</button>
-                                ${putts !== '' && putts !== undefined ?
-                                    `<div class="hc-score-display">
-                                        <div class="hc-score-val putt-val">${putts}</div>
-                                    </div>` :
-                                    `<button class="hc-tap-btn" onclick="cardPuttsSet(${i},2)">2<span class="hc-tap-label">putts</span></button>`
-                                }
+                                <div class="hc-score-display">
+                                    <div class="hc-score-val putt-val">${putts !== '' && putts !== undefined ? putts : 2}</div>
+                                </div>
                                 <button class="hc-step-btn" onclick="cardPuttsAdjust(${i},1)">+</button>
                             </div>
-                            ${putts !== '' && putts !== undefined ? `<button class="hc-score-clear" onclick="cardPuttsClear(${i})">clear</button>` : ''}
                         </div>` : ''}
                     </div>
                     ${isMe ? `<div class="hc-toggle-row">
