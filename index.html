@@ -303,14 +303,6 @@
         .reset-btn:hover { background: var(--bg-reset-hover); }
 
         /* MORE SECTION */
-        .mantras-toggle { width: calc(100% - 20px); margin: 8px 10px 4px; padding: 10px; background: linear-gradient(135deg, #2E7D32, #388E3C); color: white; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .mantras-toggle .mantras-arrow { transition: transform 0.2s; font-size: 0.7rem; }
-        .mantras-toggle.open .mantras-arrow { transform: rotate(180deg); }
-        .mantras-panel { display: none; margin: 0 10px 8px; padding: 12px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border-td); }
-        .mantras-panel.open { display: block; }
-        .mantras-list { list-style: none; padding: 0; margin: 0 0 8px; }
-        .mantras-list li { padding: 8px 0; border-bottom: 1px solid var(--border-td); font-size: 0.9rem; color: var(--text-primary); font-style: italic; line-height: 1.4; }
-        .mantras-list li:last-child { border-bottom: none; }
 
         .more-toggle { width: calc(100% - 20px); margin: 0 10px 4px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .more-toggle .more-arrow { transition: transform 0.2s; font-size: 0.7rem; }
@@ -661,11 +653,6 @@
     <div id="holeCardView" style="display:block"></div>
     <div id="scorecard-body" style="display:none"></div>
     <div id="leaderboard" class="leaderboard" style="display:none;"></div>
-
-    <button class="mantras-toggle" id="mantrasToggle" onclick="toggleMantras()">
-        My Mantras <span class="mantras-arrow">&#9660;</span>
-    </button>
-    <div class="mantras-panel" id="mantrasPanel"></div>
 
     <div class="btn-row">
         <button class="share-btn" onclick="shareRound()">
@@ -1789,19 +1776,6 @@
         localStorage.setItem('golfHistory', JSON.stringify(history));
     }
 
-    // === MANTRAS ===
-    function toggleMantras() {
-        const panel = document.getElementById('mantrasPanel');
-        const toggle = document.getElementById('mantrasToggle');
-        const isOpen = panel.classList.toggle('open');
-        toggle.classList.toggle('open');
-        if (isOpen) {
-            panel.innerHTML = `<ul class="mantras-list">
-                <li>The mistake itself almost never ruins the hole.</li>
-                <li>The emotional reaction to the mistake ruins the hole.</li>
-            </ul>`;
-        }
-    }
 
     function toggleMoreSection() {
         const section = document.getElementById('moreSection');
