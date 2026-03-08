@@ -1283,7 +1283,7 @@
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardScoreAdjust(${i},-1)">&minus;</button>
                                 <div class="hc-score-display" onclick="${score === '' || score === undefined ? `cardScoreSet(${i},${h.par})` : ''}" style="${score === '' || score === undefined ? 'cursor:pointer' : ''}">
-                                    <div class="hc-score-val ${score === '' || score === undefined ? 'empty' : scoreColorClass}">${score !== '' && score !== undefined ? score : 'Par ' + h.par}</div>
+                                    <div class="hc-score-val ${score === '' || score === undefined ? 'empty' : ''}">${score !== '' && score !== undefined ? score : 'Par ' + h.par}</div>
                                     ${score === '' || score === undefined ? `<div class="hc-score-par">tap</div>` : `<div class="hc-score-par">Par ${h.par}</div>`}
                                 </div>
                                 <button class="hc-step-btn" onclick="cardScoreAdjust(${i},1)">+</button>
@@ -1316,7 +1316,6 @@
                     </div>` : ''}
                 </div>
                 <div id="gpsContainer">${getGpsHtml(i)}</div>
-                ${score !== '' && score !== undefined ? `<div class="hc-result-bar"><span class="${scoreColorClass}">${relHtml} par</span> &bull; ${ptsHtml} pts</div>` : ''}
             </div>`;
 
         // Add swipe listeners — only on non-interactive areas
