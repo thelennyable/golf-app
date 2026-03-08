@@ -442,7 +442,7 @@
 
         .hole-card { padding: 12px 12px; }
         .hole-card-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-        .hole-card-nav button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.2rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .hole-card-nav button { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.2rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .hole-card-nav button:active { background: var(--bg-input-focus); }
         .hole-card-nav button:disabled { opacity: 0.3; cursor: default; }
         .hole-card-center { text-align: center; flex: 1; }
@@ -465,11 +465,11 @@
         .hc-dual-col { flex: 1; background: var(--bg-player-setup); border-radius: 10px; padding: 8px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .hc-dual-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
         .hc-dual-stepper { display: flex; align-items: center; gap: 8px; }
-        .hc-step-btn { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.3rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.12s; user-select: none; -webkit-user-select: none; }
+        .hc-step-btn { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.5rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.12s; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
         .hc-step-btn:active { background: var(--bg-input-focus); border-color: #2E7D32; transform: scale(0.93); }
         .hc-step-btn.minus { color: #d32f2f; }
         .hc-step-btn.minus:active { background: #FFEBEE; border-color: #EF9A9A; }
-        .hc-score-display { text-align: center; min-width: 44px; }
+        .hc-score-display { text-align: center; min-width: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .hc-score-val { font-size: 1.8rem; font-weight: 800; color: var(--text-score-input); line-height: 1; }
         .hc-score-val.empty { color: var(--text-muted); font-size: 1.1rem; }
         .hc-score-par { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); margin-top: 1px; }
@@ -485,11 +485,11 @@
         .hc-field-input input.hc-putt { font-size: 1.3rem; font-weight: 600; color: var(--text-putt-input); height: 46px; width: 60px; }
 
         .hc-toggle-row { display: flex; gap: 6px; }
-        .hc-toggle { flex: 1; padding: 10px; border-radius: 10px; border: 2px solid var(--border-input); background: var(--bg-card); font-size: 0.8rem; font-weight: 700; cursor: pointer; text-align: center; color: var(--text-muted); transition: all 0.15s; }
+        .hc-toggle { flex: 1; padding: 12px; border-radius: 10px; border: 2px solid var(--border-input); background: var(--bg-card); font-size: 0.85rem; font-weight: 700; cursor: pointer; text-align: center; color: var(--text-muted); transition: all 0.15s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
         .hc-toggle.on { background: #E8F5E9; color: #2E7D32; border-color: #A5D6A7; }
         .hc-toggle.na { opacity: 0.4; cursor: default; }
 
-        .hc-note-btn { width: 100%; padding: 8px 12px; border-radius: 10px; border: 2px dashed var(--border-input); background: transparent; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; text-align: left; font-family: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .hc-note-btn { width: 100%; padding: 10px 12px; border-radius: 10px; border: 2px dashed var(--border-input); background: transparent; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; text-align: left; font-family: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; touch-action: manipulation; }
         .hc-note-btn.has-note { border-style: solid; border-color: #90CAF9; color: var(--text-note-input); background: var(--bg-note-focus); }
 
         .hc-players { display: flex; gap: 6px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 2px; }
@@ -1343,29 +1343,33 @@
                 </div>
             </div>`;
 
-        // Add swipe listeners
+        // Add swipe listeners — only on non-interactive areas
         const card = container.querySelector('.hole-card');
-        let swipeLocked = false;
+        let swipeStartX = 0, swipeStartY = 0, swiping = false;
         card.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-            swipeLocked = false;
+            // Don't track swipes that start on buttons or inputs
+            const tag = e.target.closest('button, input, textarea, select, .hc-score-display, .hc-toggle');
+            if (tag) { swiping = false; return; }
+            swipeStartX = e.touches[0].clientX;
+            swipeStartY = e.touches[0].clientY;
+            swiping = true;
         }, { passive: true });
         card.addEventListener('touchmove', e => {
-            const dx = Math.abs(e.touches[0].clientX - touchStartX);
-            const dy = Math.abs(e.touches[0].clientY - touchStartY);
-            if (dx > 30 && dx > dy * 1.5) {
+            if (!swiping) return;
+            const dx = Math.abs(e.touches[0].clientX - swipeStartX);
+            const dy = Math.abs(e.touches[0].clientY - swipeStartY);
+            if (dx > 50 && dx > dy * 2) {
                 e.preventDefault();
-                swipeLocked = true;
             }
         }, { passive: false });
         card.addEventListener('touchend', e => {
-            if (!swipeLocked) return;
-            const dx = e.changedTouches[0].clientX - touchStartX;
-            if (Math.abs(dx) > 80) {
+            if (!swiping) return;
+            const dx = e.changedTouches[0].clientX - swipeStartX;
+            if (Math.abs(dx) > 100) {
                 if (dx < 0 && currentCardHole < 17) cardNav(1);
                 else if (dx > 0 && currentCardHole > 0) cardNav(-1);
             }
+            swiping = false;
         }, { passive: true });
     }
 
