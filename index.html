@@ -442,14 +442,58 @@
         #scorecard-body { display: none; }
         #scorecard-body.visible { display: block; }
 
-        .hole-card { padding: 12px 12px; }
-        .hole-card-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-        .hole-card-nav button { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--border-input); background: var(--bg-card); color: var(--text-heading); font-size: 1.5rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-        .hole-card-nav button:active { background: var(--bg-input-focus); }
-        .hole-card-nav button:disabled { opacity: 0.3; cursor: default; }
-        .hole-card-center { text-align: center; flex: 1; }
-        .hole-card-hole { font-size: 1.4rem; font-weight: 800; color: var(--text-heading); line-height: 1; }
-        .hc-result-bar { text-align: center; padding: 6px; font-size: 0.8rem; font-weight: 700; color: var(--text-sub); margin-top: 8px; }
+        .hole-card { padding: 0; }
+        /* Hole tabs - horizontal scrollable */
+        .hc-hole-tabs { display:flex; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--border-input); padding:0 12px; gap:0; background:var(--bg-card); }
+        .hc-hole-tabs::-webkit-scrollbar { display:none; }
+        .hc-hole-tab { padding:12px 14px; font-size:0.75rem; font-weight:500; color:var(--text-muted); white-space:nowrap; cursor:pointer; position:relative; border:none; background:none; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+        .hc-hole-tab.active { color:var(--text-heading); font-weight:700; }
+        .hc-hole-tab.active::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--text-heading); }
+        .hc-hole-tab.scored { color:var(--text-secondary); }
+        .hc-hole-tab.scored::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:#2E7D32; margin-right:4px; vertical-align:middle; }
+        /* Hole hero header */
+        .hc-hero { text-align:center; padding:20px 16px 8px; }
+        .hc-hero-hole { font-size:2.2rem; font-weight:700; color:var(--text-heading); line-height:1; letter-spacing:-1px; }
+        .hc-hero-badges { display:flex; gap:24px; justify-content:center; margin-top:8px; }
+        .hc-hero-badge-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:1px; }
+        .hc-hero-badge-val { font-size:1rem; font-weight:600; color:var(--text-heading); }
+        /* Score dark card */
+        .hc-score-card { margin:12px 12px; background:#0a0a0a; border-radius:6px; padding:20px; display:flex; flex-direction:column; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+        [data-theme="dark"] .hc-score-card { background:#1a1a2e; border:1px solid #333; }
+        .hc-score-card-label { font-size:0.85rem; color:#a0a0a0; font-weight:500; margin-bottom:16px; }
+        .hc-score-card-stepper { display:flex; align-items:center; justify-content:center; gap:24px; width:100%; }
+        .hc-score-card-btn { width:56px; height:56px; border-radius:50%; background:transparent; border:1px solid #333; color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.5rem; font-weight:600; transition:background 0.15s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+        .hc-score-card-btn:active { background:#333; }
+        .hc-score-card-val { font-size:3.5rem; font-weight:700; color:#fff; line-height:1; width:80px; text-align:center; font-variant-numeric:tabular-nums; letter-spacing:-2px; }
+        .hc-score-card-val.hc-not-entered { color:#555; }
+        .hc-score-card-result { display:flex; gap:16px; margin-top:12px; font-size:0.8rem; color:#a0a0a0; }
+        .hc-score-card-result .pts { color:#A5D6A7; font-weight:700; }
+        .hc-score-card-result .rel { font-weight:700; }
+        .hc-score-card-result .rel.under { color:#81C784; }
+        .hc-score-card-result .rel.over { color:#EF9A9A; }
+        .hc-score-card-result .rel.even { color:#fff; }
+        /* List items for secondary inputs */
+        .hc-list { border-top:1px solid var(--border-input); margin-top:8px; }
+        .hc-list-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border-input); background:var(--bg-card); }
+        .hc-list-label { font-size:0.85rem; font-weight:500; color:var(--text-primary); }
+        .hc-list-sub { font-size:0.72rem; color:var(--text-muted); }
+        .hc-list-stepper { display:flex; align-items:center; background:var(--bg-tab); border-radius:4px; border:1px solid var(--border-input); overflow:hidden; }
+        .hc-list-stepper-btn { width:42px; height:38px; border:none; background:transparent; color:var(--text-primary); font-size:1.1rem; display:flex; align-items:center; justify-content:center; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+        .hc-list-stepper-btn:active { background:var(--border-input); }
+        .hc-list-stepper-val { width:40px; text-align:center; font-size:0.9rem; font-weight:600; font-variant-numeric:tabular-nums; color:var(--text-primary); }
+        .hc-list-stepper-val.hc-not-entered { color:#bbb; }
+        .hc-list-toggle { display:flex; align-items:center; background:var(--bg-tab); border-radius:4px; border:1px solid var(--border-input); overflow:hidden; }
+        .hc-list-toggle-btn { padding:8px 16px; border:none; background:transparent; font-size:0.8rem; font-weight:500; color:var(--text-secondary); cursor:pointer; border-right:1px solid var(--border-input); touch-action:manipulation; }
+        .hc-list-toggle-btn:last-child { border-right:none; }
+        .hc-list-toggle-btn.active { background:#0a0a0a; color:#fff; }
+        [data-theme="dark"] .hc-list-toggle-btn.active { background:#2E7D32; }
+        .hc-list-toggle-btn.na { opacity:0.4; pointer-events:none; }
+        /* Bottom action bar */
+        .hc-bottom-bar { padding:12px; background:var(--bg-card); border-top:1px solid var(--border-input); }
+        .hc-next-btn { width:100%; background:#0a0a0a; color:#fff; border:none; border-radius:4px; padding:16px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:8px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+        [data-theme="dark"] .hc-next-btn { background:#2E7D32; }
+        .hc-next-btn:active { opacity:0.8; }
+        .hc-next-btn:disabled { opacity:0.3; }
         .hole-card-info { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 3px; }
 
         .hole-card-fields { display: flex; flex-direction: column; gap: 8px; }
@@ -1403,60 +1447,111 @@
             }).join('') + '</div>';
         }
 
+        // Hole tabs
+        let holeTabs = '';
+        for (let t = 0; t < 18; t++) {
+            const scored = player.scores[t] !== '' && player.scores[t] !== undefined;
+            const active = t === i;
+            holeTabs += `<button class="hc-hole-tab ${active ? 'active' : ''} ${scored && !active ? 'scored' : ''}" onclick="currentCardHole=${t};renderHoleCard();">Hole ${t+1}</button>`;
+        }
+
+        // Result display for score card
+        let resultHtml = '';
+        if (score !== '' && score !== undefined) {
+            const diff = parseInt(score) - h.par;
+            const relClass = diff < 0 ? 'under' : diff > 0 ? 'over' : 'even';
+            const relText = diff === 0 ? 'E' : (diff > 0 ? '+' + diff : diff);
+            resultHtml = `<div class="hc-score-card-result">
+                <span class="pts">${ptsHtml} pts</span>
+                <span class="rel ${relClass}">${relText}</span>
+            </div>`;
+        }
+
+        const scoreDisplay = score !== '' && score !== undefined ? score : '—';
+        const scoreNotEntered = score === '' || score === undefined ? ' hc-not-entered' : '';
+        const puttsDisplay = putts !== '' && putts !== undefined ? putts : '—';
+        const puttsNotEntered = putts === '' || putts === undefined ? ' hc-not-entered' : '';
+
         const container = document.getElementById('holeCardView');
         container.innerHTML = `
             <div class="hole-card">
-                <div class="hole-card-nav">
-                    <button onclick="cardNav(-1)" ${i === 0 ? 'disabled' : ''}>&#8249;</button>
-                    <div class="hole-card-center">
-                        <div class="hole-card-hole">Hole ${i + 1}</div>
-                        <div class="hole-card-info">Par ${h.par} &bull; SI ${h.si}</div>
+                <div class="hc-hole-tabs" id="hcHoleTabs">${holeTabs}</div>
+                ${playerTabsHtml ? `<div style="padding:8px 12px 0;">${playerTabsHtml}</div>` : ''}
+                <div class="hc-hero">
+                    <div class="hc-hero-hole">Hole ${i + 1}</div>
+                    <div class="hc-hero-badges">
+                        <div><div class="hc-hero-badge-label">Par</div><div class="hc-hero-badge-val">${h.par}</div></div>
+                        <div><div class="hc-hero-badge-label">SI</div><div class="hc-hero-badge-val">${h.si}</div></div>
+                        <div><div class="hc-hero-badge-label">HCP</div><div class="hc-hero-badge-val">${player.hcp || appData.handicap || 28}</div></div>
                     </div>
-                    <button onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>&#8250;</button>
                 </div>
-                ${playerTabsHtml}
-                <div class="hole-card-fields">
-                    <div class="hc-dual-row">
-                        <div class="hc-dual-col">
-                            <div class="hc-dual-label">Score</div>
-                            <div class="hc-dual-stepper">
-                                <button class="hc-step-btn minus" onclick="cardScoreAdjust(${i},-1)">&minus;</button>
-                                <div class="hc-score-display">
-                                    <div class="hc-score-val ${score === '' || score === undefined ? 'hc-not-entered' : ''}">${score !== '' && score !== undefined ? score : '—'}</div>
-                                    <div class="hc-score-par">Par ${h.par}</div>
-                                </div>
-                                <button class="hc-step-btn" onclick="cardScoreAdjust(${i},1)">+</button>
-                            </div>
+
+                <div class="hc-score-card">
+                    <div class="hc-score-card-label">Strokes</div>
+                    <div class="hc-score-card-stepper">
+                        <button class="hc-score-card-btn" onclick="cardScoreAdjust(${i},-1)">&minus;</button>
+                        <div class="hc-score-card-val${scoreNotEntered}">${scoreDisplay}</div>
+                        <button class="hc-score-card-btn" onclick="cardScoreAdjust(${i},1)">+</button>
+                    </div>
+                    ${resultHtml}
+                </div>
+
+                <div class="hc-list">
+                    ${isMe ? `<div class="hc-list-item">
+                        <div>
+                            <div class="hc-list-label">Putts</div>
                         </div>
-                        ${isMe ? `<div class="hc-dual-col">
-                            <div class="hc-dual-label">Putts</div>
-                            <div class="hc-dual-stepper">
-                                <button class="hc-step-btn minus" onclick="cardPuttsAdjust(${i},-1)">&minus;</button>
-                                <div class="hc-score-display">
-                                    <div class="hc-score-val putt-val ${putts === '' || putts === undefined ? 'hc-not-entered' : ''}">${putts !== '' && putts !== undefined ? putts : '—'}</div>
-                                </div>
-                                <button class="hc-step-btn" onclick="cardPuttsAdjust(${i},1)">+</button>
-                            </div>
-                        </div>` : ''}
-                    </div>
-                    <div class="voice-row">
-                        <button class="voice-btn ${!window.SpeechRecognition && !window.webkitSpeechRecognition ? 'no-support' : ''}" id="voiceBtn" onclick="toggleVoiceInput(${i})">&#127908;</button>
-                        <span class="voice-result" id="voiceResult"></span>
-                    </div>
-                    ${isMe ? `<div class="hc-toggle-row">
-                        <button class="hc-toggle ${girVal === '1' ? 'on' : ''}" onclick="toggleCardField(${i},'gir',this)">
-                            ${girVal === '1' ? '&#10003; ' : ''}GIR
-                        </button>
-                        <button class="hc-toggle ${isPar3 ? 'na' : fwyVal === '1' ? 'on' : ''}" ${isPar3 ? 'disabled' : ''} onclick="toggleCardField(${i},'fairways',this)">
-                            ${isPar3 ? 'FWY n/a' : (fwyVal === '1' ? '&#10003; ' : '') + 'Fairway'}
-                        </button>
-                        <button class="hc-toggle ${note ? 'on' : ''}" onclick="openNoteOverlay(${i})">
-                            ${note ? '&#10003; ' : ''}Note
-                        </button>
+                        <div class="hc-list-stepper">
+                            <button class="hc-list-stepper-btn" onclick="cardPuttsAdjust(${i},-1)">&minus;</button>
+                            <div class="hc-list-stepper-val${puttsNotEntered}">${puttsDisplay}</div>
+                            <button class="hc-list-stepper-btn" onclick="cardPuttsAdjust(${i},1)">+</button>
+                        </div>
+                    </div>` : ''}
+                    ${isMe ? `<div class="hc-list-item">
+                        <div>
+                            <div class="hc-list-label">GIR</div>
+                        </div>
+                        <div class="hc-list-toggle">
+                            <button class="hc-list-toggle-btn ${girVal === '1' ? 'active' : ''}" onclick="toggleCardField(${i},'gir',this)">${girVal === '1' ? '&#10003; Yes' : 'Yes'}</button>
+                            <button class="hc-list-toggle-btn ${girVal === '' || girVal === undefined ? 'active' : ''}" onclick="updateState(${i},'gir','');renderHoleCard();">No</button>
+                        </div>
+                    </div>` : ''}
+                    ${isMe ? `<div class="hc-list-item">
+                        <div>
+                            <div class="hc-list-label">Fairway</div>
+                            ${isPar3 ? '<div class="hc-list-sub">Par 3 — N/A</div>' : ''}
+                        </div>
+                        <div class="hc-list-toggle ${isPar3 ? '' : ''}">
+                            <button class="hc-list-toggle-btn ${isPar3 ? 'na' : fwyVal === '1' ? 'active' : ''}" ${isPar3 ? '' : `onclick="toggleCardField(${i},'fairways',this)"`}>${fwyVal === '1' ? '&#10003; Hit' : 'Hit'}</button>
+                            <button class="hc-list-toggle-btn ${isPar3 ? 'na' : fwyVal !== '1' && fwyVal !== '' && fwyVal !== undefined ? 'active' : ''}" ${isPar3 ? '' : `onclick="updateState(${i},'fairways','');renderHoleCard();"`}>Miss</button>
+                        </div>
+                    </div>` : ''}
+                    ${isMe ? `<div class="hc-list-item">
+                        <div>
+                            <div class="hc-list-label">Note</div>
+                            ${note ? `<div class="hc-list-sub">${note.substring(0, 30)}${note.length > 30 ? '...' : ''}</div>` : ''}
+                        </div>
+                        <button style="background:none; border:1px solid var(--border-input); border-radius:4px; padding:8px 16px; font-size:0.8rem; font-weight:500; color:var(--text-secondary); cursor:pointer;" onclick="openNoteOverlay(${i})">${note ? 'Edit' : 'Add'}</button>
                     </div>` : ''}
                 </div>
+
                 <div id="gpsContainer">${getGpsHtml(i)}</div>
+
+                <div class="hc-bottom-bar">
+                    <button class="hc-next-btn" onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>
+                        ${i === 17 ? 'Hole 18 — Last Hole' : `Next: Hole ${i + 2} →`}
+                    </button>
+                </div>
+
+                <div class="voice-row" style="padding:0 12px 12px;">
+                    <button class="voice-btn ${!window.SpeechRecognition && !window.webkitSpeechRecognition ? 'no-support' : ''}" id="voiceBtn" onclick="toggleVoiceInput(${i})">&#127908;</button>
+                    <span class="voice-result" id="voiceResult"></span>
+                </div>
             </div>`;
+
+        // Scroll active hole tab into view
+        const activeTab = document.querySelector('.hc-hole-tab.active');
+        if (activeTab) activeTab.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
 
     }
 
