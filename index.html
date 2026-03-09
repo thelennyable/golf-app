@@ -1445,6 +1445,15 @@
     }
 
     function cardNav(dir) {
+        // Auto-save par and 2 putts if untouched
+        const player = getActivePlayer();
+        const h = courseHoles[currentCardHole];
+        if (player.scores[currentCardHole] === '' || player.scores[currentCardHole] === undefined) {
+            updateState(currentCardHole, 'scores', String(h.par));
+        }
+        if (player.putts[currentCardHole] === '' || player.putts[currentCardHole] === undefined) {
+            updateState(currentCardHole, 'putts', '2');
+        }
         currentCardHole = Math.max(0, Math.min(17, currentCardHole + dir));
         renderHoleCard();
     }
