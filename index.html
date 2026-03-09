@@ -442,7 +442,7 @@
         #scorecard-body { display: none; }
         #scorecard-body.visible { display: block; }
 
-        .hole-card { padding: 0; }
+        .hole-card { padding: 0; padding-bottom: 80px; }
         /* Hole tabs - horizontal scrollable */
         .hc-hole-tabs { display:flex; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--border-input); padding:0 12px; gap:0; background:var(--bg-card); }
         .hc-hole-tabs::-webkit-scrollbar { display:none; }
@@ -489,7 +489,7 @@
         [data-theme="dark"] .hc-list-toggle-btn.active { background:#2E7D32; }
         .hc-list-toggle-btn.na { opacity:0.4; pointer-events:none; }
         /* Bottom action bar */
-        .hc-bottom-bar { padding:12px; background:var(--bg-card); border-top:1px solid var(--border-input); }
+        .hc-bottom-bar { position:fixed; bottom:0; left:0; right:0; padding:12px; background:var(--bg-card); border-top:1px solid var(--border-input); z-index:50; }
         .hc-next-btn { width:100%; background:#0a0a0a; color:#fff; border:none; border-radius:4px; padding:16px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:8px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
         [data-theme="dark"] .hc-next-btn { background:#2E7D32; }
         .hc-next-btn:active { opacity:0.8; }
