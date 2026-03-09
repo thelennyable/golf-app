@@ -2460,7 +2460,21 @@
     }
 
     function getGpsHtml(holeIdx) {
-        if (!gpsEnabled) return '';
+        if (!gpsEnabled) {
+            const green = getGreenForHole(currentCourse, holeIdx);
+            const marked = [];
+            if (green) {
+                if (green.front) marked.push('F');
+                if (green.center) marked.push('C');
+                if (green.back) marked.push('B');
+            }
+            if (marked.length > 0) {
+                return `<div style="text-align:center; padding:6px 0; font-size:0.75rem; color:#81C784; opacity:0.8;">
+                    📍 Green marked: ${marked.join(' · ')} — tap GPS to see distances
+                </div>`;
+            }
+            return '';
+        }
         const green = getGreenForHole(currentCourse, holeIdx);
         const hasAny = green && (green.front || green.center || green.back);
 
