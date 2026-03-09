@@ -814,6 +814,10 @@
     let courseHoles = courses[currentCourse];
     let activePlayerIdx = 0;
 
+    // Forward-declare live scoring vars (defined in second script block)
+    var liveConnected = false;
+    var livePlayerName = null;
+
     // Players: [{ name, hcp, scores, putts, gir, fairways, notes }]
     function defaultPlayer(name, hcp) {
         return { name, hcp: hcp || 28, scores: new Array(18).fill(''), putts: new Array(18).fill(''), gir: new Array(18).fill(''), fairways: new Array(18).fill(''), notes: new Array(18).fill('') };
