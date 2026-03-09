@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2E7D32"/>
+      <stop offset="50%" stop-color="#1B5E20"/>
+      <stop offset="100%" stop-color="#0D3B13"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFB300"/>
+    </linearGradient>
+    <linearGradient id="pole" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E0E0E0"/>
+      <stop offset="100%" stop-color="#9E9E9E"/>
+    </linearGradient>
+    <linearGradient id="ball" x1="0.3" y1="0.2" x2="0.8" y2="0.9">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E0E0E0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.5">
+      <stop offset="0%" stop-color="#43A047" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <filter id="textshadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+
+  <!-- Subtle radial glow -->
+  <rect width="512" height="512" rx="108" fill="url(#glow)"/>
+
+  <!-- Decorative fairway curves -->
+  <path d="M0 380 Q128 340 256 360 Q384 380 512 350 L512 512 Q384 512 256 512 Q128 512 0 512 Z" fill="#1B5E20" opacity="0.4" rx="108"/>
+  <path d="M0 410 Q150 380 280 400 Q410 420 512 390 L512 512 Q384 512 256 512 Q128 512 0 512 Z" fill="#155C1A" opacity="0.3"/>
+
+  <!-- Flag pole with shadow -->
+  <line x1="258" y1="145" x2="258" y2="355" stroke="url(#pole)" stroke-width="5.5" stroke-linecap="round" filter="url(#shadow)"/>
+
+  <!-- Flag - triangular, red with depth -->
+  <path d="M262 145 L328 172 L262 200 Z" fill="#D32F2F" filter="url(#shadow)"/>
+  <path d="M262 145 L328 172 L262 172 Z" fill="#E53935"/>
+
+  <!-- Golf ball with dimples -->
+  <circle cx="258" cy="372" r="32" fill="url(#ball)" filter="url(#shadow)"/>
+  <!-- Dimple pattern -->
+  <circle cx="248" cy="362" r="3.5" fill="#BDBDBD" opacity="0.35"/>
+  <circle cx="266" cy="360" r="3" fill="#BDBDBD" opacity="0.35"/>
+  <circle cx="256" cy="376" r="3.2" fill="#BDBDBD" opacity="0.3"/>
+  <circle cx="244" cy="378" r="2.8" fill="#BDBDBD" opacity="0.3"/>
+  <circle cx="270" cy="374" r="2.8" fill="#BDBDBD" opacity="0.3"/>
+  <circle cx="258" cy="362" r="2.5" fill="#BDBDBD" opacity="0.2"/>
+  <!-- Ball highlight -->
+  <ellipse cx="250" cy="358" rx="8" ry="5" fill="#FFFFFF" opacity="0.4"/>
+
+  <!-- Hole/cup -->
+  <ellipse cx="258" cy="402" rx="20" ry="7" fill="#0A2E0F" opacity="0.6"/>
+
+  <!-- KARAKE text with gold gradient -->
+  <text x="256" y="100" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-weight="800" font-size="58" fill="url(#gold)" letter-spacing="8" filter="url(#textshadow)">KARAKE</text>
+
+  <!-- Subtle underline accent -->
+  <line x1="130" y1="115" x2="382" y2="115" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- GOLF subtitle -->
+  <text x="256" y="460" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-weight="600" font-size="28" fill="#A5D6A7" letter-spacing="12" opacity="0.8">GOLF</text>
+</svg>
