@@ -619,6 +619,27 @@
         .splash-title { color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
         .splash-sub { color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 600; margin-top: 6px; }
         @keyframes splash-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        /* ONBOARDING */
+        .onboarding { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg, #1a2a1a 0%, #0d1f2d 100%); z-index:8000; overflow-y:auto; }
+        .onboarding.open { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; }
+        .ob-card { background:white; border-radius:20px; padding:28px 24px; max-width:340px; width:100%; box-shadow:0 8px 32px rgba(0,0,0,0.3); }
+        .ob-title { font-size:1.1rem; font-weight:800; color:#1B5E20; margin-bottom:4px; }
+        .ob-sub { font-size:0.8rem; color:#888; margin-bottom:20px; }
+        .ob-label { font-size:0.78rem; font-weight:700; color:#333; margin-bottom:6px; display:block; }
+        .ob-input { width:100%; padding:12px; border:2px solid #E0E0E0; border-radius:12px; font-size:1rem; font-weight:600; box-sizing:border-box; margin-bottom:14px; }
+        .ob-input:focus { border-color:#2E7D32; outline:none; }
+        .ob-input.small { width:80px; text-align:center; }
+        .ob-row { display:flex; gap:10px; align-items:end; margin-bottom:10px; }
+        .ob-row .ob-input { margin-bottom:0; }
+        .ob-players-list { margin-bottom:14px; }
+        .ob-player-item { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#F5F5F5; border-radius:10px; margin-bottom:6px; font-size:0.85rem; font-weight:600; }
+        .ob-player-remove { background:none; border:none; color:#C62828; font-size:1rem; cursor:pointer; padding:2px 6px; }
+        .ob-btn { width:100%; padding:14px; border:none; border-radius:12px; font-size:0.95rem; font-weight:700; cursor:pointer; margin-top:6px; }
+        .ob-btn-primary { background:#2E7D32; color:white; }
+        .ob-btn-secondary { background:#F5F5F5; color:#333; }
+        .ob-btn-add { background:#E8F5E9; color:#2E7D32; padding:10px; font-size:0.85rem; }
+        .ob-solo-note { font-size:0.75rem; color:#999; text-align:center; margin-top:8px; }
     </style>
 </head>
 <body>
@@ -627,6 +648,32 @@
     <div class="splash-icon">⛳</div>
     <div class="splash-title">Karake Golf</div>
     <div class="splash-sub">Kigali Golf Club</div>
+</div>
+
+<div class="onboarding" id="onboarding">
+    <div class="ob-card">
+        <div class="ob-title">Welcome to Karake Golf</div>
+        <div class="ob-sub">Set up your round</div>
+
+        <label class="ob-label">Your name</label>
+        <input class="ob-input" id="obName" type="text" placeholder="e.g. Lenny" maxlength="15">
+
+        <label class="ob-label">Your handicap</label>
+        <input class="ob-input small" id="obHcp" type="number" placeholder="28" inputmode="numeric" min="0" max="54">
+
+        <div id="obOtherPlayers">
+            <label class="ob-label">Other players</label>
+            <div class="ob-players-list" id="obPlayersList"></div>
+            <div class="ob-row">
+                <input class="ob-input" id="obAddName" type="text" placeholder="Name" maxlength="15" style="flex:1;">
+                <input class="ob-input small" id="obAddHcp" type="number" placeholder="Hcp" inputmode="numeric" min="0" max="54">
+                <button class="ob-btn ob-btn-add" onclick="obAddPlayer()" style="width:auto; padding:10px 16px;">Add</button>
+            </div>
+        </div>
+
+        <button class="ob-btn ob-btn-primary" onclick="obStart()">Start Round</button>
+        <div class="ob-solo-note">You can play solo or add players above</div>
+    </div>
 </div>
 
 <button class="undo-btn" id="undoBtn" onclick="undoLastEntry()">
@@ -2969,15 +3016,87 @@
         resultsEl.innerHTML = html;
     }
 
+    // ==================== ONBOARDING ====================
+    let obPlayers = []; // extra players added during onboarding
+
+    function obAddPlayer() {
+        const name = document.getElementById('obAddName').value.trim();
+        const hcp = parseInt(document.getElementById('obAddHcp').value) || 28;
+        if (!name) return;
+        obPlayers.push({ name, hcp });
+        document.getElementById('obAddName').value = '';
+        document.getElementById('obAddHcp').value = '';
+        obRenderPlayers();
+        document.getElementById('obAddName').focus();
+    }
+
+    function obRemovePlayer(idx) {
+        obPlayers.splice(idx, 1);
+        obRenderPlayers();
+    }
+
+    function obRenderPlayers() {
+        const list = document.getElementById('obPlayersList');
+        list.innerHTML = obPlayers.map((p, i) =>
+            `<div class="ob-player-item">
+                <span>${p.name} (Hcp ${p.hcp})</span>
+                <button class="ob-player-remove" onclick="obRemovePlayer(${i})">&#10005;</button>
+            </div>`
+        ).join('');
+    }
+
+    function obStart() {
+        const myName = document.getElementById('obName').value.trim() || 'Me';
+        const myHcp = parseInt(document.getElementById('obHcp').value) || 28;
+
+        if (obPlayers.length === 0) {
+            // Solo — just set name and handicap
+            appData.handicap = myHcp;
+            appData.players = [];
+            // Store name for later use when adding players
+            localStorage.setItem('golf_my_name', myName);
+            localStorage.setItem('golf_my_hcp', String(myHcp));
+        } else {
+            // Multiplayer — create all players
+            const me = defaultPlayer(myName, myHcp);
+            appData.players = [me];
+            obPlayers.forEach(p => {
+                appData.players.push(defaultPlayer(p.name, p.hcp));
+            });
+            appData.handicap = myHcp;
+        }
+
+        saveAppData();
+        localStorage.setItem('golf_onboarded', '1');
+        document.getElementById('onboarding').classList.remove('open');
+        renderApp();
+    }
+
+    function shouldShowOnboarding() {
+        // Show if never onboarded AND no existing data
+        const onboarded = localStorage.getItem('golf_onboarded');
+        const hasData = localStorage.getItem('golfHybrid_v3');
+        return !onboarded && !hasData;
+    }
+
     // Init
     loadDarkMode();
     renderApp();
     window.addEventListener('resize', updateStickyOffsets);
 
-    // Dismiss splash
+    // Dismiss splash, then show onboarding if needed
     setTimeout(() => {
         const splash = document.getElementById('splashScreen');
-        if (splash) { splash.classList.add('fade-out'); setTimeout(() => splash.remove(), 500); }
+        if (splash) {
+            splash.classList.add('fade-out');
+            setTimeout(() => {
+                splash.remove();
+                if (shouldShowOnboarding()) {
+                    document.getElementById('onboarding').classList.add('open');
+                    document.getElementById('obName').focus();
+                }
+            }, 500);
+        }
     }, 1800);
 
     // Feature 7: PWA - Register Service Worker
