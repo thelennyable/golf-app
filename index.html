@@ -2701,7 +2701,7 @@
 
                     html += `<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; font-size:0.85rem; color:${textColor}; ${bg}">
                         <span style="font-weight:${isLeader ? '700' : '400'};">${position}. ${e.name} (Hcp ${e.hcp})${badge}</span>
-                        <span style="font-weight:600;">Gross ${e.gross}${diff}${holesNote}</span>
+                        <span style="font-weight:600;">${e.gross} <span style="font-size:0.75rem; opacity:0.7;">(Net ${e.net})</span>${holesNote}</span>
                     </div>`;
                 });
 
