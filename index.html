@@ -1216,7 +1216,7 @@
         const current = player.scores[holeIdx];
         let val;
         if (current === '' || current === undefined) {
-            val = h.par;
+            val = h.par + delta;
         } else {
             val = parseInt(current) + delta;
         }
@@ -1239,7 +1239,7 @@
         const current = player.putts[holeIdx];
         let val;
         if (current === '' || current === undefined) {
-            val = 2;
+            val = 2 + delta;
         } else {
             val = parseInt(current) + delta;
         }
