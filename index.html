@@ -205,15 +205,16 @@
         .sticky-header.collapsed .header-compact { display: flex; }
 
         /* CONTROLS */
-        .controls-wrap { background: var(--bg-controls); border-bottom: 1px solid var(--border-controls); }
-        .controls-main { display: flex; align-items: center; gap: 8px; padding: 10px 12px 6px; }
-        .controls-main label { font-weight: 600; color: var(--text-controls-label); font-size: 0.8rem; }
-        .controls-main input[type="number"] { width: 52px; padding: 6px; font-size: 0.95rem; text-align: center; border: 2px solid var(--border-input); border-radius: 8px; font-weight: 600; background: var(--bg-card); color: var(--text-primary); }
-        .controls-main input[type="date"] { padding: 6px 8px; font-size: 0.8rem; border: 2px solid var(--border-input); border-radius: 8px; background: var(--bg-card); color: var(--text-primary); }
-        .controls-main select { padding: 6px 8px; font-size: 0.8rem; border: 2px solid var(--border-input); border-radius: 8px; background: var(--bg-card); color: var(--text-primary); font-weight: 500; flex: 1; min-width: 0; }
-        .controls-main input:focus, .controls-main select:focus { border-color: #2E7D32; outline: none; }
-        #parDisplay { background: var(--bg-par-display); color: var(--text-par-display); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
-        .controls-toggles { display: flex; align-items: center; gap: 6px; padding: 4px 12px 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .controls-wrap { background: var(--bg-controls); border-bottom: 1px solid var(--border-controls); padding: 10px 12px; }
+        .controls-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .ctrl-chip { display: flex; align-items: center; gap: 4px; background: var(--bg-card); border: 1px solid var(--border-input); border-radius: 20px; padding: 6px 12px; font-size: 0.78rem; font-weight: 600; color: var(--text-heading); white-space: nowrap; }
+        .ctrl-chip .ctrl-label { font-size: 0.6rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.3px; }
+        .ctrl-chip input[type="number"] { width: 36px; padding: 0; font-size: 0.9rem; text-align: center; border: none; font-weight: 700; background: transparent; color: var(--text-primary); outline: none; }
+        .ctrl-chip input[type="date"] { padding: 0; font-size: 0.78rem; border: none; background: transparent; color: var(--text-primary); font-weight: 600; outline: none; }
+        .ctrl-chip select { padding: 0; font-size: 0.78rem; border: none; background: transparent; color: var(--text-primary); font-weight: 600; outline: none; -webkit-appearance: none; appearance: none; flex: 1; min-width: 0; }
+        .ctrl-chip.course { flex: 1; }
+        .ctrl-chip.par { background: var(--bg-par-display); color: var(--text-par-display); border-color: transparent; font-weight: 700; }
+        .controls-toggles { display: flex; align-items: center; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .controls-toggles::-webkit-scrollbar { display: none; }
 
         /* VIEW SEGMENTED CONTROL */
@@ -609,9 +610,22 @@
             .col-hideable { display: table-cell !important; }
             .table-wrap { overflow-x: visible; }
         }
+        /* SPLASH SCREEN */
+        .splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #1565C0 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.4s ease; }
+        .splash.fade-out { opacity: 0; pointer-events: none; }
+        .splash-icon { font-size: 4rem; margin-bottom: 16px; animation: splash-bounce 1s ease infinite; }
+        .splash-title { color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+        .splash-sub { color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 600; margin-top: 6px; }
+        @keyframes splash-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     </style>
 </head>
 <body>
+
+<div class="splash" id="splashScreen">
+    <div class="splash-icon">⛳</div>
+    <div class="splash-title">Karake Golf</div>
+    <div class="splash-sub">Kigali Golf Club</div>
+</div>
 
 <button class="undo-btn" id="undoBtn" onclick="undoLastEntry()">
     <span>↩</span> Undo
@@ -640,12 +654,13 @@
 
     <div class="offline-banner" id="offlineBanner">You are offline — scores save locally, live sync paused</div>
     <div class="controls-wrap">
-        <div class="controls-main">
-            <label>Hcp:</label>
-            <input type="number" id="handicap" value="28" inputmode="numeric" oninput="calculateAll()">
-            <select id="courseSelect" onchange="changeCourse()"></select>
-            <input type="date" id="roundDate">
-            <span id="parDisplay">Par 72</span>
+        <div class="controls-row">
+            <div class="ctrl-chip"><span class="ctrl-label">Hcp</span><input type="number" id="handicap" value="28" inputmode="numeric" oninput="calculateAll()"></div>
+            <div class="ctrl-chip course"><select id="courseSelect" onchange="changeCourse()"></select></div>
+            <div class="ctrl-chip par" id="parDisplay">Par 72</div>
+        </div>
+        <div class="controls-row">
+            <div class="ctrl-chip"><input type="date" id="roundDate"></div>
         </div>
         <div class="controls-toggles">
             <span class="round-timer" id="roundTimer" onclick="toggleRoundTimer()">0:00</span>
@@ -2556,6 +2571,12 @@
     loadDarkMode();
     renderApp();
     window.addEventListener('resize', updateStickyOffsets);
+
+    // Dismiss splash
+    setTimeout(() => {
+        const splash = document.getElementById('splashScreen');
+        if (splash) { splash.classList.add('fade-out'); setTimeout(() => splash.remove(), 500); }
+    }, 800);
 
     // Feature 7: PWA - Register Service Worker
     if ('serviceWorker' in navigator) {
