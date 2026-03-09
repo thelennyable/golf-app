@@ -712,7 +712,7 @@
             <button class="more-btn" onclick="toggleHistory()">History</button>
             <button class="more-btn" onclick="toggleStats()">Stats</button>
             <button class="more-btn" onclick="toggleCompare()">Compare</button>
-            <button class="more-btn" onclick="openNassau()" style="background:linear-gradient(135deg,#E65100,#FF8F00);color:white;">Nassau</button>
+            <button class="more-btn" onclick="openKwacha()" style="background:linear-gradient(135deg,#E65100,#FF8F00);color:white;">Kwacha</button>
             <button class="more-btn" onclick="exportData()">Export</button>
             <button class="more-btn" onclick="document.getElementById('importFile').click()">Import</button>
         </div>
@@ -758,23 +758,22 @@
 
 <div class="modal-overlay" id="nassauModal">
     <div class="modal wide-modal">
-        <h3>Nassau Betting</h3>
+        <h3>Kwacha</h3>
         <div id="nassauSetup">
             <div style="margin-bottom:12px;">
-                <label style="font-size:0.82rem; font-weight:600; color:var(--text-primary);">Stake per bet</label>
+                <label style="font-size:0.82rem; font-weight:600; color:var(--text-primary);">Each player puts in</label>
                 <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
                     <input type="number" id="nassauStake" value="5000" inputmode="numeric" min="0" style="flex:1; padding:10px; border:2px solid #E0E0E0; border-radius:10px; font-size:1rem; font-weight:700; text-align:center; box-sizing:border-box; background:var(--bg-card); color:var(--text-primary);">
-                    <span style="font-size:0.8rem; color:var(--text-secondary); font-weight:600;">x 3 bets</span>
                 </div>
             </div>
             <div style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5; margin-bottom:12px; padding:10px; background:var(--bg-tab); border-radius:10px;">
-                Each player puts in <strong id="nassauPerPlayer">15,000</strong> (stake x 3).<br>
-                Lowest net wins each bet. Ties split the pot.
+                Total kitty: <strong id="nassauKitty">20,000</strong><br>
+                Split across: Front 9, Back 9, Overall. Ties split that portion.
             </div>
         </div>
         <div id="nassauResults"></div>
-        <button class="modal-btn" onclick="calculateNassau()" style="background:linear-gradient(135deg,#E65100,#FF8F00);">Calculate Results</button>
-        <button class="modal-close" onclick="closeNassau()">Close</button>
+        <button class="modal-btn" onclick="calculateKwacha()" style="background:linear-gradient(135deg,#E65100,#FF8F00);">Calculate Results</button>
+        <button class="modal-close" onclick="closeKwacha()">Close</button>
     </div>
 </div>
 
@@ -2606,20 +2605,21 @@
     }
 
     // ==================== NASSAU BETTING ====================
-    function openNassau() {
+    function openKwacha() {
         document.getElementById('nassauModal').classList.add('open');
-        updateNassauPerPlayer();
-        calculateNassau();
+        updateKwachaPerPlayer();
+        calculateKwacha();
     }
-    function closeNassau() {
+    function closeKwacha() {
         document.getElementById('nassauModal').classList.remove('open');
     }
-    function updateNassauPerPlayer() {
+    function updateKwachaPerPlayer() {
         const stake = parseInt(document.getElementById('nassauStake').value) || 0;
-        document.getElementById('nassauPerPlayer').textContent = (stake * 3).toLocaleString();
+        const numPlayers = Math.max(appData.players.length, 2);
+        document.getElementById('nassauKitty').textContent = (stake * numPlayers).toLocaleString();
     }
     document.addEventListener('input', e => {
-        if (e.target.id === 'nassauStake') updateNassauPerPlayer();
+        if (e.target.id === 'nassauStake') updateKwachaPerPlayer();
     });
 
     function getPlayerNetPerHole(player) {
@@ -2633,10 +2633,10 @@
         });
     }
 
-    function calculateNassau() {
+    function calculateKwacha() {
         const resultsEl = document.getElementById('nassauResults');
         if (appData.players.length < 2) {
-            resultsEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); font-size:0.85rem;">Add at least 2 players to use Nassau.</p>';
+            resultsEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); font-size:0.85rem;">Add at least 2 players to use Kwacha.</p>';
             return;
         }
 
@@ -2659,8 +2659,9 @@
             { name: 'Overall', start: 0, end: 18 }
         ];
 
-        const potPerBet = stake * players.length;
-        let playerBalances = players.map(() => 0);
+        const kitty = stake * players.length;
+        const potPerBet = Math.floor(kitty / 3);
+        let playerBalances = players.map(() => -stake); // everyone starts having paid in
         let segmentResults = [];
 
         segments.forEach(seg => {
@@ -2683,14 +2684,8 @@
                 result.status = 'decided';
 
                 const share = potPerBet / winners.length;
-                const costPerPlayer = stake;
                 winners.forEach(w => {
-                    playerBalances[w.idx] += share - costPerPlayer;
-                });
-                entries.forEach(e => {
-                    if (!winners.find(w => w.idx === e.idx)) {
-                        playerBalances[e.idx] -= costPerPlayer;
-                    }
+                    playerBalances[w.idx] += share;
                 });
             }
 
@@ -2698,7 +2693,9 @@
         });
 
         // Render results
-        let html = '';
+        let html = `<div style="text-align:center; font-size:0.85rem; font-weight:700; color:var(--text-primary); margin-bottom:12px; padding:8px; background:var(--bg-tab); border-radius:10px;">
+            Kitty: ${kitty.toLocaleString()} (${potPerBet.toLocaleString()} per bet)
+        </div>`;
 
         segmentResults.forEach(seg => {
             html += `<div style="margin-bottom:14px; padding:12px; background:var(--bg-tab); border-radius:12px;">`;
