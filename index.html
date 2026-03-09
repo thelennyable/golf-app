@@ -931,8 +931,24 @@
 <script>
     const courses = {
         "Kigali Golf Club": [
-            { par: 5, si: 8 }, { par: 3, si: 14 }, { par: 4, si: 10 }, { par: 4, si: 2 }, { par: 4, si: 16 }, { par: 5, si: 12 }, { par: 4, si: 6 }, { par: 3, si: 18 }, { par: 5, si: 4 },
-            { par: 4, si: 15 }, { par: 4, si: 9 }, { par: 4, si: 17 }, { par: 5, si: 13 }, { par: 3, si: 5 }, { par: 4, si: 3 }, { par: 4, si: 1 }, { par: 3, si: 7 }, { par: 4, si: 11 }
+            { par: 4, si: 8, yd: { yellow: 520, white: 486, blue: 459, red: 440 } },
+            { par: 3, si: 14, yd: { yellow: 155, white: 132, blue: 104, red: 83 } },
+            { par: 4, si: 10, yd: { yellow: 301, white: 380, blue: 257, red: 229 } },
+            { par: 4, si: 2, yd: { yellow: 448, white: 421, blue: 370, red: 347 } },
+            { par: 4, si: 16, yd: { yellow: 324, white: 286, blue: 241, red: 197 } },
+            { par: 5, si: 12, yd: { yellow: 548, white: 524, blue: 504, red: 470 } },
+            { par: 4, si: 6, yd: { yellow: 388, white: 344, blue: 301, red: 253 } },
+            { par: 3, si: 18, yd: { yellow: 169, white: 143, blue: 127, red: 103 } },
+            { par: 5, si: 4, yd: { yellow: 546, white: 508, blue: 459, red: 417 } },
+            { par: 4, si: 15, yd: { yellow: 391, white: 355, blue: 314, red: 269 } },
+            { par: 4, si: 9, yd: { yellow: 345, white: 303, blue: 262, red: 219 } },
+            { par: 4, si: 17, yd: { yellow: 386, white: 350, blue: 306, red: 265 } },
+            { par: 5, si: 13, yd: { yellow: 525, white: 481, blue: 436, red: 394 } },
+            { par: 3, si: 5, yd: { yellow: 205, white: 157, blue: 127, red: 92 } },
+            { par: 4, si: 3, yd: { yellow: 362, white: 336, blue: 293, red: 242 } },
+            { par: 4, si: 1, yd: { yellow: 440, white: 416, blue: 379, red: 323 } },
+            { par: 3, si: 7, yd: { yellow: 193, white: 176, blue: 156, red: 139 } },
+            { par: 4, si: 11, yd: { yellow: 351, white: 311, blue: 284, red: 261 } }
         ],
         "Entebbe Golf Club": [
             { par: 5, si: 5 }, { par: 3, si: 15 }, { par: 4, si: 13 }, { par: 4, si: 1 }, { par: 4, si: 3 }, { par: 3, si: 17 }, { par: 5, si: 9 }, { par: 3, si: 7 }, { par: 4, si: 11 },
@@ -951,6 +967,7 @@
     let currentCourse = "Kigali Golf Club";
     let courseHoles = courses[currentCourse];
     let activePlayerIdx = 0;
+    let selectedTee = localStorage.getItem('golf_tee') || 'white';
 
     // Forward-declare live scoring vars (defined in second script block)
     var liveConnected = false;
@@ -1481,6 +1498,7 @@
                     <div class="hc-hero-hole">Hole ${i + 1}</div>
                     <div class="hc-hero-badges">
                         <div><div class="hc-hero-badge-label">Par</div><div class="hc-hero-badge-val">${h.par}</div></div>
+                        ${h.yd ? `<div><div class="hc-hero-badge-label">${selectedTee}</div><div class="hc-hero-badge-val">${h.yd[selectedTee]} yds</div></div>` : ''}
                         <div><div class="hc-hero-badge-label">SI</div><div class="hc-hero-badge-val">${h.si}</div></div>
                     </div>
                 </div>
