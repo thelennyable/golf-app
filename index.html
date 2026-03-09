@@ -465,6 +465,7 @@
         .hc-step-btn.minus:active { background: #FFEBEE; border-color: #EF9A9A; }
         .hc-score-display { text-align: center; min-width: 52px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .hc-score-val { font-size: 1.8rem; font-weight: 800; color: var(--text-score-input); line-height: 1; }
+        .hc-score-val.hc-not-entered { color: #BDBDBD; font-weight: 400; }
         .hc-score-par { font-size: 0.6rem; font-weight: 600; color: var(--text-muted); margin-top: 1px; }
         .hc-score-clear { border: none; background: transparent; color: var(--text-muted); font-size: 0.6rem; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; }
         .hc-score-val.putt-val { font-size: 1.5rem; }
@@ -1247,7 +1248,7 @@
         const current = player.scores[holeIdx];
         let val;
         if (current === '' || current === undefined) {
-            val = h.par + delta;
+            val = h.par; // first press sets par, then adjust from there
         } else {
             val = parseInt(current) + delta;
         }
@@ -1270,7 +1271,7 @@
         const current = player.putts[holeIdx];
         let val;
         if (current === '' || current === undefined) {
-            val = 2 + delta;
+            val = 2; // first press sets 2, then adjust from there
         } else {
             val = parseInt(current) + delta;
         }
@@ -1359,8 +1360,8 @@
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardScoreAdjust(${i},-1)">&minus;</button>
                                 <div class="hc-score-display">
-                                    <div class="hc-score-val">${score !== '' && score !== undefined ? score : h.par}</div>
-                                    <div class="hc-score-par">${score !== '' && score !== undefined ? 'Par ' + h.par : 'par'}</div>
+                                    <div class="hc-score-val ${score === '' || score === undefined ? 'hc-not-entered' : ''}">${score !== '' && score !== undefined ? score : '—'}</div>
+                                    <div class="hc-score-par">Par ${h.par}</div>
                                 </div>
                                 <button class="hc-step-btn" onclick="cardScoreAdjust(${i},1)">+</button>
                             </div>
@@ -1370,7 +1371,7 @@
                             <div class="hc-dual-stepper">
                                 <button class="hc-step-btn minus" onclick="cardPuttsAdjust(${i},-1)">&minus;</button>
                                 <div class="hc-score-display">
-                                    <div class="hc-score-val putt-val">${putts !== '' && putts !== undefined ? putts : 2}</div>
+                                    <div class="hc-score-val putt-val ${putts === '' || putts === undefined ? 'hc-not-entered' : ''}">${putts !== '' && putts !== undefined ? putts : '—'}</div>
                                 </div>
                                 <button class="hc-step-btn" onclick="cardPuttsAdjust(${i},1)">+</button>
                             </div>
@@ -1476,15 +1477,6 @@
     }
 
     function cardNav(dir) {
-        // Auto-save par and 2 putts if untouched
-        const player = getActivePlayer();
-        const h = courseHoles[currentCardHole];
-        if (player.scores[currentCardHole] === '' || player.scores[currentCardHole] === undefined) {
-            updateState(currentCardHole, 'scores', String(h.par));
-        }
-        if (player.putts[currentCardHole] === '' || player.putts[currentCardHole] === undefined) {
-            updateState(currentCardHole, 'putts', '2');
-        }
         currentCardHole = Math.max(0, Math.min(17, currentCardHole + dir));
         renderHoleCard();
     }
