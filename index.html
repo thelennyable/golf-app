@@ -666,6 +666,7 @@
         <div class="controls-toggles">
             <span class="round-timer" id="roundTimer" onclick="toggleRoundTimer()">0:00</span>
             <button class="gps-toggle-btn" id="gpsToggleBtn" onclick="toggleGps()">GPS</button>
+            <button class="gps-toggle-btn" onclick="alert(localStorage.getItem('golf_pins_v1') || 'No pin data found')" style="font-size:10px">Check Pins</button>
             <button class="live-btn" id="liveBtn" onclick="openLiveModal()"><span class="live-dot"></span>Live</button>
             <button class="col-toggle-btn" id="colToggleBtn" onclick="toggleExtraCols()">All Cols</button>
             <button class="dark-toggle-btn" id="darkToggleBtn" onclick="toggleDarkMode()">Auto</button>
