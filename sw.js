@@ -1,4 +1,4 @@
-const CACHE_NAME = 'karake-golf-v35';
+const CACHE_NAME = 'karake-golf-v36';
 
 self.addEventListener('install', event => {
     self.skipWaiting();
