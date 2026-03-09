@@ -490,10 +490,13 @@
         .hc-list-toggle-btn.na { opacity:0.4; pointer-events:none; }
         /* Bottom action bar */
         .hc-bottom-bar { position:fixed; bottom:0; left:0; right:0; padding:12px; background:var(--bg-card); border-top:1px solid var(--border-input); z-index:50; }
-        .hc-next-btn { width:100%; background:#0a0a0a; color:#fff; border:none; border-radius:4px; padding:16px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:8px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
-        [data-theme="dark"] .hc-next-btn { background:#2E7D32; }
-        .hc-next-btn:active { opacity:0.8; }
-        .hc-next-btn:disabled { opacity:0.3; }
+        .hc-bottom-btns { display:flex; gap:8px; }
+        .hc-nav-btn { flex:1; background:#0a0a0a; color:#fff; border:none; border-radius:4px; padding:16px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:6px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+        .hc-nav-btn.prev { background:var(--bg-tab); color:var(--text-primary); border:1px solid var(--border-input); flex:0.4; }
+        [data-theme="dark"] .hc-nav-btn { background:#2E7D32; }
+        [data-theme="dark"] .hc-nav-btn.prev { background:#1a1a2e; color:#fff; border-color:#333; }
+        .hc-nav-btn:active { opacity:0.8; }
+        .hc-nav-btn:disabled { opacity:0.3; }
         .hole-card-info { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 3px; }
 
         .hole-card-fields { display: flex; flex-direction: column; gap: 8px; }
@@ -1537,9 +1540,12 @@
                 <div id="gpsContainer">${getGpsHtml(i)}</div>
 
                 <div class="hc-bottom-bar">
-                    <button class="hc-next-btn" onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>
-                        ${i === 17 ? 'Hole 18 — Last Hole' : `Next: Hole ${i + 2} →`}
-                    </button>
+                    <div class="hc-bottom-btns">
+                        <button class="hc-nav-btn prev" onclick="cardNav(-1)" ${i === 0 ? 'disabled' : ''}>&#8249; ${i > 0 ? i : ''}</button>
+                        <button class="hc-nav-btn" onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>
+                            ${i === 17 ? 'Hole 18 — Last Hole' : `Next: Hole ${i + 2} →`}
+                        </button>
+                    </div>
                 </div>
 
                 <div class="voice-row" style="padding:0 12px 12px;">
