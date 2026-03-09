@@ -714,6 +714,7 @@
             <button class="more-btn" onclick="toggleStats()">Stats</button>
             <button class="more-btn" onclick="toggleCompare()">Compare</button>
             <button class="more-btn" onclick="openKwacha()" style="background:linear-gradient(135deg,#E65100,#FF8F00);color:white;">Kwacha</button>
+            <button class="more-btn" onclick="openSkins()" style="background:linear-gradient(135deg,#6A1B9A,#8E24AA);color:white;">Skins</button>
             <button class="more-btn" onclick="exportData()">Export</button>
             <button class="more-btn" onclick="document.getElementById('importFile').click()">Import</button>
         </div>
@@ -768,6 +769,20 @@
             </div>
         </div>
         <button class="modal-close" onclick="closeKwacha()">Close</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="skinsModal">
+    <div class="modal wide-modal">
+        <h3>Skins</h3>
+        <div id="skinsResults"></div>
+        <div style="margin-top:14px; padding:12px; background:var(--bg-tab); border-radius:12px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <label style="font-size:0.82rem; font-weight:600; color:var(--text-primary); white-space:nowrap;">Per skin</label>
+                <input type="number" id="skinsStake" value="1000" inputmode="numeric" min="0" style="flex:1; padding:8px; border:2px solid #E0E0E0; border-radius:10px; font-size:0.95rem; font-weight:700; text-align:center; box-sizing:border-box; background:var(--bg-card); color:var(--text-primary); max-width:120px;">
+            </div>
+        </div>
+        <button class="modal-close" onclick="closeSkins()">Close</button>
     </div>
 </div>
 
@@ -2767,6 +2782,186 @@
                     }
                     html += `</div>`;
                 }
+            }
+            html += `</div>`;
+        }
+
+        resultsEl.innerHTML = html;
+    }
+
+    // ==================== SKINS ====================
+    function openSkins() {
+        document.getElementById('skinsModal').classList.add('open');
+        calculateSkins();
+    }
+    function closeSkins() {
+        document.getElementById('skinsModal').classList.remove('open');
+    }
+    document.addEventListener('input', e => {
+        if (e.target.id === 'skinsStake') calculateSkins();
+    });
+
+    function calculateSkins() {
+        const resultsEl = document.getElementById('skinsResults');
+        const players = appData.players;
+
+        if (players.length < 2) {
+            resultsEl.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-secondary); font-size:0.85rem;">Add at least 2 players to play Skins.</div>';
+            return;
+        }
+
+        // Calculate net score per player per hole
+        const playerNets = players.map(p => {
+            const hcp = p.hcp || 0;
+            const base = Math.floor(hcp / 18), rem = hcp % 18;
+            return courseHoles.map((hole, i) => {
+                const gross = parseInt(p.scores[i]);
+                if (isNaN(gross)) return null;
+                const strokes = base + (hole.si <= rem ? 1 : 0);
+                return { gross, net: gross - strokes };
+            });
+        });
+
+        // Determine skins
+        let skinResults = []; // per hole: { winner idx or null, value, carryover }
+        let carryover = 0;
+        let playerSkins = players.map(() => 0);
+
+        for (let h = 0; h < 18; h++) {
+            const scores = players.map((p, idx) => playerNets[idx][h]);
+            const allPlayed = scores.every(s => s !== null);
+
+            if (!allPlayed) {
+                skinResults.push({ hole: h, status: 'no-scores', carryover });
+                continue;
+            }
+
+            carryover++;
+            const nets = scores.map(s => s.net);
+            const bestNet = Math.min(...nets);
+            const winners = nets.reduce((acc, n, idx) => n === bestNet ? [...acc, idx] : acc, []);
+
+            if (winners.length === 1) {
+                playerSkins[winners[0]] += carryover;
+                skinResults.push({
+                    hole: h, status: 'won', winner: winners[0],
+                    winnerName: players[winners[0]].name,
+                    value: carryover, scores
+                });
+                carryover = 0;
+            } else {
+                skinResults.push({
+                    hole: h, status: 'tied', tiedPlayers: winners.map(i => players[i].name),
+                    value: carryover, scores
+                });
+            }
+        }
+
+        const stake = parseInt(document.getElementById('skinsStake').value) || 0;
+        const totalSkins = playerSkins.reduce((a, b) => a + b, 0);
+
+        // Render hole-by-hole results
+        let html = '';
+
+        // Summary at top
+        html += `<div style="margin-bottom:12px; padding:12px; background:var(--bg-tab); border-radius:12px;">`;
+        html += `<div style="font-weight:800; font-size:0.9rem; margin-bottom:8px; color:var(--text-primary);">Standings</div>`;
+        const sortedPlayers = players.map((p, i) => ({ name: p.name, skins: playerSkins[i], idx: i }))
+            .sort((a, b) => b.skins - a.skins);
+
+        sortedPlayers.forEach((p, rank) => {
+            const isLeader = rank === 0 && p.skins > 0;
+            const color = isLeader ? '#1B5E20' : 'var(--text-primary)';
+            const weight = isLeader ? '700' : '400';
+            const winnings = stake > 0 ? ` (${(p.skins * stake).toLocaleString()})` : '';
+            html += `<div style="display:flex; justify-content:space-between; padding:5px 0; font-size:0.9rem; color:${color}; font-weight:${weight};">
+                <span>${p.name}</span>
+                <span>${p.skins} skin${p.skins !== 1 ? 's' : ''}${winnings}</span>
+            </div>`;
+        });
+
+        if (carryover > 0) {
+            html += `<div style="font-size:0.8rem; color:#E65100; font-weight:600; margin-top:6px;">${carryover} skin${carryover !== 1 ? 's' : ''} carrying over</div>`;
+        }
+        html += `</div>`;
+
+        // Hole by hole
+        html += `<div style="padding:12px; background:var(--bg-tab); border-radius:12px;">`;
+        html += `<div style="font-weight:800; font-size:0.9rem; margin-bottom:8px; color:var(--text-primary);">Hole by Hole</div>`;
+
+        skinResults.forEach(r => {
+            if (r.status === 'no-scores') return;
+
+            const holeNum = r.hole + 1;
+            const par = courseHoles[r.hole].par;
+
+            if (r.status === 'won') {
+                const s = r.scores[r.winner];
+                const valText = r.value > 1 ? `${r.value} skins!` : '1 skin';
+                html += `<div style="display:flex; justify-content:space-between; padding:5px 0; font-size:0.82rem; border-bottom:1px solid rgba(0,0,0,0.05);">
+                    <span><strong>#${holeNum}</strong> (Par ${par})</span>
+                    <span style="color:#1B5E20; font-weight:700;">${r.winnerName} wins ${valText}</span>
+                </div>`;
+            } else if (r.status === 'tied') {
+                html += `<div style="display:flex; justify-content:space-between; padding:5px 0; font-size:0.82rem; border-bottom:1px solid rgba(0,0,0,0.05); color:#888;">
+                    <span><strong>#${holeNum}</strong> (Par ${par})</span>
+                    <span>Tied — carries over</span>
+                </div>`;
+            }
+        });
+        html += `</div>`;
+
+        // Settlement if stake > 0 and skins exist
+        if (stake > 0 && totalSkins > 0) {
+            // Each player pays stake * totalSkins into the pot, winners take their share
+            // Simpler: each skin is worth stake, paid by each losing player
+            // Actually simplest: each skin won = stake from each other player
+            const numPlayers = players.length;
+            let balances = players.map(() => 0);
+
+            // For each skin won, the winner gets stake from each other player
+            players.forEach((p, i) => {
+                const skinsWon = playerSkins[i];
+                const skinsLost = totalSkins - skinsWon;
+                balances[i] = (skinsWon * (numPlayers - 1) * stake) - (skinsLost * stake);
+            });
+
+            html += `<div style="padding:14px; background:linear-gradient(135deg,#E8F5E9,#FFF8E1); border-radius:12px; margin-top:12px;">`;
+            html += `<div style="font-weight:800; font-size:0.9rem; margin-bottom:8px; color:#1B5E20;">Settlement</div>`;
+            html += `<div style="font-size:0.82rem; color:#555; margin-bottom:10px;">${totalSkins} skins at ${stake.toLocaleString()} each</div>`;
+
+            let settlements = players.map((p, i) => ({ name: p.name, balance: balances[i] }));
+            settlements.sort((a, b) => b.balance - a.balance);
+
+            settlements.forEach(s => {
+                const color = s.balance > 0 ? '#1B5E20' : s.balance < 0 ? '#C62828' : '#555';
+                const label = s.balance > 0 ? 'wins' : s.balance < 0 ? 'loses' : 'even';
+                html += `<div style="display:flex; justify-content:space-between; padding:5px 0; font-size:0.9rem; font-weight:700; color:${color};">
+                    <span>${s.name}</span>
+                    <span>${label} ${Math.abs(s.balance).toLocaleString()}</span>
+                </div>`;
+            });
+
+            // Who pays who
+            const debtors = settlements.filter(s => s.balance < 0).map(s => ({...s, owed: -s.balance}));
+            const creditors = settlements.filter(s => s.balance > 0).map(s => ({...s, owed: s.balance}));
+            if (debtors.length > 0 && creditors.length > 0) {
+                html += `<div style="margin-top:10px; padding-top:10px; border-top:2px solid rgba(0,0,0,0.1);">`;
+                html += `<div style="font-weight:700; font-size:0.85rem; margin-bottom:8px; color:#333;">Who pays who</div>`;
+                let di = 0, ci = 0;
+                while (di < debtors.length && ci < creditors.length) {
+                    const amount = Math.min(debtors[di].owed, creditors[ci].owed);
+                    if (amount > 0) {
+                        html += `<div style="font-size:0.9rem; padding:6px 10px; margin-bottom:4px; background:#FFF; border-radius:8px; color:#333; font-weight:600; border:1px solid #E0E0E0;">
+                            ${debtors[di].name} &#8594; ${creditors[ci].name}: <strong>${amount.toLocaleString()}</strong>
+                        </div>`;
+                    }
+                    debtors[di].owed -= amount;
+                    creditors[ci].owed -= amount;
+                    if (debtors[di].owed === 0) di++;
+                    if (creditors[ci].owed === 0) ci++;
+                }
+                html += `</div>`;
             }
             html += `</div>`;
         }
