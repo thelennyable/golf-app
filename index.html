@@ -712,6 +712,7 @@
             <button class="more-btn" onclick="toggleHistory()">History</button>
             <button class="more-btn" onclick="toggleStats()">Stats</button>
             <button class="more-btn" onclick="toggleCompare()">Compare</button>
+            <button class="more-btn" onclick="openNassau()" style="background:linear-gradient(135deg,#E65100,#FF8F00);color:white;">Nassau</button>
             <button class="more-btn" onclick="exportData()">Export</button>
             <button class="more-btn" onclick="document.getElementById('importFile').click()">Import</button>
         </div>
@@ -752,6 +753,28 @@
         <a id="waShareLink" href="#" target="_blank" style="display:block; width:100%; box-sizing:border-box; padding:12px; background:#25D366; color:white; text-align:center; border-radius:6px; font-weight:bold; font-size:0.9rem; text-decoration:none; margin-top:10px;">Open in WhatsApp</a>
         <button class="btn-copy-img" style="width:100%; margin-top:6px;" onclick="copyShare()">Copy Text</button>
         <button class="modal-close" onclick="closeShare()">Close</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="nassauModal">
+    <div class="modal wide-modal">
+        <h3>Nassau Betting</h3>
+        <div id="nassauSetup">
+            <div style="margin-bottom:12px;">
+                <label style="font-size:0.82rem; font-weight:600; color:var(--text-primary);">Stake per bet</label>
+                <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                    <input type="number" id="nassauStake" value="5000" inputmode="numeric" min="0" style="flex:1; padding:10px; border:2px solid #E0E0E0; border-radius:10px; font-size:1rem; font-weight:700; text-align:center; box-sizing:border-box; background:var(--bg-card); color:var(--text-primary);">
+                    <span style="font-size:0.8rem; color:var(--text-secondary); font-weight:600;">x 3 bets</span>
+                </div>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5; margin-bottom:12px; padding:10px; background:var(--bg-tab); border-radius:10px;">
+                Each player puts in <strong id="nassauPerPlayer">15,000</strong> (stake x 3).<br>
+                Lowest net wins each bet. Ties split the pot.
+            </div>
+        </div>
+        <div id="nassauResults"></div>
+        <button class="modal-btn" onclick="calculateNassau()" style="background:linear-gradient(135deg,#E65100,#FF8F00);">Calculate Results</button>
+        <button class="modal-close" onclick="closeNassau()">Close</button>
     </div>
 </div>
 
@@ -2580,6 +2603,168 @@
         if (!confirm_) return;
         setGreenMarker(currentCourse, holeIdx, position, gpsCurrentPos.lat, gpsCurrentPos.lng);
         if (cardViewActive) renderHoleCard();
+    }
+
+    // ==================== NASSAU BETTING ====================
+    function openNassau() {
+        document.getElementById('nassauModal').classList.add('open');
+        updateNassauPerPlayer();
+        calculateNassau();
+    }
+    function closeNassau() {
+        document.getElementById('nassauModal').classList.remove('open');
+    }
+    function updateNassauPerPlayer() {
+        const stake = parseInt(document.getElementById('nassauStake').value) || 0;
+        document.getElementById('nassauPerPlayer').textContent = (stake * 3).toLocaleString();
+    }
+    document.addEventListener('input', e => {
+        if (e.target.id === 'nassauStake') updateNassauPerPlayer();
+    });
+
+    function getPlayerNetPerHole(player) {
+        const hcp = player.hcp || 0;
+        const base = Math.floor(hcp / 18), rem = hcp % 18;
+        return courseHoles.map((hole, i) => {
+            const gross = parseInt(player.scores[i]);
+            if (isNaN(gross)) return null;
+            const strokes = base + (hole.si <= rem ? 1 : 0);
+            return gross - strokes;
+        });
+    }
+
+    function calculateNassau() {
+        const resultsEl = document.getElementById('nassauResults');
+        if (appData.players.length < 2) {
+            resultsEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); font-size:0.85rem;">Add at least 2 players to use Nassau.</p>';
+            return;
+        }
+
+        const stake = parseInt(document.getElementById('nassauStake').value) || 0;
+        const players = appData.players;
+        const nets = players.map(p => getPlayerNetPerHole(p));
+
+        // Calculate net totals for front 9, back 9, overall
+        function sumRange(netArr, start, end) {
+            let total = 0, holes = 0;
+            for (let i = start; i < end; i++) {
+                if (netArr[i] !== null) { total += netArr[i]; holes++; }
+            }
+            return { total, holes };
+        }
+
+        const segments = [
+            { name: 'Front 9', start: 0, end: 9 },
+            { name: 'Back 9', start: 9, end: 18 },
+            { name: 'Overall', start: 0, end: 18 }
+        ];
+
+        const potPerBet = stake * players.length;
+        let playerBalances = players.map(() => 0);
+        let segmentResults = [];
+
+        segments.forEach(seg => {
+            let entries = players.map((p, idx) => {
+                const s = sumRange(nets[idx], seg.start, seg.end);
+                return { name: p.name, idx, net: s.total, holes: s.holes };
+            });
+
+            const maxHoles = seg.end - seg.start;
+            const qualified = entries.filter(e => e.holes === maxHoles);
+
+            let result = { name: seg.name, pot: potPerBet, winners: [], entries };
+
+            if (qualified.length === 0) {
+                result.status = 'incomplete';
+            } else {
+                const bestNet = Math.min(...qualified.map(e => e.net));
+                const winners = qualified.filter(e => e.net === bestNet);
+                result.winners = winners;
+                result.status = 'decided';
+
+                const share = potPerBet / winners.length;
+                const costPerPlayer = stake;
+                winners.forEach(w => {
+                    playerBalances[w.idx] += share - costPerPlayer;
+                });
+                entries.forEach(e => {
+                    if (!winners.find(w => w.idx === e.idx)) {
+                        playerBalances[e.idx] -= costPerPlayer;
+                    }
+                });
+            }
+
+            segmentResults.push(result);
+        });
+
+        // Render results
+        let html = '';
+
+        segmentResults.forEach(seg => {
+            html += `<div style="margin-bottom:14px; padding:12px; background:var(--bg-tab); border-radius:12px;">`;
+            html += `<div style="font-weight:700; font-size:0.85rem; margin-bottom:8px; color:var(--text-primary);">${seg.name} <span style="float:right; font-weight:600; color:var(--text-secondary);">Pot: ${seg.pot.toLocaleString()}</span></div>`;
+
+            if (seg.status === 'incomplete') {
+                html += `<div style="font-size:0.8rem; color:var(--text-secondary); font-style:italic;">Not all holes completed yet</div>`;
+            } else {
+                seg.entries.forEach(e => {
+                    const isWinner = seg.winners.find(w => w.idx === e.idx);
+                    const maxH = seg.name === 'Overall' ? 18 : 9;
+                    const netDisplay = e.holes === maxH ? e.net : `${e.net} (${e.holes}h)`;
+                    html += `<div style="display:flex; justify-content:space-between; padding:4px 0; font-size:0.82rem; ${isWinner ? 'font-weight:700; color:#2E7D32;' : 'color:var(--text-primary);'}">
+                        <span>${isWinner ? '🏆 ' : ''}${e.name}</span>
+                        <span>Net ${netDisplay}</span>
+                    </div>`;
+                });
+            }
+            html += `</div>`;
+        });
+
+        // Settlement summary
+        html += `<div style="padding:14px; background:linear-gradient(135deg,#E8F5E9,#FFF8E1); border-radius:12px; margin-bottom:8px;">`;
+        html += `<div style="font-weight:800; font-size:0.85rem; margin-bottom:10px; color:#1B5E20;">Settlement</div>`;
+
+        const hasResults = segmentResults.some(s => s.status === 'decided');
+        if (!hasResults) {
+            html += `<div style="font-size:0.8rem; color:var(--text-secondary); font-style:italic;">Complete holes to see settlement</div>`;
+        } else {
+            // Sort by balance descending
+            let settlements = players.map((p, i) => ({ name: p.name, balance: playerBalances[i] }));
+            settlements.sort((a, b) => b.balance - a.balance);
+
+            settlements.forEach(s => {
+                const color = s.balance > 0 ? '#2E7D32' : s.balance < 0 ? '#C62828' : '#666';
+                const sign = s.balance > 0 ? '+' : '';
+                html += `<div style="display:flex; justify-content:space-between; padding:5px 0; font-size:0.9rem; font-weight:700; color:${color};">
+                    <span>${s.name}</span>
+                    <span>${sign}${s.balance.toLocaleString()}</span>
+                </div>`;
+            });
+
+            // Who pays who
+            html += `<div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0,0,0,0.1);">`;
+            html += `<div style="font-weight:700; font-size:0.8rem; margin-bottom:6px; color:#555;">Who pays who:</div>`;
+            const debtors = settlements.filter(s => s.balance < 0).map(s => ({...s, owed: -s.balance}));
+            const creditors = settlements.filter(s => s.balance > 0).map(s => ({...s, owed: s.balance}));
+
+            let di = 0, ci = 0;
+            while (di < debtors.length && ci < creditors.length) {
+                const amount = Math.min(debtors[di].owed, creditors[ci].owed);
+                if (amount > 0) {
+                    html += `<div style="font-size:0.82rem; padding:3px 0; color:var(--text-primary);">
+                        ${debtors[di].name} → ${creditors[ci].name}: <strong>${amount.toLocaleString()}</strong>
+                    </div>`;
+                }
+                debtors[di].owed -= amount;
+                creditors[ci].owed -= amount;
+                if (debtors[di].owed === 0) di++;
+                if (creditors[ci].owed === 0) ci++;
+            }
+            html += `</div>`;
+        }
+        html += `</div>`;
+
+        resultsEl.innerHTML = html;
     }
 
     // Init
