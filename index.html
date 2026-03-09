@@ -446,25 +446,25 @@
         /* Hole tabs - horizontal scrollable */
         .hc-hole-tabs { display:flex; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--border-input); padding:0 12px; gap:0; background:var(--bg-card); }
         .hc-hole-tabs::-webkit-scrollbar { display:none; }
-        .hc-hole-tab { padding:12px 14px; font-size:0.75rem; font-weight:500; color:var(--text-muted); white-space:nowrap; cursor:pointer; position:relative; border:none; background:none; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+        .hc-hole-tab { padding:10px 12px; font-size:0.72rem; font-weight:500; color:var(--text-muted); white-space:nowrap; cursor:pointer; position:relative; border:none; background:none; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
         .hc-hole-tab.active { color:var(--text-heading); font-weight:700; }
         .hc-hole-tab.active::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--text-heading); }
         .hc-hole-tab.scored { color:var(--text-secondary); }
         .hc-hole-tab.scored::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:#2E7D32; margin-right:4px; vertical-align:middle; }
         /* Hole hero header */
-        .hc-hero { text-align:center; padding:20px 16px 8px; }
-        .hc-hero-hole { font-size:2.2rem; font-weight:700; color:var(--text-heading); line-height:1; letter-spacing:-1px; }
-        .hc-hero-badges { display:flex; gap:24px; justify-content:center; margin-top:8px; }
-        .hc-hero-badge-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:1px; }
-        .hc-hero-badge-val { font-size:1rem; font-weight:600; color:var(--text-heading); }
+        .hc-hero { text-align:center; padding:10px 16px 4px; }
+        .hc-hero-hole { font-size:1.6rem; font-weight:700; color:var(--text-heading); line-height:1; letter-spacing:-0.5px; }
+        .hc-hero-badges { display:flex; gap:20px; justify-content:center; margin-top:4px; }
+        .hc-hero-badge-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:0; }
+        .hc-hero-badge-val { font-size:0.9rem; font-weight:600; color:var(--text-heading); }
         /* Score dark card */
-        .hc-score-card { margin:12px 12px; background:#0a0a0a; border-radius:6px; padding:20px; display:flex; flex-direction:column; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+        .hc-score-card { margin:8px 12px; background:#0a0a0a; border-radius:6px; padding:16px; display:flex; flex-direction:column; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
         [data-theme="dark"] .hc-score-card { background:#1a1a2e; border:1px solid #333; }
-        .hc-score-card-label { font-size:0.85rem; color:#a0a0a0; font-weight:500; margin-bottom:16px; }
-        .hc-score-card-stepper { display:flex; align-items:center; justify-content:center; gap:24px; width:100%; }
+        .hc-score-card-label { font-size:0.8rem; color:#a0a0a0; font-weight:500; margin-bottom:10px; }
+        .hc-score-card-stepper { display:flex; align-items:center; justify-content:center; gap:20px; width:100%; }
         .hc-score-card-btn { width:56px; height:56px; border-radius:50%; background:transparent; border:1px solid #333; color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.5rem; font-weight:600; transition:background 0.15s; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
         .hc-score-card-btn:active { background:#333; }
-        .hc-score-card-val { font-size:3.5rem; font-weight:700; color:#fff; line-height:1; width:80px; text-align:center; font-variant-numeric:tabular-nums; letter-spacing:-2px; }
+        .hc-score-card-val { font-size:2.8rem; font-weight:700; color:#fff; line-height:1; width:70px; text-align:center; font-variant-numeric:tabular-nums; letter-spacing:-1px; }
         .hc-score-card-val.hc-not-entered { color:#555; }
         .hc-score-card-result { display:flex; gap:16px; margin-top:12px; font-size:0.8rem; color:#a0a0a0; }
         .hc-score-card-result .pts { color:#A5D6A7; font-weight:700; }
@@ -474,7 +474,7 @@
         .hc-score-card-result .rel.even { color:#fff; }
         /* List items for secondary inputs */
         .hc-list { border-top:1px solid var(--border-input); margin-top:8px; }
-        .hc-list-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border-input); background:var(--bg-card); }
+        .hc-list-item { display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid var(--border-input); background:var(--bg-card); }
         .hc-list-label { font-size:0.85rem; font-weight:500; color:var(--text-primary); }
         .hc-list-sub { font-size:0.72rem; color:var(--text-muted); }
         .hc-list-stepper { display:flex; align-items:center; background:var(--bg-tab); border-radius:4px; border:1px solid var(--border-input); overflow:hidden; }
@@ -490,11 +490,8 @@
         .hc-list-toggle-btn.na { opacity:0.4; pointer-events:none; }
         /* Bottom action bar */
         .hc-bottom-bar { position:fixed; bottom:0; left:0; right:0; padding:12px; background:var(--bg-card); border-top:1px solid var(--border-input); z-index:50; }
-        .hc-bottom-btns { display:flex; gap:8px; }
-        .hc-nav-btn { flex:1; background:#0a0a0a; color:#fff; border:none; border-radius:4px; padding:16px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:6px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
-        .hc-nav-btn.prev { background:var(--bg-tab); color:var(--text-primary); border:1px solid var(--border-input); flex:0.4; }
+        .hc-nav-btn { width:100%; background:#0a0a0a; color:#fff; border:none; border-radius:4px; padding:16px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; justify-content:center; align-items:center; gap:6px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
         [data-theme="dark"] .hc-nav-btn { background:#2E7D32; }
-        [data-theme="dark"] .hc-nav-btn.prev { background:#1a1a2e; color:#fff; border-color:#333; }
         .hc-nav-btn:active { opacity:0.8; }
         .hc-nav-btn:disabled { opacity:0.3; }
         .hole-card-info { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 3px; }
@@ -1540,12 +1537,9 @@
                 <div id="gpsContainer">${getGpsHtml(i)}</div>
 
                 <div class="hc-bottom-bar">
-                    <div class="hc-bottom-btns">
-                        <button class="hc-nav-btn prev" onclick="cardNav(-1)" ${i === 0 ? 'disabled' : ''}>&#8249; ${i > 0 ? i : ''}</button>
-                        <button class="hc-nav-btn" onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>
-                            ${i === 17 ? 'Hole 18 — Last Hole' : `Next: Hole ${i + 2} →`}
-                        </button>
-                    </div>
+                    <button class="hc-nav-btn" onclick="cardNav(1)" ${i === 17 ? 'disabled' : ''}>
+                        ${i === 17 ? 'Hole 18 — Last Hole' : `Next: Hole ${i + 2} →`}
+                    </button>
                 </div>
 
                 <div class="voice-row" style="padding:0 12px 12px;">
