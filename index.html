@@ -273,10 +273,10 @@
         .res-par.under { color: #2E7D32; background: #E8F5E9; }
         .res-par.even { color: #757575; background: #F5F5F5; }
 
-        .col-hole { width: 6%; }
-        .col-info { width: 6%; }
-        .col-input { width: 15%; background: var(--bg-input-col); border-left: 1px solid var(--border-col); }
-        .col-res { width: 10%; }
+        .col-hole { width: 8%; }
+        .col-info { width: 8%; }
+        .col-input { width: 18%; background: var(--bg-input-col); border-left: 1px solid var(--border-col); }
+        .col-res { width: 12%; }
 
         /* SCORE SUMMARY BAR */
         .score-summary { display: flex; gap: 4px; padding: 8px 10px; background: var(--bg-score-summary); border-bottom: 1px solid #EEEEEE; flex-wrap: wrap; justify-content: center; }
@@ -1190,7 +1190,7 @@
                     <th class="col-input">Putts</th><th class="col-input col-hideable">GIR</th>
                     <th class="col-input col-hideable">FWY</th>
                     <th class="col-res" style="border-left:2px solid var(--border-col-thick)">Pts</th>
-                    <th class="col-res">+/-</th>
+                    <th class="col-res col-hideable">+/-</th>
                 </tr></thead><tbody>`;
 
             for (let i = start; i <= end; i++) {
@@ -1219,7 +1219,7 @@
                     </td>
                     ${fwyCell}
                     <td id="res-pts-${i}" class="res-pts" style="border-left:2px solid var(--border-col-thick)"></td>
-                    <td id="res-rel-${i}" class="res-par"></td>
+                    <td id="res-rel-${i}" class="res-par col-hideable"></td>
                 </tr>`;
             }
             html += `</tbody></table></div>
