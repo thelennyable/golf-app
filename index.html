@@ -2850,9 +2850,9 @@
         if (!green.back) missing.push('back');
         let markHtml = '';
         if (missing.length > 0) {
-            markHtml = `<div style="display:flex; gap:6px; margin-top:8px;">${missing.map(p =>
-                `<button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'${p}')">Mark ${p[0].toUpperCase() + p.slice(1)}</button>`
-            ).join('')}</div>`;
+            markHtml = `<div style="margin-top:10px;"><div style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-bottom:6px;">Mark remaining positions:</div><div style="display:flex; gap:6px;">${missing.map(p =>
+                `<button class="gps-mark-btn" style="flex:1; padding:12px; font-size:0.9rem; font-weight:600; background:#1b5e20; color:#fff; border:none; border-radius:8px;" onclick="markGreen(${holeIdx},'${p}')">📍 ${p[0].toUpperCase() + p.slice(1)}</button>`
+            ).join('')}</div></div>`;
         } else {
             markHtml = `<div style="text-align:center; margin-top:6px;">
                 <button class="gps-mark-btn" style="font-size:0.75rem; padding:6px 14px; opacity:0.7;" onclick="showRemarkOptions(${holeIdx})">Re-mark</button>
