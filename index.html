@@ -915,6 +915,14 @@
     </div>
 </div>
 
+<div class="modal-overlay" id="historyDetailModal" onclick="if(event.target===this)closeHistoryDetail()">
+    <div class="modal wide-modal">
+        <h3 id="historyDetailTitle">Scorecard</h3>
+        <div id="historyDetailContent" style="overflow-x:auto;"></div>
+        <button class="modal-close" onclick="closeHistoryDetail()">Close</button>
+    </div>
+</div>
+
 <div class="modal-overlay" id="ratingModal" onclick="if(event.target===this)closeRating()">
     <div class="modal wide-modal">
         <h3>Round Rating</h3>
@@ -2098,11 +2106,22 @@
     function saveToHistory(s, date) {
         if (s.holes === 0) return;
         let history = JSON.parse(localStorage.getItem('golfHistory')||'[]');
-        // Prevent duplicate save for same round (same date, course, gross, pts)
         const isDup = history.some(r => r.date === date && r.course === currentCourse && r.gross === s.gross && r.pts === s.pts);
         if (isDup) return;
-        history.unshift({ date, course: currentCourse, hcp:s.hcp, gross:s.gross, pts:s.pts, putts:s.putts, threePutts: s.threePutts || 0, gir:s.gir, fwy: s.fwy || 0 });
-        if (history.length > 50) history = history.slice(0,50);
+        // Save full hole-by-hole data
+        const player = getActivePlayer();
+        const holes = courseHoles.map((hole, i) => ({
+            par: hole.par, si: hole.si,
+            score: player.scores[i] || '', putts: player.putts[i] || '',
+            gir: player.gir[i] || '', fwy: player.fairways[i] || '',
+            note: (player.notes && player.notes[i]) || ''
+        }));
+        history.unshift({
+            date, course: currentCourse, hcp: s.hcp,
+            gross: s.gross, pts: s.pts, putts: s.putts, threePutts: s.threePutts || 0,
+            gir: s.gir, fwy: s.fwy || 0, holes
+        });
+        if (history.length > 50) history = history.slice(0, 50);
         localStorage.setItem('golfHistory', JSON.stringify(history));
     }
 
@@ -2212,8 +2231,9 @@
         if (!history.length) { panel.innerHTML = '<div class="no-history">No rounds saved yet.<br>Save a round to see history here.</div>'; return; }
         panel.innerHTML = history.map((r, idx) => {
             const color = PLAYER_COLORS[idx % PLAYER_COLORS.length];
-            return `<div class="history-item" style="border-left-color:${color}">
-                <div class="h-date">${r.date}</div>
+            const hasHoles = r.holes && r.holes.length > 0;
+            return `<div class="history-item" style="border-left-color:${color}; ${hasHoles ? 'cursor:pointer;' : ''}" ${hasHoles ? `onclick="showHistoryDetail(${idx})"` : ''}>
+                <div class="h-date">${r.date}${hasHoles ? ' <span style="font-size:0.7rem; color:var(--text-muted);">tap for scorecard</span>' : ''}</div>
                 <div class="h-course">${r.course} · Hcp ${r.hcp}</div>
                 <div class="h-stats">
                     <span class="h-stat">Gross <strong>${r.gross}</strong></span>
@@ -2225,6 +2245,71 @@
                 </div>
             </div>`;
         }).join('');
+    }
+
+    function showHistoryDetail(idx) {
+        const history = JSON.parse(localStorage.getItem('golfHistory')||'[]');
+        const r = history[idx];
+        if (!r || !r.holes) return;
+
+        const hcp = r.hcp || 0, base = Math.floor(hcp/18), rem = hcp%18;
+        document.getElementById('historyDetailTitle').textContent = `${r.course} — ${r.date}`;
+
+        let html = `<div style="margin-bottom:10px; font-size:0.8rem; color:var(--text-muted);">Handicap: ${r.hcp} · Gross: ${r.gross} · Net: ${r.gross - (r.pts ? '' : '')} · Points: ${r.pts}</div>`;
+
+        const buildNine = (start, label) => {
+            let t = { score:0, putts:0, pts:0, holes:0, threePutts:0 };
+            let rows = '';
+            for (let i = start; i < start + 9; i++) {
+                const h = r.holes[i];
+                if (!h) continue;
+                const g = parseInt(h.score);
+                const p = parseInt(h.putts);
+                const diff = !isNaN(g) ? g - h.par : null;
+                const strokesOnHole = base + (h.si <= rem ? 1 : 0);
+                const pts = !isNaN(g) ? Math.max(0, 2 + (h.par - (g - strokesOnHole))) : '';
+                if (!isNaN(g)) { t.score += g; t.holes++; }
+                if (!isNaN(p)) { t.putts += p; if (p >= 3) t.threePutts++; }
+                if (pts !== '') t.pts += pts;
+
+                const diffColor = diff === null ? '' : diff < 0 ? 'color:#1565C0;font-weight:700' : diff === 0 ? 'color:#2E7D32;font-weight:700' : diff > 0 ? 'color:#C62828;font-weight:700' : '';
+                const diffLabel = diff === null ? '' : diff === 0 ? 'E' : (diff > 0 ? '+'+diff : diff);
+                rows += `<tr>
+                    <td style="font-weight:600;">${i+1}</td>
+                    <td>${h.par}</td><td>${h.si}</td>
+                    <td style="font-weight:700;${diffColor}">${h.score||'—'}</td>
+                    <td style="${diffColor}">${diffLabel}</td>
+                    <td>${h.putts||'—'}</td>
+                    <td>${pts!==''?pts:'—'}</td>
+                    <td>${h.gir==='1'?'✓':h.gir==='0'?'✗':'—'}</td>
+                    <td>${h.par===3?'—':h.fwy==='1'?'✓':h.fwy==='0'?'✗':'—'}</td>
+                </tr>`;
+            }
+            rows += `<tr style="font-weight:800; background:var(--bg-nine-summary);">
+                <td colspan="3">${label}</td>
+                <td>${t.score||'—'}</td><td></td>
+                <td>${t.putts||'—'}</td>
+                <td>${t.pts||'—'}</td><td></td><td></td>
+            </tr>`;
+            return rows;
+        };
+
+        html += `<table style="width:100%; border-collapse:collapse; font-size:0.75rem; text-align:center;">
+            <thead><tr style="background:var(--bg-tab); font-weight:700; font-size:0.65rem; text-transform:uppercase;">
+                <th style="padding:6px 3px;">H</th><th>Par</th><th>SI</th><th>Score</th><th>+/-</th><th>Putts</th><th>Pts</th><th>GIR</th><th>FWY</th>
+            </tr></thead>
+            <tbody style="font-size:0.8rem;">
+                ${buildNine(0, 'OUT')}
+                ${buildNine(9, 'IN')}
+            </tbody>
+        </table>`;
+
+        document.getElementById('historyDetailContent').innerHTML = html;
+        document.getElementById('historyDetailModal').classList.add('open');
+    }
+
+    function closeHistoryDetail() {
+        document.getElementById('historyDetailModal').classList.remove('open');
     }
 
     function generateCommentary(player) {
