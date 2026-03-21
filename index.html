@@ -830,15 +830,6 @@
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
 </div>
 
-<div class="note-overlay" id="noteOverlay" onclick="if(event.target===this)closeNoteOverlay()">
-    <div class="note-popup">
-        <div class="note-popup-header">
-            <span class="note-popup-title" id="notePopupTitle">Hole 1 — Note</span>
-            <button class="note-popup-close" onclick="closeNoteOverlay()">Done</button>
-        </div>
-        <textarea id="notePopupInput" placeholder="Add a note for this hole..."></textarea>
-    </div>
-</div>
 
 <div class="modal-overlay" id="friendsModal">
     <div class="modal">
@@ -1201,7 +1192,6 @@
                     <th class="col-input col-hideable">FWY</th>
                     <th class="col-res col-hideable" style="border-left:2px solid var(--border-col-thick)">Pts</th>
                     <th class="col-res">+/-</th>
-                    <th class="col-notes">Notes</th>
                 </tr></thead><tbody>`;
 
             for (let i = start; i <= end; i++) {
@@ -1231,9 +1221,6 @@
                     ${fwyCell}
                     <td id="res-pts-${i}" class="res-pts col-hideable" style="border-left:2px solid var(--border-col-thick)"></td>
                     <td id="res-rel-${i}" class="res-par"></td>
-                    <td class="col-notes" onclick="openNoteOverlay(${i})" style="cursor:pointer;">
-                        <span class="note-input" id="note-display-${i}">${player.notes[i] ? player.notes[i] : '<span style=&quot;color:var(--text-note-placeholder);font-style:italic&quot;>note</span>'}</span>
-                    </td>
                 </tr>`;
             }
             html += `</tbody></table></div>
@@ -1569,13 +1556,6 @@
                             <div class="hc-list-sub">${fwyVal === '1' ? 'Hit' : fwyVal === '0' ? 'Missed' : 'Not recorded'}</div>
                         </div>
                         <button style="min-width:80px; padding:10px 18px; border-radius:8px; font-size:0.85rem; font-weight:600; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; border:none; ${fwyVal === '1' ? 'background:#2E7D32; color:#fff;' : fwyVal === '0' ? 'background:#c62828; color:#fff;' : 'background:var(--bg-tab); color:var(--text-secondary); border:1px solid var(--border-input);'}" onclick="cycleFairway(${i})">${fwyVal === '1' ? '&#10003; Hit' : fwyVal === '0' ? '&#10007; Miss' : '— Tap'}</button>
-                    </div>` : ''}
-                    ${isMe ? `<div class="hc-list-item">
-                        <div>
-                            <div class="hc-list-label">Note</div>
-                            ${note ? `<div class="hc-list-sub">${note.substring(0, 30)}${note.length > 30 ? '...' : ''}</div>` : ''}
-                        </div>
-                        <button style="background:none; border:1px solid var(--border-input); border-radius:4px; padding:8px 16px; font-size:0.8rem; font-weight:500; color:var(--text-secondary); cursor:pointer;" onclick="openNoteOverlay(${i})">${note ? 'Edit' : 'Add'}</button>
                     </div>` : ''}
                 </div>
 
