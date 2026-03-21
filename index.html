@@ -449,13 +449,16 @@
         .hc-hole-tab.active { color:var(--text-heading); font-weight:700; }
         .hc-hole-tab.active::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--text-heading); }
         .hc-hole-tab.scored { color:var(--text-secondary); }
-        .hc-hole-tab.scored::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:#2E7D32; margin-right:4px; vertical-align:middle; }
+        .hc-hole-tab.scored::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:var(--dot-color, #2E7D32); margin-right:4px; vertical-align:middle; }
         /* Hole hero header */
-        .hc-hero { text-align:center; padding:10px 16px 4px; }
-        .hc-hero-hole { font-size:1.6rem; font-weight:700; color:var(--text-heading); line-height:1; letter-spacing:-0.5px; }
-        .hc-hero-badges { display:flex; gap:20px; justify-content:center; margin-top:4px; }
-        .hc-hero-badge-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:0; }
-        .hc-hero-badge-val { font-size:0.9rem; font-weight:600; color:var(--text-heading); }
+        .hc-hero { text-align:center; padding:14px 16px 10px; border-radius:0 0 16px 16px; margin:0 12px 4px; }
+        .hc-hero.par-3 { background:linear-gradient(135deg, #0d47a1 0%, #1565C0 100%); }
+        .hc-hero.par-4 { background:linear-gradient(135deg, #1b5e20 0%, #2E7D32 100%); }
+        .hc-hero.par-5 { background:linear-gradient(135deg, #4A148C 0%, #7B1FA2 100%); }
+        .hc-hero-hole { font-size:1.6rem; font-weight:700; color:#fff; line-height:1; letter-spacing:-0.5px; }
+        .hc-hero-badges { display:flex; gap:20px; justify-content:center; margin-top:6px; }
+        .hc-hero-badge-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.5px; color:rgba(255,255,255,0.6); margin-bottom:0; }
+        .hc-hero-badge-val { font-size:0.9rem; font-weight:600; color:#fff; }
         /* Score dark card */
         .hc-score-card { margin:8px 12px; background:#0a0a0a; border-radius:6px; padding:16px; display:flex; flex-direction:column; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
         [data-theme="dark"] .hc-score-card { background:#1a1a2e; border:1px solid #333; }
@@ -1485,7 +1488,18 @@
         for (let t = 0; t < 18; t++) {
             const scored = player.scores[t] !== '' && player.scores[t] !== undefined;
             const active = t === i;
-            holeTabs += `<button class="hc-hole-tab ${active ? 'active' : ''} ${scored && !active ? 'scored' : ''}" onclick="currentCardHole=${t};renderHoleCard();">Hole ${t+1}</button>`;
+            let dotColor = '#2E7D32';
+            if (scored) {
+                const d = parseInt(player.scores[t]) - courseHoles[t].par;
+                if (d <= -2) dotColor = '#7B1FA2';
+                else if (d === -1) dotColor = '#1565C0';
+                else if (d === 0) dotColor = '#2E7D32';
+                else if (d === 1) dotColor = '#E65100';
+                else if (d === 2) dotColor = '#C62828';
+                else dotColor = '#4E342E';
+            }
+            const dotStyle = scored && !active ? ` style="--dot-color:${dotColor}"` : '';
+            holeTabs += `<button class="hc-hole-tab ${active ? 'active' : ''} ${scored && !active ? 'scored' : ''}"${dotStyle} onclick="currentCardHole=${t};renderHoleCard();">Hole ${t+1}</button>`;
         }
 
         // Result display for score card
@@ -1510,7 +1524,7 @@
             <div class="hole-card">
                 <div class="hc-hole-tabs" id="hcHoleTabs">${holeTabs}</div>
                 ${playerTabsHtml ? `<div style="padding:8px 12px 0;">${playerTabsHtml}</div>` : ''}
-                <div class="hc-hero">
+                <div class="hc-hero par-${h.par}">
                     <div class="hc-hero-hole">Hole ${i + 1}</div>
                     <div class="hc-hero-badges">
                         <div><div class="hc-hero-badge-label">Par</div><div class="hc-hero-badge-val">${h.par}</div></div>
