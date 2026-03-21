@@ -1502,6 +1502,18 @@
             holeTabs += `<button class="hc-hole-tab ${active ? 'active' : ''} ${scored && !active ? 'scored' : ''}"${dotStyle} onclick="currentCardHole=${t};renderHoleCard();">Hole ${t+1}</button>`;
         }
 
+        // Running total over/under par
+        let runningTotal = 0, holesPlayed = 0;
+        for (let t = 0; t < 18; t++) {
+            const s = player.scores[t];
+            if (s !== '' && s !== undefined) {
+                runningTotal += parseInt(s) - courseHoles[t].par;
+                holesPlayed++;
+            }
+        }
+        const runningText = holesPlayed > 0 ? (runningTotal === 0 ? 'Even' : (runningTotal > 0 ? '+' + runningTotal : String(runningTotal))) : '';
+        const runningColor = runningTotal < 0 ? '#81C784' : runningTotal > 0 ? '#EF9A9A' : 'rgba(255,255,255,0.8)';
+
         // Result display for score card
         let resultHtml = '';
         if (score !== '' && score !== undefined) {
@@ -1530,6 +1542,7 @@
                         <div><div class="hc-hero-badge-label">Par</div><div class="hc-hero-badge-val">${h.par}</div></div>
                         ${h.yd ? `<div><div class="hc-hero-badge-label">${selectedTee}</div><div class="hc-hero-badge-val">${h.yd[selectedTee]}m</div></div>` : ''}
                         <div><div class="hc-hero-badge-label">SI</div><div class="hc-hero-badge-val">${h.si}</div></div>
+                        ${holesPlayed > 0 ? `<div><div class="hc-hero-badge-label">Thru ${holesPlayed}</div><div class="hc-hero-badge-val" style="color:${runningColor}">${runningText}</div></div>` : ''}
                     </div>
                 </div>
 
