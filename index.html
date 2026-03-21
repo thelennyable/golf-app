@@ -1185,11 +1185,11 @@
         const createNine = (start, end, title) => {
             let html = `<div class="sub-header">${title}</div>
                 <div class="table-wrap"><table><thead><tr>
-                    <th class="col-hole">#</th><th class="col-info col-hideable">Par</th><th class="col-info col-hideable">SI</th>
+                    <th class="col-hole">#</th><th class="col-info">Par</th><th class="col-info col-hideable">SI</th>
                     <th class="col-input" style="border-left:2px solid var(--border-col-thick)">Score</th>
                     <th class="col-input">Putts</th><th class="col-input col-hideable">GIR</th>
                     <th class="col-input col-hideable">FWY</th>
-                    <th class="col-res col-hideable" style="border-left:2px solid var(--border-col-thick)">Pts</th>
+                    <th class="col-res" style="border-left:2px solid var(--border-col-thick)">Pts</th>
                     <th class="col-res">+/-</th>
                 </tr></thead><tbody>`;
 
@@ -1206,7 +1206,7 @@
                 }
                 html += `<tr>
                     <td class="hole-num">${i+1}</td>
-                    <td class="small-info col-hideable">${h.par}</td>
+                    <td class="small-info">${h.par}</td>
                     <td class="small-info col-hideable">${h.si}</td>
                     <td class="col-input" style="border-left:2px solid var(--border-col-thick)">
                         <input type="text" inputmode="numeric" pattern="[0-9]*" class="score-input" data-hole="${i}" value="${player.scores[i]}" placeholder="—" onfocus="this.select()" oninput="this.value=this.value.replace(/[^0-9]/g,''); updateState(${i},'scores',this.value); autoAdvance(${i})">
@@ -1218,7 +1218,7 @@
                         <input type="text" inputmode="numeric" pattern="[0-1]" class="gir-input" value="${player.gir[i]}" placeholder="—" onfocus="this.select()" oninput="this.value=this.value.replace(/[^01]/g,'').slice(0,1); updateState(${i},'gir',this.value)">
                     </td>
                     ${fwyCell}
-                    <td id="res-pts-${i}" class="res-pts col-hideable" style="border-left:2px solid var(--border-col-thick)"></td>
+                    <td id="res-pts-${i}" class="res-pts" style="border-left:2px solid var(--border-col-thick)"></td>
                     <td id="res-rel-${i}" class="res-par"></td>
                 </tr>`;
             }
