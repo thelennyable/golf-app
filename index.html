@@ -293,7 +293,7 @@
         .sub-header { background: linear-gradient(90deg, #263238, #37474F); font-size: 0.7rem; font-weight: 800; color: #B0BEC5; padding: 7px 12px; letter-spacing: 2px; text-transform: uppercase; position: sticky; top: var(--subheader-top, 85px); z-index: 11; }
 
         /* NINE SUMMARY */
-        .nine-summary { background: var(--bg-nine-summary); font-size: 0.82rem; font-weight: 700; color: #37474F; padding: 10px; display: flex; justify-content: space-around; border-bottom: 3px solid var(--border-nine); flex-wrap: wrap; gap: 4px; }
+        .nine-summary { background: var(--bg-nine-summary); font-size: 0.82rem; font-weight: 700; color: var(--text-primary); padding: 10px; display: flex; justify-content: space-around; border-bottom: 3px solid var(--border-nine); flex-wrap: wrap; gap: 4px; }
         .nine-summary span { display: flex; flex-direction: column; align-items: center; gap: 3px; }
         .nine-summary .s-label { font-size: 0.58rem; opacity: 0.6; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         .nine-summary .s-val { font-size: 1.05rem; font-weight: 800; color: var(--text-nine-val); }
@@ -734,6 +734,7 @@
                 <div class="stat-box net"><div class="label">Net</div><div class="value" id="headNet">0</div></div>
                 <div class="stat-box pts"><div class="label">Points</div><div class="value" id="headPts">0</div></div>
                 <div class="stat-box"><div class="label">Putts</div><div class="value" id="headPutts">0</div></div>
+                <div class="stat-box"><div class="label">3-Putts</div><div class="value" id="headThreePutts" style="color:#C62828">0</div></div>
             </div>
         </div>
         <div class="header-compact" id="headerCompact">
@@ -790,6 +791,14 @@
     <div id="scorecard-body" style="display:none"></div>
     <div id="leaderboard" class="leaderboard" style="display:none;"></div>
 
+    <div style="padding: 0 12px 6px; display:flex; gap:8px;">
+        <button onclick="manualSaveRound()" style="flex:1; padding:14px; background:linear-gradient(135deg,#2E7D32,#43A047); color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:700; cursor:pointer; touch-action:manipulation; display:flex; align-items:center; justify-content:center; gap:8px;">
+            💾 Save Round
+        </button>
+        <button onclick="showRoundRating()" style="flex:1; padding:14px; background:linear-gradient(135deg,#1565C0,#1976D2); color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:700; cursor:pointer; touch-action:manipulation; display:flex; align-items:center; justify-content:center; gap:8px;">
+            📊 Summary
+        </button>
+    </div>
     <div class="btn-row">
         <button class="share-btn" onclick="shareRound()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -805,8 +814,7 @@
     </button>
     <div class="more-section" id="moreSection">
         <div class="more-grid">
-            <button class="more-btn save-csv" onclick="saveRound()">Save CSV</button>
-            <button class="more-btn" onclick="showRoundRating()">Round Rating</button>
+            <button class="more-btn save-csv" onclick="saveRound()">Download CSV</button>
             <button class="more-btn" onclick="toggleHistory()">History</button>
             <button class="more-btn" onclick="toggleStats()">Stats</button>
             <button class="more-btn" onclick="toggleCompare()">Compare</button>
@@ -1225,6 +1233,7 @@
                     <span><div class="s-label">Gross</div><div class="s-val" id="nine-gross-${start}">—</div></span>
                     <span><div class="s-label">Points</div><div class="s-val" id="nine-pts-${start}">—</div></span>
                     <span><div class="s-label">Putts</div><div class="s-val" id="nine-putts-${start}">—</div></span>
+                    <span><div class="s-label">3-Putts</div><div class="s-val" id="nine-3putts-${start}" style="color:#C62828">—</div></span>
                     <span><div class="s-label">GIR</div><div class="s-val" id="nine-gir-${start}">—</div></span>
                     <span><div class="s-label">FWY</div><div class="s-val" id="nine-fwy-${start}">—</div></span>
                 </div>`;
@@ -1546,15 +1555,12 @@
                             <button class="hc-list-toggle-btn ${girVal === '' || girVal === undefined ? 'active' : ''}" onclick="updateState(${i},'gir','');renderHoleCard();">No</button>
                         </div>
                     </div>` : ''}
-                    ${isMe ? `<div class="hc-list-item">
+                    ${isMe && !isPar3 ? `<div class="hc-list-item">
                         <div>
                             <div class="hc-list-label">Fairway</div>
-                            ${isPar3 ? '<div class="hc-list-sub">Par 3 — N/A</div>' : ''}
+                            <div class="hc-list-sub">${fwyVal === '1' ? 'Hit' : fwyVal === '0' ? 'Missed' : 'Not recorded'}</div>
                         </div>
-                        <div class="hc-list-toggle ${isPar3 ? '' : ''}">
-                            <button class="hc-list-toggle-btn ${isPar3 ? 'na' : fwyVal === '1' ? 'active' : ''}" ${isPar3 ? '' : `onclick="toggleCardField(${i},'fairways',this)"`}>${fwyVal === '1' ? '&#10003; Hit' : 'Hit'}</button>
-                            <button class="hc-list-toggle-btn ${isPar3 ? 'na' : fwyVal !== '1' && fwyVal !== '' && fwyVal !== undefined ? 'active' : ''}" ${isPar3 ? '' : `onclick="updateState(${i},'fairways','');renderHoleCard();"`}>Miss</button>
-                        </div>
+                        <button style="min-width:80px; padding:10px 18px; border-radius:8px; font-size:0.85rem; font-weight:600; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; border:none; ${fwyVal === '1' ? 'background:#2E7D32; color:#fff;' : fwyVal === '0' ? 'background:#c62828; color:#fff;' : 'background:var(--bg-tab); color:var(--text-secondary); border:1px solid var(--border-input);'}" onclick="cycleFairway(${i})">${fwyVal === '1' ? '&#10003; Hit' : fwyVal === '0' ? '&#10007; Miss' : '— Tap'}</button>
                     </div>` : ''}
                     ${isMe ? `<div class="hc-list-item">
                         <div>
@@ -1684,6 +1690,15 @@
         renderHoleCard();
     }
 
+    function cycleFairway(holeIdx) {
+        const player = getActivePlayer();
+        const cur = player.fairways[holeIdx];
+        // Cycle: unset → hit → miss → unset
+        const next = cur === '' || cur === undefined ? '1' : cur === '1' ? '0' : '';
+        updateState(holeIdx, 'fairways', next);
+        renderHoleCard();
+    }
+
     // Feature 4: Auto-scroll to next empty hole
     function autoAdvance(holeIndex) {
         const player = getActivePlayer();
@@ -1716,8 +1731,8 @@
         const player = getActivePlayer();
         let hcp = player.hcp || 0;
         let base = Math.floor(hcp/18), rem = hcp%18;
-        let totals = { gross:0, pts:0, putts:0, gir:0, fwy:0, holes:0, net:0 };
-        let nine = { 0:{gross:0,pts:0,putts:0,gir:0,fwy:0,holes:0}, 9:{gross:0,pts:0,putts:0,gir:0,fwy:0,holes:0} };
+        let totals = { gross:0, pts:0, putts:0, threePutts:0, gir:0, fwy:0, holes:0, net:0 };
+        let nine = { 0:{gross:0,pts:0,putts:0,threePutts:0,gir:0,fwy:0,holes:0}, 9:{gross:0,pts:0,putts:0,threePutts:0,gir:0,fwy:0,holes:0} };
         let scoreCounts = { eagle:0, birdie:0, par:0, bogey:0, double:0, worse:0 };
 
         courseHoles.forEach((hole, i) => {
@@ -1729,7 +1744,7 @@
             let elPts = document.getElementById(`res-pts-${i}`);
             let elRel = document.getElementById(`res-rel-${i}`);
 
-            if (!isNaN(putts)) { totals.putts += putts; nine[ns].putts += putts; }
+            if (!isNaN(putts)) { totals.putts += putts; nine[ns].putts += putts; if (putts >= 3) { totals.threePutts++; nine[ns].threePutts++; } }
             if (gir === 0 || gir === 1) { totals.gir += gir; nine[ns].gir += gir; }
             if ((fwy === 0 || fwy === 1) && hole.par !== 3) { totals.fwy += fwy; nine[ns].fwy += fwy; }
 
@@ -1760,6 +1775,7 @@
         document.getElementById('headGross').innerText = totals.gross || 0;
         document.getElementById('headPts').innerText = totals.pts || 0;
         document.getElementById('headPutts').innerText = totals.putts || 0;
+        document.getElementById('headThreePutts').innerText = totals.threePutts || 0;
         document.getElementById('headNet').innerText = totals.holes > 0 ? totals.net : 0;
         if (typeof updateCompactHeader === 'function') updateCompactHeader();
 
@@ -1794,9 +1810,12 @@
 
         renderLeaderboard();
 
-        // Auto-show round rating when all 18 scored
+        // Auto-save to history and show round rating when all 18 scored
         if (totals.holes === 18 && !window._ratingShown) {
             window._ratingShown = true;
+            const s = getRoundSummary();
+            const date = appData.date || new Date().toISOString().split('T')[0];
+            saveToHistory(s, date);
             setTimeout(() => showRoundRating(), 500);
         }
     }
@@ -2021,11 +2040,11 @@
         const player = getActivePlayer();
         let hcp = player.hcp || 0;
         let base = Math.floor(hcp/18), rem = hcp%18;
-        let gross=0, pts=0, putts=0, gir=0, fwy=0, holes=0, net=0;
+        let gross=0, pts=0, putts=0, threePutts=0, gir=0, fwy=0, holes=0, net=0;
         courseHoles.forEach((hole,i) => {
             let g = parseInt(player.scores[i]), p = parseInt(player.putts[i]), gr = parseInt(player.gir[i]);
             let fw = parseInt(player.fairways ? player.fairways[i] : '');
-            if (!isNaN(p)) putts += p;
+            if (!isNaN(p)) { putts += p; if (p >= 3) threePutts++; }
             if (gr===0||gr===1) gir += gr;
             if ((fw===0||fw===1) && hole.par !== 3) fwy += fw;
             if (!isNaN(g)) {
@@ -2035,7 +2054,7 @@
                 pts += Math.max(0, 2+(hole.par-(g-strokesOnHole)));
             }
         });
-        return { hcp, gross, pts, putts, gir, fwy, holes, net };
+        return { hcp, gross, pts, putts, threePutts, gir, fwy, holes, net };
     }
 
     function saveRound() {
@@ -2067,11 +2086,22 @@
         saveToHistory(s, date);
     }
 
+    function manualSaveRound() {
+        const s = getRoundSummary();
+        if (s.holes === 0) { alert('No scores entered yet.'); return; }
+        const date = appData.date || new Date().toISOString().split('T')[0];
+        saveToHistory(s, date);
+        alert(`Round saved! ${s.holes} holes · ${s.gross} gross · ${s.pts} pts\n\nView it anytime in More → History`);
+    }
+
     function saveToHistory(s, date) {
         if (s.holes === 0) return;
         let history = JSON.parse(localStorage.getItem('golfHistory')||'[]');
-        history.unshift({ date, course: currentCourse, hcp:s.hcp, gross:s.gross, pts:s.pts, putts:s.putts, gir:s.gir, fwy: s.fwy || 0 });
-        if (history.length > 20) history = history.slice(0,20);
+        // Prevent duplicate save for same round (same date, course, gross, pts)
+        const isDup = history.some(r => r.date === date && r.course === currentCourse && r.gross === s.gross && r.pts === s.pts);
+        if (isDup) return;
+        history.unshift({ date, course: currentCourse, hcp:s.hcp, gross:s.gross, pts:s.pts, putts:s.putts, threePutts: s.threePutts || 0, gir:s.gir, fwy: s.fwy || 0 });
+        if (history.length > 50) history = history.slice(0,50);
         localStorage.setItem('golfHistory', JSON.stringify(history));
     }
 
@@ -2133,6 +2163,7 @@
                 <div class="rating-stat"><div class="rs-val">${s.net}</div><div class="rs-lbl">Net</div></div>
                 <div class="rating-stat"><div class="rs-val">${s.pts}</div><div class="rs-lbl">Points (${ptsPerHole}/hole)</div></div>
                 <div class="rating-stat"><div class="rs-val">${s.putts}</div><div class="rs-lbl">Putts (${avgPutts} avg)</div></div>
+                <div class="rating-stat"><div class="rs-val" style="color:${s.threePutts > 0 ? '#C62828' : '#2E7D32'}">${s.threePutts}</div><div class="rs-lbl">3-Putts</div></div>
                 <div class="rating-stat"><div class="rs-val">${girPct}%</div><div class="rs-lbl">GIR (${s.gir}/${s.holes})</div></div>
                 <div class="rating-stat"><div class="rs-val">${fwyPct}%</div><div class="rs-lbl">Fairways (${s.fwy}/${fwyChances})</div></div>
             </div>
@@ -2187,6 +2218,7 @@
                     <span class="h-stat">Gross <strong>${r.gross}</strong></span>
                     <span class="h-stat">Pts <strong>${r.pts}</strong></span>
                     <span class="h-stat">Putts <strong>${r.putts}</strong></span>
+                    <span class="h-stat">3-Putts <strong style="color:${(r.threePutts||0) > 0 ? '#C62828' : '#2E7D32'}">${r.threePutts||0}</strong></span>
                     <span class="h-stat">GIR <strong>${r.gir}</strong></span>
                     <span class="h-stat">FWY <strong>${r.fwy || 0}</strong></span>
                 </div>
@@ -2239,7 +2271,7 @@
         let name = appData.players.length > 0 ? player.name : '';
 
         // Base stats
-        let text = `${currentCourse}\n${date}${name ? '\n' + name : ''}\n\nGross: ${s.gross} | Net: ${s.net} | Points: ${s.pts}\nPutts: ${s.putts} | GIR: ${s.gir}/18 | FWY: ${s.fwy}\nHandicap: ${s.hcp}`;
+        let text = `${currentCourse}\n${date}${name ? '\n' + name : ''}\n\nGross: ${s.gross} | Net: ${s.net} | Points: ${s.pts}\nPutts: ${s.putts} | 3-Putts: ${s.threePutts} | GIR: ${s.gir}/18 | FWY: ${s.fwy}\nHandicap: ${s.hcp}`;
 
         // Commentary highlights
         const highlights = generateCommentary(player);
@@ -2337,10 +2369,12 @@
         const avgPutts = (history.reduce((s, r) => s + r.putts, 0) / n).toFixed(1);
         const avgGir = (history.reduce((s, r) => s + r.gir, 0) / n).toFixed(1);
         const avgFwy = (history.reduce((s, r) => s + (r.fwy || 0), 0) / n).toFixed(1);
+        const avgThreePutts = (history.reduce((s, r) => s + (r.threePutts || 0), 0) / n).toFixed(1);
 
         const bestGross = Math.min(...history.map(r => r.gross));
         const bestPts = Math.max(...history.map(r => r.pts));
         const bestPutts = Math.min(...history.map(r => r.putts));
+        const fewestThreePutts = Math.min(...history.map(r => r.threePutts || 0));
 
         // Trend: last 10 rounds (reversed so oldest is left)
         const last10 = history.slice(0, 10).reverse();
@@ -2400,6 +2434,7 @@
                     <div class="stats-card"><div class="sc-val">${avgGross}</div><div class="sc-label">Gross</div></div>
                     <div class="stats-card"><div class="sc-val">${avgPts}</div><div class="sc-label">Points</div></div>
                     <div class="stats-card"><div class="sc-val">${avgPutts}</div><div class="sc-label">Putts</div></div>
+                    <div class="stats-card"><div class="sc-val" style="color:#C62828;">${avgThreePutts}</div><div class="sc-label">3-Putts</div></div>
                     <div class="stats-card"><div class="sc-val">${avgGir}</div><div class="sc-label">GIR</div></div>
                     <div class="stats-card"><div class="sc-val">${avgFwy}</div><div class="sc-label">FWY</div></div>
                 </div>
@@ -2410,6 +2445,7 @@
                     <div class="stats-card"><div class="sc-val" style="color:#2E7D32;">${bestGross}</div><div class="sc-label">Lowest Gross</div></div>
                     <div class="stats-card"><div class="sc-val" style="color:#1565C0;">${bestPts}</div><div class="sc-label">Highest Points</div></div>
                     <div class="stats-card"><div class="sc-val" style="color:#E65100;">${bestPutts}</div><div class="sc-label">Fewest Putts</div></div>
+                    <div class="stats-card"><div class="sc-val" style="color:#2E7D32;">${fewestThreePutts}</div><div class="sc-label">Fewest 3-Putts</div></div>
                 </div>
             </div>
             ${trendHtml}
@@ -2460,6 +2496,7 @@
             { label: 'Gross', keyA: a.gross, keyB: b.gross, lower: true },
             { label: 'Points', keyA: a.pts, keyB: b.pts, lower: false },
             { label: 'Putts', keyA: a.putts, keyB: b.putts, lower: true },
+            { label: '3-Putts', keyA: a.threePutts || 0, keyB: b.threePutts || 0, lower: true },
             { label: 'GIR', keyA: a.gir, keyB: b.gir, lower: false },
             { label: 'FWY', keyA: a.fwy || 0, keyB: b.fwy || 0, lower: false },
             { label: 'Handicap', keyA: a.hcp, keyB: b.hcp, lower: true },
@@ -2506,7 +2543,7 @@
     // Export/Import
     function exportData() {
         const data = { exportDate: new Date().toISOString() };
-        ['golfHybrid_v3','golfHistory','golfFriends','golfDarkMode'].forEach(k => {
+        ['golfHybrid_v3','golfHistory','golfFriends','golfDarkMode','golf_pins_v1'].forEach(k => {
             const v = localStorage.getItem(k);
             if (v !== null) data[k] = v;
         });
@@ -2531,7 +2568,7 @@
         reader.onload = function(ev) {
             try {
                 const data = JSON.parse(ev.target.result);
-                const keys = ['golfHybrid_v3','golfHistory','golfFriends','golfDarkMode'];
+                const keys = ['golfHybrid_v3','golfHistory','golfFriends','golfDarkMode','golf_pins_v1'];
                 if (!keys.some(k => k in data)) { alert('Invalid backup file — no recognized data found.'); return; }
                 keys.forEach(k => { if (k in data) localStorage.setItem(k, data[k]); });
                 loadDarkMode();
@@ -2665,8 +2702,10 @@
                 if (green.back) marked.push('B');
             }
             if (marked.length > 0) {
-                return `<div style="text-align:center; padding:6px 0; font-size:0.75rem; color:#81C784; opacity:0.8;">
-                    📍 Green marked: ${marked.join(' · ')} — tap GPS to see distances
+                return `<div style="background: linear-gradient(135deg, #1b5e20 0%, #2E7D32 100%); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; text-align: center; cursor: pointer;" onclick="toggleGps()">
+                    <div style="font-size: 0.85rem; font-weight: 700; color: #A5D6A7; margin-bottom: 4px;">📍 Green Saved</div>
+                    <div style="font-size: 0.8rem; color: #C8E6C9;">${marked.map(m => m === 'F' ? 'Front' : m === 'C' ? 'Center' : 'Back').join(' · ')}</div>
+                    <div style="font-size: 0.7rem; color: #81C784; margin-top: 6px;">Tap to turn on GPS for live distances</div>
                 </div>`;
             }
             return '';
