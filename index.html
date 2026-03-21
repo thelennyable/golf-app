@@ -1502,17 +1502,28 @@
             holeTabs += `<button class="hc-hole-tab ${active ? 'active' : ''} ${scored && !active ? 'scored' : ''}"${dotStyle} onclick="currentCardHole=${t};renderHoleCard();">Hole ${t+1}</button>`;
         }
 
-        // Running total over/under par
-        let runningTotal = 0, holesPlayed = 0;
+        // Running total over/under par + handicap pace
+        let runningTotal = 0, holesPlayed = 0, expectedStrokes = 0;
+        const hcp = player.hcp || 0, hcpBase = Math.floor(hcp/18), hcpRem = hcp%18;
         for (let t = 0; t < 18; t++) {
             const s = player.scores[t];
             if (s !== '' && s !== undefined) {
-                runningTotal += parseInt(s) - courseHoles[t].par;
+                const g = parseInt(s);
+                runningTotal += g - courseHoles[t].par;
+                expectedStrokes += courseHoles[t].par + hcpBase + (courseHoles[t].si <= hcpRem ? 1 : 0);
                 holesPlayed++;
             }
         }
         const runningText = holesPlayed > 0 ? (runningTotal === 0 ? 'Even' : (runningTotal > 0 ? '+' + runningTotal : String(runningTotal))) : '';
         const runningColor = runningTotal < 0 ? '#81C784' : runningTotal > 0 ? '#EF9A9A' : 'rgba(255,255,255,0.8)';
+        // Handicap pace: actual gross vs expected gross (par + handicap strokes) for holes played
+        const actualGross = holesPlayed > 0 ? courseHoles.reduce((sum, hole, t) => {
+            const s = player.scores[t];
+            return s !== '' && s !== undefined ? sum + parseInt(s) : sum;
+        }, 0) : 0;
+        const hcpDiff = holesPlayed > 0 ? actualGross - expectedStrokes : 0;
+        const hcpPaceText = holesPlayed > 0 ? (hcpDiff === 0 ? 'On pace' : (hcpDiff > 0 ? hcpDiff + ' over' : Math.abs(hcpDiff) + ' under')) : '';
+        const hcpPaceColor = hcpDiff < 0 ? '#81C784' : hcpDiff > 0 ? '#EF9A9A' : 'rgba(255,255,255,0.8)';
 
         // Result display for score card
         let resultHtml = '';
@@ -1544,6 +1555,9 @@
                         <div><div class="hc-hero-badge-label">SI</div><div class="hc-hero-badge-val">${h.si}</div></div>
                         ${holesPlayed > 0 ? `<div><div class="hc-hero-badge-label">Thru ${holesPlayed}</div><div class="hc-hero-badge-val" style="color:${runningColor}">${runningText}</div></div>` : ''}
                     </div>
+                    ${holesPlayed > 0 ? `<div style="margin-top:6px; padding:4px 12px; border-radius:12px; background:rgba(0,0,0,0.2); display:inline-block;">
+                        <span style="font-size:0.7rem; font-weight:600; color:${hcpPaceColor}">Handicap: ${hcpPaceText}</span>
+                    </div>` : ''}
                 </div>
 
                 <div class="hc-score-card">
