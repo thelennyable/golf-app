@@ -273,9 +273,9 @@
         .res-par.under { color: #2E7D32; background: #E8F5E9; }
         .res-par.even { color: #757575; background: #F5F5F5; }
 
-        .col-hole { width: 8%; }
-        .col-info { width: 8%; }
-        .col-input { width: 18%; background: var(--bg-input-col); border-left: 1px solid var(--border-col); }
+        .col-hole { width: 12%; }
+        .col-info { width: 12%; }
+        .col-input { width: 33%; background: var(--bg-input-col); border-left: 1px solid var(--border-col); }
         .col-res { width: 12%; }
 
         /* SCORE SUMMARY BAR */
@@ -1189,7 +1189,7 @@
                     <th class="col-input" style="border-left:2px solid var(--border-col-thick)">Score</th>
                     <th class="col-input">Putts</th><th class="col-input col-hideable">GIR</th>
                     <th class="col-input col-hideable">FWY</th>
-                    <th class="col-res" style="border-left:2px solid var(--border-col-thick)">Pts</th>
+                    <th class="col-res col-hideable" style="border-left:2px solid var(--border-col-thick)">Pts</th>
                     <th class="col-res col-hideable">+/-</th>
                 </tr></thead><tbody>`;
 
@@ -1218,7 +1218,7 @@
                         <input type="text" inputmode="numeric" pattern="[0-1]" class="gir-input" value="${player.gir[i]}" placeholder="—" onfocus="this.select()" oninput="this.value=this.value.replace(/[^01]/g,'').slice(0,1); updateState(${i},'gir',this.value)">
                     </td>
                     ${fwyCell}
-                    <td id="res-pts-${i}" class="res-pts" style="border-left:2px solid var(--border-col-thick)"></td>
+                    <td id="res-pts-${i}" class="res-pts col-hideable" style="border-left:2px solid var(--border-col-thick)"></td>
                     <td id="res-rel-${i}" class="res-par col-hideable"></td>
                 </tr>`;
             }
@@ -1660,6 +1660,30 @@
         currentCardHole = Math.max(0, Math.min(17, currentCardHole + dir));
         renderHoleCard();
     }
+
+    // Swipe navigation for card view
+    (function() {
+        let startX = 0, startY = 0, swiping = false;
+        const el = document.getElementById('holeCardView');
+        el.addEventListener('touchstart', e => {
+            const t = e.touches[0];
+            startX = t.clientX;
+            startY = t.clientY;
+            swiping = true;
+        }, { passive: true });
+        el.addEventListener('touchend', e => {
+            if (!swiping) return;
+            swiping = false;
+            const t = e.changedTouches[0];
+            const dx = t.clientX - startX;
+            const dy = t.clientY - startY;
+            // Only trigger if horizontal swipe > 60px and more horizontal than vertical
+            if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+                if (dx < 0 && currentCardHole < 17) cardNav(1);   // swipe left = next
+                if (dx > 0 && currentCardHole > 0) cardNav(-1);   // swipe right = prev
+            }
+        }, { passive: true });
+    })();
 
     function cardSwitchPlayer(idx) {
         activePlayerIdx = idx;
