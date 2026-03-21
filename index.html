@@ -1522,8 +1522,8 @@
             return s !== '' && s !== undefined ? sum + parseInt(s) : sum;
         }, 0) : 0;
         const hcpDiff = holesPlayed > 0 ? actualGross - expectedStrokes : 0;
-        const hcpPaceText = holesPlayed > 0 ? (hcpDiff === 0 ? 'On pace' : (hcpDiff > 0 ? '▲ ' + hcpDiff + ' over' : '▼ ' + Math.abs(hcpDiff) + ' under')) : '';
-        const hcpPaceColor = hcpDiff < 0 ? '#69F0AE' : '#fff';
+        const hcpPaceText = holesPlayed > 0 ? (hcpDiff === 0 ? 'On pace' : (hcpDiff > 0 ? hcpDiff + ' over' : Math.abs(hcpDiff) + ' under')) : '';
+        const hcpPaceColor = hcpDiff < 0 ? '#69F0AE' : hcpDiff > 0 ? '#FFCDD2' : '#fff';
 
         // Result display for score card
         let resultHtml = '';
