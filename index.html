@@ -1707,6 +1707,8 @@
         let startX = 0, startY = 0, swiping = false;
         const el = document.getElementById('holeCardView');
         el.addEventListener('touchstart', e => {
+            // Don't capture swipes on the hole tabs (they need horizontal scroll)
+            if (e.target.closest('.hc-hole-tabs')) { swiping = false; return; }
             const t = e.touches[0];
             startX = t.clientX;
             startY = t.clientY;
@@ -1718,8 +1720,8 @@
             const t = e.changedTouches[0];
             const dx = t.clientX - startX;
             const dy = t.clientY - startY;
-            // Only trigger if horizontal swipe > 60px and more horizontal than vertical
-            if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+            // Only trigger if horizontal swipe > 80px and much more horizontal than vertical
+            if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 2) {
                 if (dx < 0 && currentCardHole < 17) cardNav(1);   // swipe left = next
                 if (dx > 0 && currentCardHole > 0) cardNav(-1);   // swipe right = prev
             }
