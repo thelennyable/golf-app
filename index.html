@@ -1756,8 +1756,8 @@
         const player = getActivePlayer();
         let hcp = player.hcp || 0;
         let base = Math.floor(hcp/18), rem = hcp%18;
-        let totals = { gross:0, pts:0, putts:0, threePutts:0, gir:0, fwy:0, holes:0, net:0 };
-        let nine = { 0:{gross:0,pts:0,putts:0,threePutts:0,gir:0,fwy:0,holes:0}, 9:{gross:0,pts:0,putts:0,threePutts:0,gir:0,fwy:0,holes:0} };
+        let totals = { gross:0, pts:0, putts:0, threePutts:0, gir:0, fwy:0, upDown:0, upDownChances:0, holes:0, net:0 };
+        let nine = { 0:{gross:0,pts:0,putts:0,threePutts:0,gir:0,fwy:0,upDown:0,upDownChances:0,holes:0}, 9:{gross:0,pts:0,putts:0,threePutts:0,gir:0,fwy:0,upDown:0,upDownChances:0,holes:0} };
         let scoreCounts = { eagle:0, birdie:0, par:0, bogey:0, double:0, worse:0 };
 
         courseHoles.forEach((hole, i) => {
@@ -1771,6 +1771,7 @@
 
             if (!isNaN(putts)) { totals.putts += putts; nine[ns].putts += putts; if (putts >= 3) { totals.threePutts++; nine[ns].threePutts++; } }
             if (gir === 0 || gir === 1) { totals.gir += gir; nine[ns].gir += gir; }
+            if (gir === 0 && !isNaN(putts)) { totals.upDownChances++; nine[ns].upDownChances++; if (putts === 1) { totals.upDown++; nine[ns].upDown++; } }
             if ((fwy === 0 || fwy === 1) && hole.par !== 3) { totals.fwy += fwy; nine[ns].fwy += fwy; }
 
             if (isNaN(gross)) {
@@ -2066,12 +2067,13 @@
         const player = getActivePlayer();
         let hcp = player.hcp || 0;
         let base = Math.floor(hcp/18), rem = hcp%18;
-        let gross=0, pts=0, putts=0, threePutts=0, gir=0, fwy=0, holes=0, net=0;
+        let gross=0, pts=0, putts=0, threePutts=0, gir=0, fwy=0, upDown=0, upDownChances=0, holes=0, net=0;
         courseHoles.forEach((hole,i) => {
             let g = parseInt(player.scores[i]), p = parseInt(player.putts[i]), gr = parseInt(player.gir[i]);
             let fw = parseInt(player.fairways ? player.fairways[i] : '');
             if (!isNaN(p)) { putts += p; if (p >= 3) threePutts++; }
             if (gr===0||gr===1) gir += gr;
+            if (gr === 0 && !isNaN(p)) { upDownChances++; if (p === 1) upDown++; }
             if ((fw===0||fw===1) && hole.par !== 3) fwy += fw;
             if (!isNaN(g)) {
                 gross += g; holes++;
@@ -2080,7 +2082,7 @@
                 pts += Math.max(0, 2+(hole.par-(g-strokesOnHole)));
             }
         });
-        return { hcp, gross, pts, putts, threePutts, gir, fwy, holes, net };
+        return { hcp, gross, pts, putts, threePutts, gir, fwy, upDown, upDownChances, holes, net };
     }
 
     function saveRound() {
@@ -2136,7 +2138,7 @@
         history.unshift({
             date, course: currentCourse, hcp: s.hcp,
             gross: s.gross, pts: s.pts, putts: s.putts, threePutts: s.threePutts || 0,
-            gir: s.gir, fwy: s.fwy || 0, holes
+            gir: s.gir, fwy: s.fwy || 0, upDown: s.upDown || 0, upDownChances: s.upDownChances || 0, holes
         });
         if (history.length > 50) history = history.slice(0, 50);
         localStorage.setItem('golfHistory', JSON.stringify(history));
@@ -2177,6 +2179,7 @@
         const avgPutts = s.holes > 0 ? (s.putts / s.holes).toFixed(1) : '—';
         const girPct = s.holes > 0 ? Math.round((s.gir / s.holes) * 100) : 0;
         const fwyPct = fwyChances > 0 ? Math.round((s.fwy / fwyChances) * 100) : 0;
+        const upDownPct = s.upDownChances > 0 ? Math.round((s.upDown / s.upDownChances) * 100) : 0;
         const ptsPerHole = s.holes > 0 ? (s.pts / s.holes).toFixed(1) : '—';
 
         // Score distribution bar
@@ -2203,6 +2206,7 @@
                 <div class="rating-stat"><div class="rs-val" style="color:${s.threePutts > 0 ? '#C62828' : '#2E7D32'}">${s.threePutts}</div><div class="rs-lbl">3-Putts</div></div>
                 <div class="rating-stat"><div class="rs-val">${girPct}%</div><div class="rs-lbl">GIR (${s.gir}/${s.holes})</div></div>
                 <div class="rating-stat"><div class="rs-val">${fwyPct}%</div><div class="rs-lbl">Fairways (${s.fwy}/${fwyChances})</div></div>
+                ${s.upDownChances > 0 ? `<div class="rating-stat"><div class="rs-val">${upDownPct}%</div><div class="rs-lbl">Up & Down (${s.upDown}/${s.upDownChances})</div></div>` : ''}
             </div>
             <div class="rating-bar">${barHtml}</div>
             <div style="display:flex; gap:4px; justify-content:center; flex-wrap:wrap; font-size:0.65rem; font-weight:700; margin-bottom:8px;">
@@ -2259,6 +2263,7 @@
                     <span class="h-stat">3-Putts <strong style="color:${(r.threePutts||0) > 0 ? '#C62828' : '#2E7D32'}">${r.threePutts||0}</strong></span>
                     <span class="h-stat">GIR <strong>${r.gir}</strong></span>
                     <span class="h-stat">FWY <strong>${r.fwy || 0}</strong></span>
+                    ${r.upDownChances ? `<span class="h-stat">U&D <strong>${r.upDown||0}/${r.upDownChances}</strong></span>` : ''}
                 </div>
             </div>`;
         }).join('');
@@ -2374,7 +2379,7 @@
         let name = appData.players.length > 0 ? player.name : '';
 
         // Base stats
-        let text = `${currentCourse}\n${date}${name ? '\n' + name : ''}\n\nGross: ${s.gross} | Net: ${s.net} | Points: ${s.pts}\nPutts: ${s.putts} | 3-Putts: ${s.threePutts} | GIR: ${s.gir}/18 | FWY: ${s.fwy}\nHandicap: ${s.hcp}`;
+        let text = `${currentCourse}\n${date}${name ? '\n' + name : ''}\n\nGross: ${s.gross} | Net: ${s.net} | Points: ${s.pts}\nPutts: ${s.putts} | 3-Putts: ${s.threePutts} | GIR: ${s.gir}/18 | FWY: ${s.fwy}${s.upDownChances > 0 ? ` | U&D: ${s.upDown}/${s.upDownChances}` : ''}\nHandicap: ${s.hcp}`;
 
         // Commentary highlights
         const highlights = generateCommentary(player);
@@ -2473,6 +2478,9 @@
         const avgGir = (history.reduce((s, r) => s + r.gir, 0) / n).toFixed(1);
         const avgFwy = (history.reduce((s, r) => s + (r.fwy || 0), 0) / n).toFixed(1);
         const avgThreePutts = (history.reduce((s, r) => s + (r.threePutts || 0), 0) / n).toFixed(1);
+        const totalUD = history.reduce((s, r) => s + (r.upDown || 0), 0);
+        const totalUDChances = history.reduce((s, r) => s + (r.upDownChances || 0), 0);
+        const avgUpDownPct = totalUDChances > 0 ? Math.round((totalUD / totalUDChances) * 100) : null;
 
         const bestGross = Math.min(...history.map(r => r.gross));
         const bestPts = Math.max(...history.map(r => r.pts));
@@ -2540,6 +2548,7 @@
                     <div class="stats-card"><div class="sc-val" style="color:#C62828;">${avgThreePutts}</div><div class="sc-label">3-Putts</div></div>
                     <div class="stats-card"><div class="sc-val">${avgGir}</div><div class="sc-label">GIR</div></div>
                     <div class="stats-card"><div class="sc-val">${avgFwy}</div><div class="sc-label">FWY</div></div>
+                    ${avgUpDownPct !== null ? `<div class="stats-card"><div class="sc-val">${avgUpDownPct}%</div><div class="sc-label">Up & Down</div></div>` : ''}
                 </div>
             </div>
             <div class="stats-section">
