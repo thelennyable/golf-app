@@ -193,9 +193,9 @@
         .header-expanded { padding: 12px 10px 8px; transition: max-height 0.25s ease, padding 0.25s ease; }
         .header-title { text-align: center; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.8; margin-bottom: 8px; }
         .header-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
-        .stat-box { background: rgba(255,255,255,0.12); border-radius: 10px; padding: 6px 4px; text-align: center; backdrop-filter: blur(4px); }
-        .stat-box .label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.75; letter-spacing: 0.8px; font-weight: 600; }
-        .stat-box .value { font-size: 1.3rem; font-weight: 800; margin-top: 2px; }
+        .stat-box { background: rgba(255,255,255,0.12); border-radius: 10px; padding: 10px 4px; text-align: center; backdrop-filter: blur(4px); }
+        .stat-box .label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 0.8px; font-weight: 700; }
+        .stat-box .value { font-size: 1.6rem; font-weight: 800; margin-top: 2px; }
         .stat-box.pts .value { color: #A5D6A7; }
         .stat-box.net .value { color: #90CAF9; }
         .header-compact { display: none; padding: 8px 14px; align-items: center; justify-content: center; gap: 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
@@ -305,13 +305,13 @@
 
         /* MORE SECTION */
 
-        .more-toggle { width: calc(100% - 20px); margin: 0 10px 4px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .more-toggle { width: calc(100% - 20px); margin: 0 10px 4px; padding: 16px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .more-toggle .more-arrow { transition: transform 0.2s; font-size: 0.7rem; }
         .more-toggle.open .more-arrow { transform: rotate(180deg); }
         .more-section { display: none; padding: 6px 10px 10px; }
         .more-section.open { display: block; }
         .more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-        .more-btn { padding: 12px 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 10px; text-align: center; transition: background 0.15s; }
+        .more-btn { padding: 12px 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 10px; text-align: center; transition: background 0.15s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         .more-btn:active { opacity: 0.8; }
         .more-btn.save-csv { background: linear-gradient(135deg, #1565C0, #1976D2); color: white; }
         .history-toggle { width: 100%; margin: 0 0 8px; padding: 10px; background: var(--bg-history-toggle); color: var(--text-history-toggle); border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 10px; }
@@ -673,7 +673,7 @@
         .ob-title { font-size:1.1rem; font-weight:800; color:#1B5E20; margin-bottom:4px; }
         .ob-sub { font-size:0.8rem; color:#888; margin-bottom:20px; }
         .ob-label { font-size:0.78rem; font-weight:700; color:#333; margin-bottom:6px; display:block; }
-        .ob-input { width:100%; padding:12px; border:2px solid #E0E0E0; border-radius:12px; font-size:1rem; font-weight:600; box-sizing:border-box; margin-bottom:14px; }
+        .ob-input { width:100%; padding:12px; border:2px solid #E0E0E0; border-radius:12px; font-size:1rem; font-weight:600; box-sizing:border-box; margin-bottom:14px; color:#111; background:#fff; }
         .ob-input:focus { border-color:#2E7D32; outline:none; }
         .ob-input.small { width:80px; text-align:center; }
         .ob-row { display:flex; gap:10px; align-items:end; margin-bottom:10px; }
@@ -730,7 +730,7 @@
 <div class="card">
     <div class="sticky-header" id="stickyHeader" onclick="toggleHeader()">
         <div class="header-expanded">
-            <div class="header-title" id="headerTitle">⛳ Karake Hybrid Golf</div>
+            <div class="header-title" id="headerTitle">⛳ Karake Hybrid Golf <span style="font-size:0.5rem; opacity:0.6;">v70</span></div>
             <div class="header-grid">
                 <div class="stat-box"><div class="label">Gross</div><div class="value" id="headGross">0</div></div>
                 <div class="stat-box net"><div class="label">Net</div><div class="value" id="headNet">0</div></div>
@@ -769,7 +769,7 @@
             <button class="gps-toggle-btn" id="gpsToggleBtn" onclick="toggleGps()">GPS</button>
             <button class="live-btn" id="liveBtn" onclick="openLiveModal()"><span class="live-dot"></span>Live</button>
             <button class="col-toggle-btn" id="colToggleBtn" onclick="toggleExtraCols()">All Cols</button>
-            <button class="dark-toggle-btn" id="darkToggleBtn" onclick="toggleDarkMode()">Auto</button>
+            <button class="dark-toggle-btn" id="darkToggleBtn" onclick="toggleDarkMode()" aria-label="Theme">🌓</button>
         </div>
     </div>
 
@@ -1978,15 +1978,18 @@
         let dark;
         if (pref === 'auto') {
             dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            btn.textContent = 'Auto';
+            btn.textContent = '🌓';
+            btn.title = 'Auto (tap to switch)';
             btn.classList.toggle('active', dark);
         } else if (pref === 'true') {
             dark = true;
-            btn.textContent = 'Dark';
+            btn.textContent = '🌙';
+            btn.title = 'Dark (tap to switch)';
             btn.classList.add('active');
         } else {
             dark = false;
-            btn.textContent = 'Light';
+            btn.textContent = '☀️';
+            btn.title = 'Light (tap to switch)';
             btn.classList.remove('active');
         }
         if (dark) document.documentElement.setAttribute('data-theme', 'dark');
@@ -2154,9 +2157,7 @@
     function saveToHistory(s, date) {
         if (s.holes === 0) return;
         let history = JSON.parse(localStorage.getItem('golfHistory')||'[]');
-        const isDup = history.some(r => r.date === date && r.course === currentCourse && r.gross === s.gross && r.pts === s.pts);
-        if (isDup) return;
-        // Save full hole-by-hole data
+        // Build hole-by-hole data
         const player = getActivePlayer();
         const holes = courseHoles.map((hole, i) => ({
             par: hole.par, si: hole.si,
@@ -2164,11 +2165,18 @@
             gir: player.gir[i] || '', fwy: player.fairways[i] || '',
             note: (player.notes && player.notes[i]) || ''
         }));
-        history.unshift({
+        const entry = {
             date, course: currentCourse, hcp: s.hcp,
             gross: s.gross, pts: s.pts, putts: s.putts, threePutts: s.threePutts || 0,
             gir: s.gir, fwy: s.fwy || 0, upDown: s.upDown || 0, upDownChances: s.upDownChances || 0, holes
-        });
+        };
+        // Update existing entry for same date+course instead of creating duplicates
+        const existingIdx = history.findIndex(r => r.date === date && r.course === currentCourse);
+        if (existingIdx !== -1) {
+            history[existingIdx] = entry;
+        } else {
+            history.unshift(entry);
+        }
         if (history.length > 50) history = history.slice(0, 50);
         localStorage.setItem('golfHistory', JSON.stringify(history));
     }
@@ -2262,6 +2270,9 @@
         const toggle = document.getElementById('moreToggle');
         section.classList.toggle('open');
         toggle.classList.toggle('open');
+        if (section.classList.contains('open')) {
+            setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
     }
 
     function toggleHistory() {
@@ -2270,9 +2281,15 @@
             section.classList.add('open');
             document.getElementById('moreToggle').classList.add('open');
         }
+        // Close other panels first
+        document.getElementById('statsPanel').classList.remove('open');
+        document.getElementById('comparePanel').classList.remove('open');
         const panel = document.getElementById('historyPanel');
         panel.classList.toggle('open');
-        if (panel.classList.contains('open')) renderHistory();
+        if (panel.classList.contains('open')) {
+            renderHistory();
+            setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
     }
 
     function renderHistory() {
@@ -2487,9 +2504,14 @@
             section.classList.add('open');
             document.getElementById('moreToggle').classList.add('open');
         }
+        document.getElementById('historyPanel').classList.remove('open');
+        document.getElementById('comparePanel').classList.remove('open');
         const panel = document.getElementById('statsPanel');
         panel.classList.toggle('open');
-        if (panel.classList.contains('open')) renderStats();
+        if (panel.classList.contains('open')) {
+            renderStats();
+            setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
     }
 
     function renderStats() {
@@ -2601,6 +2623,8 @@
             section.classList.add('open');
             document.getElementById('moreToggle').classList.add('open');
         }
+        document.getElementById('historyPanel').classList.remove('open');
+        document.getElementById('statsPanel').classList.remove('open');
         const panel = document.getElementById('comparePanel');
         panel.classList.toggle('open');
         if (panel.classList.contains('open')) {
@@ -2772,12 +2796,24 @@
         return data[course] && data[course][holeIdx] ? data[course][holeIdx] : null;
     }
     function setGreenMarker(course, holeIdx, position, lat, lng) {
-        // position: 'front', 'center', 'back'
+        // position: 'front', 'center', 'back', 'layup'
         const data = getPinData();
         if (!data[course]) data[course] = {};
         if (!data[course][holeIdx]) data[course][holeIdx] = {};
         data[course][holeIdx][position] = { lat, lng };
         savePinData(data);
+    }
+    function clearGreenMarkers(course, holeIdx) {
+        const data = getPinData();
+        if (data[course] && data[course][holeIdx]) {
+            delete data[course][holeIdx];
+            savePinData(data);
+        }
+    }
+    function clearPinsForHole(holeIdx) {
+        if (!confirm(`Clear all marked pins for Hole ${holeIdx + 1}?`)) return;
+        clearGreenMarkers(currentCourse, holeIdx);
+        if (cardViewActive) renderHoleCard();
     }
 
     function toggleGps() {
@@ -2842,10 +2878,13 @@
                 if (green.center) marked.push('C');
                 if (green.back) marked.push('B');
             }
-            if (marked.length > 0) {
+            const hasLayup = green && green.layup;
+            if (marked.length > 0 || hasLayup) {
+                const labels = marked.map(m => m === 'F' ? 'Front' : m === 'C' ? 'Center' : 'Back');
+                if (hasLayup) labels.push('Layup');
                 return `<div style="background: linear-gradient(135deg, #1b5e20 0%, #2E7D32 100%); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; text-align: center; cursor: pointer;" onclick="toggleGps()">
                     <div style="font-size: 0.85rem; font-weight: 700; color: #A5D6A7; margin-bottom: 4px;">📍 Green Saved</div>
-                    <div style="font-size: 0.8rem; color: #C8E6C9;">${marked.map(m => m === 'F' ? 'Front' : m === 'C' ? 'Center' : 'Back').join(' · ')}</div>
+                    <div style="font-size: 0.8rem; color: #C8E6C9;">${labels.join(' · ')}</div>
                     <div style="font-size: 0.7rem; color: #81C784; margin-top: 6px;">Tap to turn on GPS for live distances</div>
                 </div>`;
             }
@@ -2862,6 +2901,9 @@
                 <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'front')">Front</button>
                 <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'center')">Center</button>
                 <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem;" onclick="markGreen(${holeIdx},'back')">Back</button>
+            </div>
+            <div style="display:flex; gap:6px; margin-bottom:12px;">
+                <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem; background:#5D4037; color:#fff; border:none; border-radius:8px;" onclick="markGreen(${holeIdx},'layup')">🎯 Layup</button>
             </div>`;
         }
 
@@ -2879,23 +2921,53 @@
         const frontDist = distFor(green.front);
         const centerDist = distFor(green.center);
         const backDist = distFor(green.back);
+        const layupDist = distFor(green.layup);
 
-        // Main display is center, with front/back as secondary
-        const mainDist = centerDist || frontDist || backDist;
-        const mainMeters = Math.round(mainDist);
-        const mainYards = Math.round(mainDist * 1.09361);
-        const mainLabel = centerDist ? 'Center' : frontDist ? 'Front' : 'Back';
-
-        let secondaryHtml = '';
-        const parts = [];
-        if (frontDist !== null) parts.push(`<span style="color:#FF8A65">F: ${Math.round(frontDist)}m</span>`);
-        if (centerDist !== null) parts.push(`<span style="color:#fff">C: ${Math.round(centerDist)}m</span>`);
-        if (backDist !== null) parts.push(`<span style="color:#90CAF9">B: ${Math.round(backDist)}m</span>`);
-        if (parts.length > 1) {
-            secondaryHtml = `<div style="display:flex; gap:12px; justify-content:center; font-size:0.75rem; font-weight:700; margin-top:4px;">${parts.join('')}</div>`;
+        // Layup distance shown separately above green distances
+        let layupHtml = '';
+        if (layupDist !== null) {
+            const layupM = Math.round(layupDist);
+            const layupY = Math.round(layupDist * 1.09361);
+            layupHtml = `<div style="background:linear-gradient(135deg,#4E342E,#5D4037); border-radius:10px; padding:10px 14px; margin-bottom:8px; display:flex; align-items:center; gap:10px;">
+                <span style="font-size:1.1rem;">🎯</span>
+                <div>
+                    <span style="font-size:1.3rem; font-weight:800; color:#FFCC80;">${layupM}</span><span style="font-size:0.85rem; color:#FFCC80;"> m</span>
+                    <span style="font-size:0.8rem; color:#BCAAA4;"> / ${layupY} yds</span>
+                </div>
+                <span style="font-size:0.8rem; color:#BCAAA4; margin-left:auto;">Layup</span>
+            </div>`;
         }
 
-        // Which positions still need marking
+        // Build distance blocks — all positions shown equally
+        const distBlocks = [];
+        if (frontDist !== null) distBlocks.push({ label: 'Front', meters: Math.round(frontDist), yards: Math.round(frontDist * 1.09361), color: '#FF8A65' });
+        if (centerDist !== null) distBlocks.push({ label: 'Center', meters: Math.round(centerDist), yards: Math.round(centerDist * 1.09361), color: '#fff' });
+        if (backDist !== null) distBlocks.push({ label: 'Back', meters: Math.round(backDist), yards: Math.round(backDist * 1.09361), color: '#90CAF9' });
+
+        let distHtml = '';
+        if (distBlocks.length === 1) {
+            // Single pin — show large like before
+            const b = distBlocks[0];
+            distHtml = `<div style="display:flex; align-items:center; gap:10px;">
+                <span class="gps-icon">📍</span>
+                <div>
+                    <span class="gps-distance">${b.meters}</span><span class="gps-unit"> m</span>
+                    <span class="gps-secondary"> / ${b.yards} yds</span>
+                </div>
+                <span class="gps-unit" style="margin-left:auto;">${b.label}</span>
+            </div>`;
+        } else {
+            // Multiple pins — show as equal-sized blocks
+            distHtml = `<div style="display:flex; gap:6px;">` + distBlocks.map(b =>
+                `<div style="flex:1; text-align:center; background:rgba(0,0,0,0.25); border-radius:8px; padding:10px 4px;">
+                    <div style="font-size:0.75rem; font-weight:600; color:${b.color}; margin-bottom:4px;">${b.label}</div>
+                    <div style="font-size:1.4rem; font-weight:800; color:${b.color};">${b.meters}</div>
+                    <div style="font-size:0.75rem; color:${b.color}; opacity:0.8;">${b.yards} yds</div>
+                </div>`
+            ).join('') + `</div>`;
+        }
+
+        // Which green positions still need marking
         const missing = [];
         if (!green.front) missing.push('front');
         if (!green.center) missing.push('center');
@@ -2906,21 +2978,20 @@
                 `<button class="gps-mark-btn" style="flex:1; padding:12px; font-size:0.9rem; font-weight:600; background:#1b5e20; color:#fff; border:none; border-radius:8px;" onclick="markGreen(${holeIdx},'${p}')">📍 ${p[0].toUpperCase() + p.slice(1)}</button>`
             ).join('')}</div></div>`;
         } else {
-            markHtml = `<div style="text-align:center; margin-top:6px;">
+            markHtml = `<div style="text-align:center; margin-top:6px; display:flex; gap:8px; justify-content:center;">
                 <button class="gps-mark-btn" style="font-size:0.75rem; padding:6px 14px; opacity:0.7;" onclick="showRemarkOptions(${holeIdx})">Re-mark</button>
+                <button class="gps-mark-btn" style="font-size:0.75rem; padding:6px 14px; opacity:0.7; background:#7a1e1e; color:#fff;" onclick="clearPinsForHole(${holeIdx})">Clear pins</button>
+            </div>`;
+        }
+        // Layup mark/remark button
+        if (!green.layup) {
+            markHtml += `<div style="display:flex; gap:6px; margin-top:6px;">
+                <button class="gps-mark-btn" style="flex:1; padding:10px; font-size:0.85rem; background:#5D4037; color:#fff; border:none; border-radius:8px;" onclick="markGreen(${holeIdx},'layup')">🎯 Mark Layup</button>
             </div>`;
         }
 
-        return `<div class="gps-bar" id="gpsBar" style="flex-direction:column;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <span class="gps-icon">📍</span>
-                <div>
-                    <span class="gps-distance">${mainMeters}</span><span class="gps-unit"> m</span>
-                    <span class="gps-secondary"> / ${mainYards} yds</span>
-                </div>
-                <span class="gps-unit" style="margin-left:auto;">${mainLabel}</span>
-            </div>
-            ${secondaryHtml}
+        return `${layupHtml}<div class="gps-bar" id="gpsBar" style="flex-direction:column;">
+            ${distHtml}
             <div class="gps-accuracy">±${gpsAccuracy}m accuracy</div>
             ${markHtml}
         </div>`;
@@ -2937,7 +3008,8 @@
         row.innerHTML = `
             <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'front')">Front</button>
             <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'center')">Center</button>
-            <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'back')">Back</button>`;
+            <button class="gps-mark-btn" style="flex:1; padding:8px;" onclick="markGreen(${holeIdx},'back')">Back</button>
+            <button class="gps-mark-btn" style="flex:1; padding:8px; background:#5D4037;" onclick="markGreen(${holeIdx},'layup')">Layup</button>`;
         el.appendChild(row);
     }
 
@@ -2952,7 +3024,10 @@
             return;
         }
         const label = position[0].toUpperCase() + position.slice(1);
-        const confirm_ = confirm(`Mark ${label} of green for Hole ${holeIdx + 1}? (±${gpsAccuracy}m accuracy)`);
+        const confirmMsg = position === 'layup'
+            ? `Mark Layup point for Hole ${holeIdx + 1}? (±${gpsAccuracy}m accuracy)`
+            : `Mark ${label} of green for Hole ${holeIdx + 1}? (±${gpsAccuracy}m accuracy)`;
+        const confirm_ = confirm(confirmMsg);
         if (!confirm_) return;
         setGreenMarker(currentCourse, holeIdx, position, gpsCurrentPos.lat, gpsCurrentPos.lng);
         if (cardViewActive) renderHoleCard();
@@ -3404,9 +3479,49 @@
         }
     }, 1800);
 
-    // Feature 7: PWA - Register Service Worker
+    // One-time history cleanup: remove duplicate rounds, keep the one with most holes
+    (function() {
+        let history = JSON.parse(localStorage.getItem('golfHistory') || '[]');
+        if (!history.length) return;
+        const seen = {};
+        const cleaned = [];
+        history.forEach(r => {
+            const key = r.date + '|' + r.course;
+            if (!seen[key]) {
+                seen[key] = true;
+                // Find the best entry for this date+course (most holes scored)
+                const allForKey = history.filter(h => h.date === r.date && h.course === r.course);
+                const best = allForKey.reduce((a, b) => {
+                    const aHoles = a.holes ? a.holes.filter(h => h.score !== '').length : 0;
+                    const bHoles = b.holes ? b.holes.filter(h => h.score !== '').length : 0;
+                    return bHoles > aHoles ? b : a;
+                });
+                cleaned.push(best);
+            }
+        });
+        if (cleaned.length < history.length) {
+            localStorage.setItem('golfHistory', JSON.stringify(cleaned));
+        }
+    })();
+
+    // Feature 7: PWA - Register Service Worker with auto-update
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(() => {});
+        navigator.serviceWorker.register('sw.js').then(reg => {
+            // Check for updates immediately and every 60 seconds
+            reg.update().catch(() => {});
+            setInterval(() => reg.update().catch(() => {}), 60000);
+            // When a new SW is waiting, activate it immediately
+            reg.addEventListener('updatefound', () => {
+                const newWorker = reg.installing;
+                if (newWorker) {
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'activated') {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        }).catch(() => {});
     }
 
     // Offline detection

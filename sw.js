@@ -1,4 +1,4 @@
-const CACHE_NAME = 'karake-golf-v69';
+const CACHE_NAME = 'karake-golf-v74';
 
 self.addEventListener('install', event => {
     self.skipWaiting();
@@ -15,16 +15,40 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
 
-    // Network-first for HTML
+    // Network-first for HTML, with 3s timeout fallback to cache
     if (event.request.mode === 'navigate' || url.pathname.endsWith('.html')) {
         event.respondWith(
-            fetch(event.request)
-                .then(response => {
-                    const clone = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-                    return response;
-                })
-                .catch(() => caches.match(event.request))
+            new Promise(resolve => {
+                let settled = false;
+                // Timeout: fall back to cache after 3 seconds
+                const timer = setTimeout(() => {
+                    if (!settled) {
+                        settled = true;
+                        caches.match(event.request).then(cached => {
+                            resolve(cached || new Response('Offline', { status: 503 }));
+                        });
+                    }
+                }, 3000);
+                fetch(event.request)
+                    .then(response => {
+                        if (!settled) {
+                            settled = true;
+                            clearTimeout(timer);
+                            const clone = response.clone();
+                            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                            resolve(response);
+                        }
+                    })
+                    .catch(() => {
+                        if (!settled) {
+                            settled = true;
+                            clearTimeout(timer);
+                            caches.match(event.request).then(cached => {
+                                resolve(cached || new Response('Offline', { status: 503 }));
+                            });
+                        }
+                    });
+            })
         );
         return;
     }
