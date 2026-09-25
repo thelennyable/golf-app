@@ -25,6 +25,7 @@ Cycle 2: drive-in-stands, neighborhood-groceries, ice-cream-parlors, grade-schoo
 Cycle 3: mccray, restaurants, jims-pizza, movies, v-and-a
 Cycle 4: burger-chef, christmas, gas-stations, youth-center, mccray-hospital
 Cycle 5: barbers, taverns, tornado-1992, cruising, shooks
+Cycle 6 (new): bowling (Park Avenue alley, Bud and Maxine Campbell) from youth-center.txt threads 2-3, split out by the youth-center evaluator
 
 ## Chapters (written and verified)
 Cycle 1 (all PASS, independent verifier, cut-only repairs):

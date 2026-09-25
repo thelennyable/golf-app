@@ -21,7 +21,7 @@ After one of those games, in the seventies, the fixin' table became ammunition. 
 
 It was also, for a stretch, the place for streakers. A car would drop one off at one door; the streaker would run straight through the dining room and out the other door into the same car, which had circled around to meet him. At least once it was done in nothing but a stocking cap. It stopped, as the story goes, only when they locked one of the doors.
 
-The town had a name for it, too: Barf and Choke. And if you ever worked the counter and said "Welcome to Barf and Choke" to a customer within earshot of the manager, you learned exactly how much the manager loved it.
+The town had a name for it, too: Barf and Choke. And if you ever worked the counter and greeted a customer with "Welcome to Barf and Choke" within earshot of the manager, you learned exactly how much the manager loved it.
 
 ## The first job for so many
 
