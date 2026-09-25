@@ -2,7 +2,7 @@
 
 Independent verifier. Inputs: chapter file; christmas.txt (Drive 1_DRZN3z6vWM09QfoCABbs6ISMXCDb30C, 262 comments, read in full); main-street-stores.txt (Drive 1TgnTVyNwXz23-EnrWtsKCtJoCpIM1S_K, grepped for every Christmas/Penney's/popcorn/Stroman/magical line); dossier.md; web search. WebFetch is blocked by the egress proxy for kpcnews.com and wane.com, so web evidence is from search-result snippets and is marked that way.
 
-**Verdict: PASS** after cuts. 28 claims checked, 6 cuts (5 sentences or clauses and 2 whole paragraphs, listed below).
+**Verdict: PASS** after cuts. 28 claims checked, 6 cuts (2 whole paragraphs, 2 sentence cuts in the loss paragraph, 2 phrase or clause cuts; listed below).
 
 ## Step 0: attribution and em-dash sweep
 Original body: no hits on the skill's grep list, "—" or "facebook". One first-person "I" ("I miss those days"), which is cut. Final sweep output is at the end.

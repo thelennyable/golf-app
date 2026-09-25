@@ -39,7 +39,7 @@ The building, the town will tell you, is an Arby's now. The caboose was moved, a
 
 *Sources checked:*
 *Comment record: three Kendallville nostalgia-group threads on Burger Chef (burger-chef.txt), read in full; every memory in the chapter traces to it.*
-*Burger Chef as an Indianapolis chain, the Works Bar, the Fun Meal and Burger Chef and Jeff: https://en.wikipedia.org/wiki/Burger_Chef and https://blog.history.in.gov/burger-chef-hoosier-fast-food-pioneer/ (search excerpts).*
+*Burger Chef as an Indianapolis chain, the Works Bar, the Fun Meal and Burger Chef and Jeff: https://en.wikipedia.org/wiki/Burger_Chef (search excerpt).*
 *1982 sale to Imasco, owner of Hardee's: https://en.wikipedia.org/wiki/Burger_Chef (search excerpt) and the comment record.*
 *Arby's at 450 W North St, Kendallville: https://www.arbys.com/locations/us/in/kendallville/450-w-north-st/store-6565/ ; that it stands on the Burger Chef site rests on the comment record.*
 *The caboose on State Road 3 south of Avilla, east side, and its Hardee's paint: http://www.fwarailfan.net/community/viewtopic.php?t=3445 (search excerpt, undated) and the comment record.*
