@@ -55,3 +55,6 @@ on the chapter body (above the notes). Fix every hit (second person is the fix o
 ## Report back (short)
 slug, verdict, chapter filename, title, word count of the body (`sed '/^---$/q' file | wc -w`), whether the whole dump was
 readable, and the three riskiest factual claims you kept.
+
+## PRIVATE SCRATCH
+Other agents run in parallel. If you save a dump or any temp file to disk, use a path containing your slug, e.g. /tmp/kv-<slug>-<role>/dump.txt. Never write a shared name like /tmp/dump.txt.

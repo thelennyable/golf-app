@@ -33,3 +33,6 @@ Then produce the final chapter:
 
 Verdict for the chapter overall: PASS (publishable after your cuts) or FAIL (too much cut to stand; say why).
 Report back briefly: PASS/FAIL, number of claims checked, number cut, the most serious problem found, final body word count, Drive ids.
+
+## PRIVATE SCRATCH
+Other agents run in parallel. If you save a dump or any temp file to disk, use a path containing your slug, e.g. /tmp/kv-<slug>-<role>/dump.txt. Never write a shared name like /tmp/dump.txt.
