@@ -2,7 +2,7 @@
 
 Independent book-verification-pass, 25 Sep 2026. Verifier did not write the chapter. Dump: Drive burger-chef.txt (1fLSSn5xGTzi1yZv6Brea4NqF6zIFvKAV; 359 counted, three posts), read in full. Dossier (1U06ZBOrIGqIqw50SgI7zgUJ2-3Z_NNA9) read. Writer's notes treated as untrusted leads; counts re-made from the dump.
 
-**Verdict: PASS** after 8 cuts (one sentence-opening changed as a join). 44 claims checked.
+**Verdict: PASS** after 7 cuts plus 1 join-only wording change. 44 claims checked.
 
 ## Step 0: sweep (original body)
 Grep list plus "—" and "facebook": no hits in the body (hits only inside Writer's notes, since removed). Clean after cuts (output at end).
