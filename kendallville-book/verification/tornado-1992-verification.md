@@ -3,7 +3,7 @@
 Independent verifier. Dump read in full from Drive (tornado-1992.txt, 1U4ZJz1ohJ4l_e5utcqrcMt6KEwF1TnAe, 335 comments, 3 posts). Dossier read. Writer's notes treated as leads only.
 Web note: WebFetch and curl to tornadotalk.com, kpcnews.com and ncei.noaa.gov (Storm Events) are blocked by the egress proxy; web facts below are from search-result excerpts of those pages, run by this verifier. NCEI Storm Events page for the event surfaced in search (https://www.ncdc.noaa.gov/stormevents/eventdetails.jsp?id=10115210) but could not be opened.
 
-**Verdict: PASS** (after cuts). Claims checked: 44. Cut or changed: 8 (7 cuts, 1 reorder).
+**Verdict: PASS** (after cuts). Claims checked: 49. Cut or changed: 8 (7 cuts, 1 reorder).
 
 ## Verdict table (most dangerous first)
 
