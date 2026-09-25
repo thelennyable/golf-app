@@ -21,7 +21,7 @@ Your first conversation with the person you married could happen right on the si
 
 ## Beef's
 
-Down on South Main, across from where Max Platt Ford used to be, stood a building that had been a meat locker, back before most families had a freezer at home. Then it was a tavern. It was Nesbitt's, and then the Locker Room, and then a man everybody called Beef bought it and it was Beef's. There really were not any windows to speak of. There was a Spanish class at the high school where the assignment one afternoon was to give directions, in Spanish, from the school to Beef's.
+Down on South Main, across from where Max Platt Ford used to be, stood a building that had been a meat locker, back before most families had a freezer at home. Then it was a tavern. It was Nesbitt's, and then the Locker Room, and then it belonged to Beef, and it was Beef's. There really were not any windows to speak of. There was a Spanish class at the high school where the assignment one afternoon was to give directions, in Spanish, from the school to Beef's.
 
 It closed, and it stayed closed. The building is still there, empty for years, the name still on the sign, and on the sign, the price of the vodka.
 
@@ -31,15 +31,15 @@ Indiana made you wait until twenty-one. Michigan did not. From the first day of 
 
 The place everybody drove to has two names, and the argument has never been settled. Most people call it the Madison House. A stubborn crowd insists it was the Matteson House, after Matteson Street, the road through Bronson that ran on out of town, and they will tell you that most people just could not remember the right name after a couple of drinks. Plenty of people split the difference and called it the Mad House.
 
-It was a club built in a barn, out in the country north of Bronson. There were egg cartons on the ceiling. There was a pool table by the door and a bar and then tables, a crowd so thick when it was packed that walking through it felt like walking through a cave, and a band thumping out pounding rock from the stage. The drinks were watered down, and it was fun anyway. The dance floor had a bounce in it. A grandmother sat at the door checking IDs, for what that was worth. You may still have the satin jacket that said The Mad House. Whether the floor by the stage was ever dirt, nobody agrees.
+It was a club built in a barn, out in the country north of Bronson. There were egg cartons on the ceiling. You passed a pool table, then the bar, then the tables, through a crowd so thick when it was packed that walking through it felt like walking through a cave, and a band thumping out pounding rock from the stage. The drinks were watered down, and it was fun anyway. The dance floor had a bounce in it. A grandmother at the door checked IDs, for what that was worth. You may still have the satin jacket with The Mad House on it. Whether the floor by the stage was ever dirt, nobody agrees.
 
-Sturgis was closer. There was the party store for carry-out, and a bottle of Boone's Farm. There was the Pizza Hut, with pitchers and Michelob on draft. There was the Nail, or the Rusty Nail, and above all there was the Sturgis bowling alley, where you were every weekend and ordered a slow gin fizz. Past all of it, a very long way off, was the Time Tunnel in Kalamazoo.
+Sturgis was closer. There was the party store for carry-out, and a bottle of Boone's Farm. There was the Pizza Hut, with pitchers and Michelob on draft. There was the Nail, or the Rusty Nail, and above all there was the Sturgis bowling alley, where you were every weekend and ordered a slow gin fizz. Much farther off was the Time Tunnel in Kalamazoo.
 
 Ohio would serve you at eighteen too, but only 3.2 beer, which was the catch. You went anyway, to Charlie's or the Palace in Hicksville, or to a big place with a band called Our Place, where it could seem half the room was from Kendallville.
 
 ## Only in memories
 
-Not everybody went. Plenty of people grew up in Kendallville and never set foot in any of them. But the ones who went kept the names, and when the bars still closed at three, the night ended over coffee and biscuits at the Chuck Wagon, which is another chapter.
+Not everybody went. Plenty of people grew up in Kendallville and never set foot in any of them. But when the bars still closed at three, the night ended over coffee and biscuits at the Chuck Wagon, which is another chapter.
 
 Rudy's is closed. Beef's is a sign on an empty building. The Mad House is gone, and if you stand where the door used to be, you can still walk it in your head: past the pool table, past the bar, through the tables to the seat right in front of the stage. The whole town is down to a couple of bars, and Main Street has its empty buildings. The screen doors, the fans, the smoke and the jukebox exist now only in memory, along with the person who walked through them at eighteen. You always knew you would turn into your grandparents one day. You just never thought it would happen so fast.
 
