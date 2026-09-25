@@ -11,6 +11,10 @@
 - Drive connector limit: it creates files and cannot overwrite them. Corrected versions would land beside the originals.
   For that reason chapters are uploaded only once, after verification.
 
+- MEASURED: the environment network policy denies direct fetches of kpcnews.com, wane.com, kendallvillein.gov,
+  hitefuneralhome.com, en.wikipedia.org (proxy CONNECT 403). WebSearch still works, so web checks rest on search snippets.
+  Fix (Lenny): environment settings > Network access, add those domains or pick a broader level.
+
 ## Method
 Per subject: evaluator (reach from INDEX.tsv as measured by research, texture from reading) -> writer -> independent
 verifier subagent (book-verification-pass, cut-only repairs) -> Drive upload.
