@@ -43,5 +43,5 @@ Every neighborhood should have a store like that. They are all gone now. What is
 
 *Sources checked:*
 *Riley Street Grocery run by the Haskins, near the schools; South Side Market at 900 S. Main sold 1950 to Tom Johnson (with Charles Wagner), bought by Larry and Dick Blue 1975: Dennis Nartker, "Grocery stores used to abound in Kendallville," KPC News (search-result text; page blocked to direct fetch), https://www.kpcnews.com/columnists/dennis_nartker/kpcnews/article_0941f5c7-6053-53e0-afa6-e527b4074416.html*
-*Dental office at 900 S. Main St.: Trinity Dental listing, https://www.bbb.org/us/in/kendallville/profile/dentist/trinity-dental-0352-90107937 (address via search result) and https://doctor.webmd.com/practice/trinity-dental-66f2d10b-c1f9-42ec-890b-eac611207257*
+*Dental office at 900 S. Main St.: Trinity Dental listings, https://dentistsok.com/dental-clinic/trinity-dental-kendallville-in/ and https://www.bbb.org/us/in/kendallville/profile/dentist/trinity-dental-0352-90107937 (address from search-result text; pages not fetched directly)*
 *Ley's on West William Street as the west-end bus stop, the Diamond Street store now a house, and all other memories: the comment dump (718 comments, three threads). A web search for Ley's grocery found no published source.*
