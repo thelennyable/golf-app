@@ -35,3 +35,5 @@ Cycle 1 (all PASS, independent verifier, cut-only repairs):
 5. The Kendallville Foundries (working-plants) 1,085 w, 42 claims, 14 cuts. Drive copy is named kendallville-smelled-like-money.md (title was cut; Drive cannot rename from here).
 Lessons: writers embellished (brief now bans invented texture); single-comment title phrase fails dosage (brief now requires 3+).
 Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).
+- Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),
+  not a grocery. It goes to the restaurants chapter (cycle 3): its writer must read dumps/supermarkets.txt thread 3 too.
