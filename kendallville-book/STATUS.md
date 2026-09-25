@@ -46,6 +46,12 @@ Cycle 3 (all PASS):
 13. Vince and Tony (V&A, Jade Buddha) 873 w, 57 claims, 13 cuts
 14. After School and After the Bars (Chronister's, Chuck Wagon, Publix Corners Cafe) 983 w, 48 claims, 6 cuts
 15. Until They Closed the Doors (McCray plant and mansion) 874 w, 42 claims, 10 cuts
+Cycle 4 (all PASS):
+16. I Was Born There (McCray Memorial Hospital) 1,099 w, 38 claims, 3 cuts
+17. Skate Night (Youth Center) 724 w, ~40 claims, 11 cuts
+18. It Was Magical (Christmas on Main) 573 w, 28 claims, 6 cuts (short)
+19. Eating in the Caboose (Burger Chef) 863 w, 44 claims, 7 cuts
+20. The Filling Stations 1,032 w, 49 claims, 13 cuts. Title cut (2 comments); Drive copy named kendallville-a-pop-and-a-candy-bar.md.
 Lessons: writers embellished (brief now bans invented texture); single-comment title phrase fails dosage (brief now requires 3+).
 Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).
 - Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),
