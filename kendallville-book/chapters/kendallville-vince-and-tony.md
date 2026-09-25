@@ -23,7 +23,7 @@ And it was full of mothers. Ask around and you will hear it over and over: my mo
 
 The V&A was also where life got marked. Wedding rehearsal dinners and wedding receptions, family parties, work Christmas parties. Teams ate their pre-game meals there, football before home games, basketball before games at East Noble. And if you were in town for the blizzard of '78 and walked uptown every day, the V&A had hot chocolate, and coffee and hot chocolate was about all they had left.
 
-Then there was upstairs. The Eagles were up a flight of narrow stairs, right above the restaurant or next door, depending on who you ask, and nobody fully agrees. Those stairs were murder to carry a Fender amp up, and square dances got called up there. Later there was a disco, the word painted right there on the side of the awning, and Don Moore spun the records. You went for the dancing on weekends, and you might have met your wife there. At one time it was pretty much the only entertainment in town. Plenty of people do not remember a disco at all.
+Then there was upstairs. The Eagles were up a flight of narrow stairs, right above the restaurant or next door, depending on who you ask, and nobody fully agrees. Those stairs were murder to carry a Fender amp up, and square dances got called up there. Later there was a disco, the word right there on the side of the awning, and Don Moore spun the records. You went for the dancing on weekends, and you might have met your wife there. At one time it was pretty much the only entertainment in town. Plenty of people do not remember a disco at all.
 
 ## The Jade Buddha
 

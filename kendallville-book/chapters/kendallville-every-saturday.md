@@ -1,7 +1,7 @@
 # Every Saturday
 *The Strand Theatre and the Hi-Vue Drive-In*
 
-It was for kids first. Kids with a handful of pennies, kids on bikes, kids who went to the show just about every Saturday because that was simply what Saturday was for. You could be seven years old, standing in line on Main Street with your brother and no parent anywhere in sight. Life was simple. In the fifties the bikes lined up along the curb on a Saturday afternoon, what seemed like hundreds of them, all the way down to the Palace of Sweets, and inside the Strand it was the Three Stooges, Ma and Pa Kettle, Francis the Talking Mule and the other shorts, and then a double feature. Twelve cents, if you could talk your grandpa out of a few more pennies. Life was great for a kid in those days.
+It was for kids first. Kids with a handful of pennies, kids on bikes, kids who went to the show just about every Saturday. You could be seven years old, standing in line on Main Street with your brother and no parent anywhere in sight. Life was simple. In the fifties the bikes lined up along the curb on a Saturday afternoon, what seemed like hundreds of them, all the way down to the Palace of Sweets, and inside the Strand it was the Three Stooges, Ma and Pa Kettle, Francis the Talking Mule and the other shorts, and then a double feature. Twelve cents, if you could talk your grandpa out of a few more pennies. Life was great for a kid in those days.
 
 Later it was a quarter to get in, thirty-five cents if it was a special picture. Popcorn was a dime and candy was a nickel, and you can still see yourself at that candy counter waiting on your Milk Duds.
 
@@ -15,9 +15,9 @@ Go around the corner to the left and there were the stairs to the balcony.
 
 ## Mr. Point
 
-The balcony was the prize. It was a treat to go to the Strand at all, and even better if you got to sit up there. But the balcony was also where Cleon Point did his patrolling. He ran the Strand, and Mr. Point made sure everyone behaved. If you were fidgeting up there during the movie, he could come up out of nowhere and grab your arm. One warning was all you got. Two, and you were watching the rest of it from the ground floor.
+The balcony was the prize. It was a treat to go to the Strand at all, and even better if you got to sit up there. But the balcony was also where Cleon Point did his patrolling. He ran the Strand, and Mr. Point made sure everyone behaved. If you were fidgeting up there during the movie, he could sneak up there and grab your arm. One warning was all you got. Two, and you were watching the rest of it from the ground floor.
 
-And yet he was the sweetest man. He wore a hat a lot. He always looked sharp. He acted rough and tough, and underneath it he was kind. He ran the Strand like a true gentleman. You could sit through the same Godzilla picture over and over on a Saturday and he never threw you out.
+And yet. He wore a hat a lot. He always looked sharp. He acted rough and tough, and he was the sweetest man. He ran the Strand like a true gentleman. You could sit through the same Godzilla picture over and over on a Saturday and he never threw you out.
 
 They say the Strand is haunted now, that Cleon Point still walks the aisles and the balcony. If you ever worked for him, you have an answer to that: he did that when he was alive.
 
@@ -31,7 +31,7 @@ And when the picture was over you walked to the Palace of Sweets, or to Central 
 
 ## The first job
 
-For a lot of Kendallville teenagers the Strand was also the first paycheck. Candy counter, ticket booth, usher, janitor, and changing the letters on the marquee after the movie. The pay was thirty-five cents an hour in 1963. Later it was $1.25, and $1.90 by the middle seventies. You might work the Hi-Vue and the Auburn-Garrett too. The best part of the job was seeing all the new movies for free, up in the balcony. There was an upstairs room full of old posters that would be worth a fortune today.
+For a lot of Kendallville teenagers the Strand was also the first job. Candy counter, ticket booth, usher, janitor, and changing the letters on the marquee after the movie. The pay was thirty-five cents an hour in 1963. Later it was $1.25, and $1.90 by the middle seventies. You might work the Hi-Vue and the Auburn-Garrett too. The best part of the job was seeing all the new movies for free, up in the balcony. There was an upstairs room full of old posters that would be worth a fortune today.
 
 Kendallville families began at that concession stand, with a boy on the other side of the counter asking the girl who worked there for her phone number.
 
@@ -43,7 +43,7 @@ Out on State Road 3 was the Hi-Vue Drive-In. The Hi-Vue was where you went with 
 
 You might have lain on the hood of the car with a big box of popcorn and woken up the next morning in your own bed, having missed most of the movie. It was a fine place to catch up on your sleep. If it rained the night you saw Old Yeller, you might have believed for years that the sad scene was shot in the rain.
 
-Then you got older and the back seat meant something else. It was four couples in a car, and everyone out of the cars and talking to people in other cars. It was a knock on the window from the kid walking the lot. It was where people met the one they married. Jailhouse Rock, The Fantastic Voyage, The Love Bug, Star Wars, An Officer and a Gentleman: the Hi-Vue showed them all.
+Then you got older and the back seat meant something else. It was four couples in a car, and everyone out of the cars and talking to people in other cars. It was a tap on the window from whoever was walking the lot. It was where people met the one they married. Jailhouse Rock, Fantastic Voyage, The Love Bug, Star Wars, An Officer and a Gentleman: the Hi-Vue showed them all.
 
 It is where Snyder's is now.
 
@@ -62,7 +62,7 @@ Checkable claims:
 - Twinned in 1980. Dump: Seth T. Smolinske "1980" (reply to when it became a twoplex), Jeff Jarrett and Philip Schweier on the split/two counters. Web: Cinema Treasures summary "In 1980, the Hudson's twinned the Strand Theatre" https://cinematreasures.org/theaters/2490 (search summary; page egress-blocked). Web also says the outside booth was removed in 1980; not asserted in the chapter since the dump doesn't state it.
 - Hi-Vue on State Road 3, now Snyder's. Dump: Philip Schweier "Hi-Vue on SR3"; Adam Klein address 3273 N Old State Rd 3; Snyder's in 4 comments (Amy Marie McKee, Deborah Pattee-Chiles, Ryan Walkup, Neal Hart). Web: Cinema Treasures Hi-Vue, 3273 N Old State Road 3, now Snyder Food Services https://cinematreasures.org/theaters/53590 (search summary).
 - Strand still showing movies. Dump: Josh Ogle worked there until about 2 years ago, current owner. Web: WANE 15 "New owner reopens Kendallville's Strand Theatre" https://www.wane.com/top-stories/new-owner-reopens-kendallvilles-strand-theatre/ and 21Alive 30 Jul 2026 (search summaries). Owner not named in chapter (dump's named owner is out of date).
-- Jaws 1975 line to Klinkenberg's: David Harding (1). Smokey and the Bandit line: Lisa Lowder Lobo (1). Star Wars line: Jeana Dowd (1). Three comments on lines, so "some movies were events" is licensed; each specific line is rendered singly.
+- Jaws 1975 line to Klinkenberg's: David Harding (1). Klinkenberg's not web-checked (a downtown business also named by Dan Walburn). Smokey and the Bandit line: Lisa Lowder Lobo (1). Star Wars line: Jeana Dowd (1). Three comments on lines, so "some movies were events" is licensed; each specific line is rendered singly.
 - Kraft Christmas party, Santa in lobby: Robert Schlotter + Kim A. Sebert (2). Thanksgiving parade Santa, candy and fruit: Terri Sowards (1).
 - Prices: 25/35 cents, popcorn dime, candy nickel: Charlotte Mathis Combs (1). Twelve cents: John Carter (1). Milk Duds: Lisa Radcliffe Kosmac (1). Adult price at 12: Jill Jollief, Lisa Lowder Lobo (2). Tall-kid cashier: Jill Jollief (x2) + Mary Jane Spice "had same problem", birth certificate (1).
 - Outdoor booth: Linette Hayes, Kay Krull, Karen Gerber Ziebell, Lisa Lowder Lobo, Jill Jollief (5). Selling from inside when cold: Kay Krull (1).

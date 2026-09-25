@@ -1,13 +1,13 @@
 # Until They Closed the Doors
 *The McCray Refrigerator plant and the McCray mansion*
 
-Ask a Kendallville family whether their people worked at McCray's and you do not get a yes. You get a family tree. My dad. My dad and my two uncles and a pile of cousins. My grandpa, and my grandma too. My mother, before I was born. A boy could start there at fourteen and stay until he retired. A man could work the porcelain furnaces for the better part of half a century. You could meet your wife there, and your children could come along behind you and work in the same building. For generations of this town, the refrigerator plant was simply where the family worked.
+Ask a Kendallville family whether their people worked at McCray's and you do not get a yes. You get a family tree. My dad. My dad and my two uncles and a pile of cousins. My grandpa, and my grandma too. My mother, before I was born. A boy could start there at fourteen and stay until he retired. You could work the porcelain furnaces for the better part of half a century. You could meet your wife there, and your children could come along behind you and work in the same building. For generations of this town, the refrigerator plant was simply where the family worked.
 
-It was Elmer McCray's company, and it built refrigerators, and it had room in it for nearly every kind of work a town could want. There was the assembly line at the north end, and the M-line and line 5 and line 7, where you could learn electric wiring and industrial assembly from the ground up. There were the porcelain furnaces and the pattern shop, the welders and the foremen. There was the print shop, the drafting room, the switchboard, the punch cards for the computers. There was the office, where a girl could land her first job out of high school, and the advertising department, where a man could stay for decades. You could drive semi for them and bring home green stamps.
+It was Elmer McCray's company, and it built refrigerators, and it had room in it for nearly every kind of work a town could want. There was the assembly line at the north end, and the M-line and line 5 and line 7, where you could learn electric wiring and industrial assembly from the ground up. There were the porcelain furnaces and the pattern shop, the welders and the foremen. There was the print shop, the drafting room, the switchboard, the punch cards for the computers. There was the office, where a girl could land her first job out of high school, and the advertising department, where you could stay for decades. You could drive semi for them and bring home green stamps.
 
 For a kid out of high school it was the summer job. If you landed on the line there you were making big money, $4.35 an hour, after $2.17 at Flint & Walling. You met some of the most interesting characters of your life, and those characters were what made it a fun place to work. At quitting time the men ran for the time clock, and if your lunch pail had been quietly screwed to the workbench, you grabbed it on the run and it jerked you clean off your feet. It was always funny, right up until it happened to you. At noon the Dairy Queen scooter came down selling brazier burgers and shakes, and a tray went down on a rope from the second-floor windows to meet it.
 
-There were women in the plant who wrote letters and tucked them inside refrigerators being shipped overseas to soldiers. Some of the soldiers wrote back, and some of those answers were kept.
+There were women in the plant who tucked letters inside refrigerators being shipped overseas to soldiers. Some of the soldiers answered, and some of those answers were kept.
 
 By the late 1960s the company belonged to Litton Industries, and in the early seventies the refrigerator business closed its doors. That is the phrase the town uses, over and over, about fathers and uncles and themselves: worked there until they closed the doors. The sentence does not need anything added to it.
 
@@ -15,7 +15,7 @@ The building did not empty all at once. Other outfits moved into pieces of it. W
 
 Then it stood empty, and it went on standing empty. Trees came up inside it. Looking at pictures of the inside was, for anybody who had worked the line, like looking at the Titanic after you had sailed on her. The city wanted it down. People who drove past wanted something smaller: a brick from it, when the time came. Then it burned, and the south end was still smoking hours afterward while people drove by to look. Gone for good now. All of our history is disappearing, and the plant is the first proof Kendallville points to.
 
----
+* * *
 
 Elmer McCray's house still stands.
 
