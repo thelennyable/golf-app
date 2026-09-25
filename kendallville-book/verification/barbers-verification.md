@@ -2,7 +2,7 @@
 
 Independent verifier (did not write the chapter). Dump: Drive barbers.txt (1pkm47l0JlRhanT5HxfsAHLwFFoKMTcsV), 3 threads, 455 comments, read in full. Dossier read (no conflicts listed at research stage).
 
-**Overall verdict: PASS** after cuts. Claims checked: 34. Cut or corrected: 13 (11 cuts, 1 spelling correction, 1 clause trim).
+**Overall verdict: PASS** after cuts. Claims checked: 34. Edits: 13 diff items (sentence and clause cuts, plus 1 spelling correction to the published form Shaneline).
 
 **Most serious problem:** "Gabby Davis ran a barbershop in Kendallville for more than forty years." The only source (Hite Funeral Home obituary) says "more than 40 years before retiring in 1978", but the same obituary has him graduating Kendallville High School in 1945 and then serving in the Army paratroopers in Japan, which leaves about 30 years at most; the dump also has him working for Pete Failor rather than running his own shop in the early years. Internally inconsistent source: cut.
 
