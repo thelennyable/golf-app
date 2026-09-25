@@ -27,4 +27,11 @@ Cycle 4: burger-chef, christmas, gas-stations, youth-center, mccray-hospital
 Cycle 5: barbers, taverns, tornado-1992, cruising, shooks
 
 ## Chapters (written and verified)
-(none yet)
+Cycle 1 (all PASS, independent verifier, cut-only repairs):
+1. One Last Walk-Thru (old school) 1,099 w, 34 claims, 11 cuts
+2. We Lived at the Lake (Bixler) 1,020 w, 55 claims, 16 cuts
+3. Walking Uptown (Main Street stores) 968 w, 49 claims, 17 cuts
+4. Don't Say Yes and Mean No (teachers) 777 w, 41 claims, 24 cuts
+5. The Kendallville Foundries (working-plants) 1,085 w, 42 claims, 14 cuts. Drive copy is named kendallville-smelled-like-money.md (title was cut; Drive cannot rename from here).
+Lessons: writers embellished (brief now bans invented texture); single-comment title phrase fails dosage (brief now requires 3+).
+Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).

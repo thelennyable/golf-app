@@ -36,7 +36,8 @@ Must-haves:
   the dump for another real detail; never fill it. Shorter and true beats longer and embroidered: 800 words is fine.
 - Step 0: confirm what the comments are actually about.
 - 800-1,200 words. Feeling first, history second. Open on who the place was for. End on loss without wallowing.
-- Title pulled from a phrase residents actually wrote, format first line: `# Title` then `*Place*` on the next line.
+- Title pulled from a phrase residents actually wrote, and the phrase must recur in 3+ distinct comments (a single-comment
+  phrase fails the dosage test and gets cut by the verifier), format first line: `# Title` then `*Place*` on the next line.
 - ZERO em dashes (—) and no en-dash used as a dash. Source invisible: no Facebook, thread, comments, "one woman", "someone
   remembers", "says", "recalls", "swears", etc. One comment never licenses a plural; use second person instead.
 - No named private individuals unless they are public figures of the place (owner, founder, the proprietor everyone knew).
