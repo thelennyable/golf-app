@@ -3,7 +3,7 @@
 
 This is for the kids with a car, or with a friend who had one, and a Friday night in front of them. It is for the carhop who was fifteen and working her very first job. It is for the Little Leaguer riding out to Kelsey's in the back of a pickup after a win, and for the family that did not go out to eat much, so that when they did, it was the Redwood, and it was a treat.
 
-You could call it cruising, or dragging, or chopping. In Kendallville it was mostly chopping. You chopped town. The route was simple and it never got old: down through town, around the DQ, around the Redwood, back through town, and repeat, all night long, on a dollar's worth of gas. If you felt daring you could head east on 6 out to Kelsey's for fries and a Black Cow, which was a root beer float, and then blow that pop stand and go chop Bixler Lake before coming back around to the DQ again.
+You could call it cruising, or dragging, or chopping. In Kendallville it was mostly chopping. You chopped town. The route went like this: down through town, around the DQ, around the Redwood, back through town, and repeat, all night long, on a dollar's worth of gas. Or you could drag east on 6 out to Kelsey's for fries and a Black Cow, which was a root beer float, and then blow that pop stand and go chop Bixler Lake before coming back around to the DQ again.
 
 ## The Redwood
 
