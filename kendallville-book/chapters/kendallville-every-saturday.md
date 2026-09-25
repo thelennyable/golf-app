@@ -19,7 +19,7 @@ The balcony was the prize. It was a treat to go to the Strand at all, and even b
 
 And yet. He wore a hat a lot. He always looked sharp. He acted rough and tough, and he was the sweetest man. He ran the Strand like a true gentleman. You could sit through the same Godzilla picture over and over on a Saturday and he never threw you out.
 
-They say the Strand is haunted now, that Cleon Point still walks the aisles and the balcony. If you ever worked for him, you have an answer to that: he did that when he was alive.
+They say the Strand is haunted now.
 
 ## The line down the block
 
@@ -55,5 +55,5 @@ The Strand is still on Main Street, still showing movies. But the booth out fron
 - Twinned in 1980, outside ticket booth removed: Cinema Treasures, https://cinematreasures.org/theaters/2490
 - Hi-Vue at 3273 N Old State Road 3, site now Snyder Food Services: Cinema Treasures, https://cinematreasures.org/theaters/53590
 - Strand at 221 S. Main St. and showing movies in 2026: WANE 15, https://www.wane.com/top-stories/new-owner-reopens-kendallvilles-strand-theatre/ ; 21Alive, 30 Jul 2026, https://www.21alivenews.com/2026/07/30/new-owner-brings-kendallvilles-historic-strand-theatre-back-life/ ; Yelp listing, https://www.yelp.com/biz/strand-theatre-kendallville
-- Haunted reputation: https://www.indianahauntedhouses.com/real-haunt/strand-theatre.html and https://www.hauntedplaces.org/item/strand-theatre-2/ (search summaries describe the ghost as an unnamed previous owner; the Cleon Point version is the comment record's)
+- Haunted reputation: https://www.indianahauntedhouses.com/real-haunt/strand-theatre.html and https://www.hauntedplaces.org/item/strand-theatre-2/ (search summaries)
 - Klinkenberg's at 201 S. Main, open until 2000: KPC News, https://www.kpcnews.com/news/latest/newssun/article_fc078327-57a6-543e-ae98-e3a58cdb1d0e.html

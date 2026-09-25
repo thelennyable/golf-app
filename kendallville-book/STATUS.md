@@ -47,3 +47,4 @@ Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellic
 - Carry-over: ice-cream-parlors dump thread 'hope chests' (Atz Furniture, Berhalter's, Clark's cedar chests for graduating girls) is off-topic there; possible passage in a Main Street chapter.
 - Supermarkets (Harman's IGA) verified at 553 words: short. Candidate to merge with neighborhood-groceries at structure time, or harvest more (A&P/Kroger/IGA posts in POOL.tsv).
 - Carry-over: mccray dump 'ice house' thread is the Sheridan Street ice plant (City Dairy, ice cut at Bixler); possible passage. Chronister's could fold into Main Street at structure.
+- DRIVE DUPLICATE: chapters/kendallville-every-saturday.md (original, contains a cut ghost line) must be deleted; keep kendallville-every-saturday-v2-VERIFIED.md.
