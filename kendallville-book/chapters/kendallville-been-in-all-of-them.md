@@ -3,7 +3,7 @@
 
 If you were a kid on Main Street in the forties, before anybody had air conditioning, you knew the taverns from the sidewalk. Every one of them had a screen door with an exhaust fan set over it, and out of that fan came cigarette smoke and beer, loud talk and the jukebox. It made them intriguing places, and it is no wonder that when you grew up, you went in.
 
-They were working people's rooms. Paul's was a favorite with foundry workers, and so was the Sportsman. You came off third shift, went home and cleaned up, and on a Friday morning you could still shoot pool at Lucky's till about two with a few long necks. If you worked second shift, you went on weeknights instead of weekends. And on payday you cashed your check at the bar: at Elmer's, or later at Beef's, where the factory crowd packed in after work on Thursdays and you bought a drink out of your check while you were at it.
+They were working people's rooms. Paul's was a favorite with foundry workers, and so was the Sportsman. You came off third shift, went home and cleaned up, and on a Friday morning you could still shoot pool at Lucky's till about two with a few long necks. If you worked second shift, you went on weeknights instead of weekends. And on payday you cashed your check at the bar: at Elmer's, or at Beef's, where the factory crowd packed in after work on Thursdays and you bought a drink out of your check while you were at it.
 
 ## Up one side and down the other
 
@@ -15,7 +15,7 @@ The Melody Bar is the one nobody can pin down. It was in the second block, or th
 
 Then there was the Parlor. If you know why it was called the Parlor, the answer is short: funeral parlor. It was home to some of its regulars, their natural habitat, the favorite place in town. There was a Galaxian machine, and shuffleboard, and in the eighties P. Michael's Parlor was the happening bar. Bands played there. People followed Fox Fire in. You spent many a night dancing. And the bathroom wall announced that Mickey Mantle peed there.
 
-The same doorway kept changing its name. If you have them in order, it goes something like this: the Sportsman Inn, then the Parlor, then P. Michael's Parlor, then the Sportsman again, and at the end, Rudy's. The Sportsman in its later years was a hole in the wall and a favorite anyway, wall to wall on a Friday and Saturday night, with karaoke nights.
+The same place kept changing its name. If you have them in order, it goes something like this: the Sportsman Inn, then the Parlor, then P. Michael's Parlor, then the Sportsman again, and at the end, Rudy's. The Sportsman in its later years was a hole in the wall and a favorite anyway, wall to wall on a Friday and Saturday night, with karaoke nights.
 
 Your first conversation with the person you married could happen right on the sidewalk out front of Paul's, while their friends popped in for a shot and back out again.
 
@@ -74,3 +74,5 @@ Checkable claims and evidence (distinct comments):
 - "only about 2 bars left in the whole town": James Walkup (1); empty storefronts/"all gone": Kenneth Meyer, Tom Stoneburner (better than empty buildings) = 2. "exist now only in memories": Jack Franks (phrase lifted).
 
 Cut or softened: all fights, bouncers, rock through windshield, drunks on sidewalk, vomit, mugging, police, cop rides home, fake IDs, underage first drinks, "two quart drive", Road House/Jeff Healey/Blind Man's Bluff claim (1 commenter, unverified), Bob Seger (hearsay), Chubby Checker night (1), wet T-shirt nights, "Kendall Whoretel", all named private people and owner families (Graham, Bender, Brunhart, Meridith, Minnich, Ed and Ursula, Pearl/Gene/Roger), Paul Graham as owner (not web-verified), Parlor rename date Oct 1969, Beef's closing date, Rudy's future plans, J&J's/Chuck's/Brady's/Slick's roll-call (kept out for length), Hi-Ho in Rome City.
+
+Late edits by writer: "The Mad House is gone" rests on 3 comments saying it burned (Richard Rex, Robert Wolford, Jim Snellenberger); not web-confirmed, so the word used is only "gone". Closing grandparents line: Richard Rex (1), rendered second person. Chuck Wagon clause: bars open till 3 (Judy Jones, 1) plus the existing restaurants chapter.
