@@ -1,0 +1,34 @@
+# Smelled Like Money
+*The Kendallville foundries*
+
+There was a kind of Kendallville household where the alarm went off at four in the morning, or half past three, and the man of the house was out the door before anyone else had turned over. He did not take vacations. He did not call in sick, because there was a roof to keep over the kids and they had to eat, and that was the whole of the argument. He came home in the afternoon black from his collar to his hairline, and if you were small enough you might not have known that other fathers came home clean. His father had very likely done the same job before him. His brothers were probably on the next shift. A good share of those families had come up from the coal country of Kentucky because this was where the work was, and the work was iron.
+
+Kendallville was a foundry town. There were two names that mattered most. On West Ohio Street, straight across from Kraft, stood Newnam Foundry, which changed owners and signs more than once and ended its life as Dalton, though half the town never stopped calling it Newnam's, or Newman's, or simply the foundry. Out along U.S. 6 stood the Kendallville Foundry, a different plant altogether, tied for decades to Flint & Walling and pouring the castings the pump works needed. Around them, in the memory of anyone who worked iron, sit the other names: Lane's, North End, the old Morr Brothers shop on the east side. Ask how many foundries Kendallville once had and you will get a different number every time, and every number is said with the same pride.
+
+## The pour
+
+Inside it was heat and noise and sand. The cupola was the heart of it, a furnace tall enough to need tending like a living thing, fed with coke and scrap until the iron ran. Men shoveled coal into it close enough that their glasses nearly melted to their faces. Men poured the iron, and pouring was the job that earned the most respect and the most burns. Behind them was a whole geography of work that the families at home learned by name without ever seeing: the core room, the grinding room, the melt shop, the sand room, the mold line, the hot line, the shaker, the shipping dock. A son could grow up knowing that his father mixed the sand for the molds, or shifted weights, or ran the cupola, the way other children knew their fathers sold insurance.
+
+If your father could sneak you in at night to watch a pour, you never forgot it. The iron came out of the furnace the color of the sun, and for a few minutes the dirtiest place in town was the most beautiful thing you had ever seen.
+
+The foundry did not keep to its own fence. Before the stack scrubbers went on, you could drive past at night and see the whole works lit up around the open furnace, and on some nights flame came straight out of the top of the stack. If you were bringing a date home past it and the date asked what on earth that was, the honest answer was that all hell was breaking loose. A day or two after a snowfall the snow on that side of town went black. And there was the smell, a hot, mineral, burnt-sand smell that hung over the south side and got into the houses along Main Street, into the cars in the Kraft lot, into the men themselves. Plenty of people hated it. Plenty of others will tell you they miss it still, that it got into your blood, that driving past and catching it meant you were home. It smelled like money to the men who worked there, and they were not wrong.
+
+## Lunch at the gate
+
+Children knew the foundry mostly from the outside. You rode along with your mother to bring your father his lunch, or his supper if he was on second shift, and waited by the guard shack and the turnstile gate for him to come out. If you were lucky he came back with a Coke in a paper cup, and it had the best ice you have ever had in your life. Some days the lunch run went by way of Blue's market on South Main for fresh sandwiches. Families who lived close enough watched from the back yard in the late afternoon for the shape of a man walking home across the field and over the hill, black as coal except for two clean circles where his safety glasses had been.
+
+It was not only men. Women worked the lunch rooms and came home needing a shower as badly as anyone. Women ran the office for decades, worked the core room, ran the mold line, stood in the metal lab. Husbands and wives met there. Whole branches of a family tree can be traced through the payroll: a grandfather in the core room, a father on the pour, uncles in grinding and maintenance, a daughter in the office, a son-in-law driving truck. It was hard to find anyone around Kendallville who did not have somebody at Newnam's, and the foundry men were one another's family as much as their own.
+
+For the town's college boys it was a summer job, third shift, good money, and the single best reason ever invented to go back to school in the fall. A day of grinding castings or working the hot line made a semester of calculus look restful.
+
+## What it cost
+
+Nobody pretends it was clean. It could put metal in your eyes and take your hearing, and a hot cinder down the top of a work boot could lay you up for weeks. The harder argument is about the lungs. Across town you will hear it in the same breath as the pride: emphysema, COPD, lung cancer, men who did not live to collect the pension they had spent their lives earning. And you will hear the other side just as firmly, from men who lived three blocks from the plant, worked there thirty years and are fine, and who will not hear a word against the place that put food on the table and put the kids through school. Both are true in Kendallville, and nobody has settled it.
+
+What the men kept were small pieces of iron. Indian head bookends. A little cast iron man pouring from a hand ladle. A frog, a trivet, a round hot plate. And when the end came, a plaque from the last pour, which now sits on living room shelves and above fireplaces all over the county, next to the photographs.
+
+## After the last pour
+
+The Dalton foundry on Ohio Street closed in 2009. A small crew stayed on to clean up and sell off what could be sold, and then there was nobody. The Kendallville Foundry out on U.S. 6 had gone quiet long before. Both were torn down, the cupola and the stack along with the rest, and where Newnam's stood there is open ground across from Kraft, the kind of emptiness that makes you slow the car without meaning to.
+
+Kendallville learned what it had been when the smell was gone. A foundry town is a town where you know what your father does because you can see it on him when he walks in the door. If your family had worked there three generations, you might have been the fourth. Now there is just the plaque on the shelf, and a town that still, on certain summer nights, half expects to see the sky go orange over the south side.
