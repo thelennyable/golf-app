@@ -52,6 +52,15 @@ Cycle 4 (all PASS):
 18. It Was Magical (Christmas on Main) 573 w, 28 claims, 6 cuts (short)
 19. Eating in the Caboose (Burger Chef) 863 w, 44 claims, 7 cuts
 20. The Filling Stations 1,032 w, 49 claims, 13 cuts. Title cut (2 comments); Drive copy named kendallville-a-pop-and-a-candy-bar.md.
+Cycle 5 (all PASS):
+21. The Black Diamond Steak (Shook's) 798 w, 35 claims, 4 cuts
+22. Bud and Maxine (bowling alley, split from youth-center) 722 w, ~33 claims, 6 cuts
+23. Those Were the Days (cruising) 1,067 w, 34 claims, 11 cuts
+24. Dad Took Me (barbers) 816 w, 34 claims, 13 edits
+25. I'll Never Forget That Day (1992 tornado) 1,072 w, 49 claims, 8 edits
+26. Been in All of Them (taverns, Michigan run) 1,039 w, 44 claims, 15 cuts
+ALL 25 COLLECTED SUBJECTS + bowling WRITTEN AND VERIFIED: 26 chapters.
+
 Lessons: writers embellished (brief now bans invented texture); single-comment title phrase fails dosage (brief now requires 3+).
 Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).
 - Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),
