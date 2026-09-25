@@ -7,39 +7,39 @@ You could call it cruising, or dragging, or chopping, and you were never quite s
 
 ## The Redwood
 
-The Redwood was where the food came out to the car. Carhops brought it on trays, and they brought the condiments out too, and you put on your own. Plenty of Kendallville girls carhopped there, and plenty of Kendallville couples went there on date nights, parked, and saw all their friends in the next cars over.
+The Redwood was where the food came out to the car. Carhops brought it on trays, and they brought the condiments out too, and you put on your own. Plenty of Kendallville teenagers carhopped there, and plenty of Kendallville couples went there on date nights and saw all their friends there too.
 
-Ask about the Redwood and the first word back is tenderloin. The breaded pork tenderloin, the best around, and you will hear it called the best in the state of Indiana. The second word is fries. The best french fries ever, homemade, with the skins left on, and you can still taste them if you close your eyes. They started as real potatoes, right there where you could see them. Employees sat on the corner sidewalk in front of the parked cars peeling a humongous bag of them, and you could watch the machine cut them up outside. You might be on a date, eating a hamburger with a hot chocolate, when the side door would swing open and out of a bucket would fly potato scraps and water.
+Ask about the Redwood and the first word back is tenderloin. The breaded pork tenderloin, the best around, and you will hear it called the best in the state of Indiana. The second word is fries. The best french fries ever, homemade, with the skins left on, and you can taste them even now. They started as real potatoes, right there where you could see them. Employees sat on the corner sidewalk in front of the parked cars peeling a humongous bag of them, and you could watch the machine cut them up outside. You might be on a date, eating a hamburger with a hot chocolate, when the side door would swing open and out of a bucket would fly potato scraps and water.
 
-The rest of the menu is a list that people can still recite. Shrimp baskets. Grilled cheese with dill pickles. Barbecue sandwiches, BLTs, chili and cheese burgers, deluxe hamburgers. Onion rings that were huge, or maybe just seemed that way. Strawberry pie. Cherry Cokes. Twist cones, which for some families were a rare treat.
+The rest of the menu comes back in pieces. Shrimp baskets. Grilled cheese with dill pickles. Barbecue sandwiches, BLTs, chili and cheese burgers, deluxe hamburgers. Onion rings that were huge, or maybe just seemed that way. Strawberry pie. Cherry Cokes. Twist cones, which for some families were a rare treat.
 
 Inside there was a dining room, and for families it was the Friday night place, or the place you went after church. On the west wall stood a grey box that turned hams under red heat lamps, and the smell of it filled the whole dining room.
 
-The man in charge was strict with the teenagers. He did not like you cruising through his lot, and if you chopped through without buying anything he would come out and yell, and you could get chased out of the parking lot for it. Sitting too long in the drive-in with nothing but a Coke did not go over well either. And then there were the speed bumps. Nobody forgets the speed bumps. You spun your tires going over them, trying to rattle whoever was in front of you, and it was worth it, because the tenderloins were on the other side.
+The man in charge was strict with the teenagers. He did not like you cruising through his lot, and if you chopped through without buying anything he would come out and yell, and you could get chased out of the parking lot for it. Sitting too long in the drive-in with nothing but a Coke did not go over well either. And don't forget the speed bumps. You spun your tires going over them, trying to freak out whoever was in front of you.
 
 ## Kelsey's
 
-Out at Kelsey's the currency was root beer. All summer, a Little League team that won its game got free root beer, and so on summer evenings the pickups went by with little leaguers crammed in the back, the whole team piled in the bed of a truck, headed for Kelsey's. The small kids got baby root beers in little mugs. You couldn't wait to jump out of the car for yours.
+Out at Kelsey's the currency was root beer. All summer, a Little League team that won its game got free root beer, and so all summer the pickups went by with little leaguers crammed in the back, the whole team piled in the bed of a truck, headed for Kelsey's. The small kids got baby root beers in little mugs. You couldn't wait to jump out of the car for yours.
 
 The football players got it too: free root beer after two-a-day practices, all you could drink, and root beer and food after the games. When they came in after practice the carhops got out of the way while the players downed those big frosty mugs. If you wanted to take some home you could buy it by the gallon, in a glass jug, for a dollar.
 
-Then there were the hot dogs. Coney dogs and Spanish hot dogs, the best in town, and the sauce was the one thing Kelsey kept secret. When he made the coney sauce, the help was sent up front or outside, out of sight of the preparations. The workers were not even allowed to see everything that went into the recipes. You can try to make it at home all you like. It doesn't taste the same.
+Then there were the hot dogs. Coney dogs and Spanish hot dogs, the best in town, and the coney sauce was Kelsey's secret. When he made the coney sauce, the help was sent up front or outside, out of sight of the preparations. The workers were not even allowed to see everything that went into the recipes. You can try to make it at home all you like. It doesn't taste the same.
 
-The Whopper had its own sauce, and the people who made it still cannot agree on what was in it. Mayo or Miracle Whip, mustard, a lot of black pepper, a little vinegar, sugar. And then there was the pizza burger, which nobody has forgotten and nobody can find anymore.
+The Whopper had its own sauce, and the people who made it still cannot agree on what was in it. Mayo or Miracle Whip, mustard, a lot of black pepper, a little vinegar, sugar. And then there was the pizza burger, the best in town.
 
 For a great many Kendallville teenagers, Kelsey's was the first job. Carhops made fifty cents an hour, plus tips, and thank goodness for the tips. Kels gave you a nickname. On a Saturday night things could slow down around half past nine, and you would ask whether you might close after the last customer, and Kels would say let's wait a little while. Then the cars would start pulling in from Cold Springs, and you stayed open until one or two in the morning.
 
-There was a nine-hole miniature golf course out there for a while. There was a white dog that came every day at opening for a hot dog, saved from the night before, and trotted off with it. There was the stop on the way home from swimming at Round Lake. And down the road there was an A&W as well, where the Papa, Mama and Baby burgers came off the grill.
+There was a nine-hole miniature golf course out there for a while. There was a white dog that came every day at opening for a hot dog, saved from the night before, and trotted off with it. There was the stop on the way home from swimming at Round Lake. And down the road there was an A&W as well, where the burgers came as Papa, Mama and Baby.
 
 ## The DQ
 
-The Dairy Queen sat at the corner of U.S. 6 and State Road 3, the hub the whole loop turned on. You chopped the DQ. You hung out at the DQ. If you wanted to know who was dating who, you checked the DQ.
+The Dairy Queen sat at the corner of U.S. 6 and State Road 3. You chopped the DQ. You hung out at the DQ. If you wanted to know who was dating who, you checked the DQ.
 
-Bob Shook brought in the Brazier burger, flame grilled right in front of you, and at lunch the grill and the fryers could back up something terrible, and people felt the wait was worth it. The Dilly Bars and Buster Bars and ice cream sandwiches were made by hand right there, and weighed, and they were twice the size they are now, and no two were alike. The banana splits came with nuts and cherries. The peanut buster parfaits were at least twice as big.
+Bob Shook brought in the Brazier burger, flame grilled right in front of you, and at lunch the grill and the fryers could get backed up, and the wait was worth it. The Dilly Bars and Buster Bars and ice cream sandwiches were made by hand right there, and weighed, and they were twice the size they are now, and no two were alike. The banana splits came with nuts and cherries. The peanut buster parfaits were at least twice as big.
 
 Most everyone you knew had either worked there or still did. It was a first job for decade after decade of high schoolers, and more than one of them met the person they would marry there. Chopping town was still going strong in the eighties, and then it slowly died off.
 
-The old DQ closed in December 2004 and was torn down. There is a Dairy Queen in Kendallville again, on a newer lot, and it is hard to get in and out of. The Dilly Bars there are tiny, and they come out of a machine instead of being made in front of you. The Redwood is gone, and Kelsey's is gone, and you can still wish you could go there.
+The old DQ closed in December 2004 and was torn down. There is a Dairy Queen in Kendallville again, on a newer lot, and it is hard to get in and out of. The Dilly Bars there are tiny, and they come out of a machine instead of being made in front of you. The Redwood is gone, and so is Kelsey's.
 
 What you cannot get back is a dollar's worth of gas and a whole Friday night to burn it on: down through town, around the DQ, around the Redwood, back through town, and around again.
 
