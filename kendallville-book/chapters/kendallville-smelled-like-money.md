@@ -28,9 +28,9 @@ Kendallville learned what it had been when the smell was gone. A foundry town is
 
 *Sources checked:*
 - Everyday foundry life, family work, the smell, the lunch runs, the keepsakes, the health argument: dump (working-plants.txt, three foundry threads, 534 comments).
-- Newnam and Kendallville Foundry as two different plants, Newnam on Ohio Street across from Kraft: dump; https://www.kpcnews.com/columnists/dennis_nartker/kpcnews/article_cd201491-4f33-5714-a2bf-fce2e60f26a6.html
+- Newnam and Kendallville Foundry as two different plants, Newnam on Ohio Street across from Kraft: dump; https://www.kpcnews.com/columnists/dennis_nartker/kpcnews/article_cd201491-4f33-5714-a2bf-fce2e60f26a6.html ; https://www.kpcnews.com/news/latest/newssun/article_7739d8be-35d4-5bc4-8247-cdb543a99ef7.html
 - Newnam's changes of owner ending as Dalton: dump; https://www.fwbusiness.com/columnists/article_2a2340cd-733a-5e80-b401-8ca63a54c474.html
 - Kendallville Foundry on U.S. 6 and its tie to Flint & Walling (merged 1955): dump; https://www.fwbusiness.com/news/latest/businessweekly/article_a9237fe3-e57b-5315-b890-fa108430139f.html ; https://www.kpcnews.com/news/latest/newssun/article_22191530-bfa7-5d70-8e1b-88238d62aafa.html
 - Dalton closed in 2009: dump; https://www.kpcnews.com/news/latest/newssun/article_7739d8be-35d4-5bc4-8247-cdb543a99ef7.html
-- Kendallville Foundry vacant long before (since 1993) and both plants demolished from 2014: https://www.kpcnews.com/news/latest/newssun/article_26f27f71-703f-5112-b241-3be66d54473e.html ; https://www.kpcnews.com/news/latest/newssun/article_c4f64c74-1bf5-11e4-ab51-001a4bcf6878.html
+- Kendallville Foundry vacant long before (since 1993) and both plants demolished from 2014: https://www.kpcnews.com/news/latest/newssun/article_26f27f71-703f-5112-b241-3be66d54473e.html ; https://www.kpcnews.com/news/latest/newssun/article_74f6f036-74db-11e4-a153-332c1f6f1621.html
 - Blue's on South Main: dump; https://www.kpcnews.com/article_e313356e-bb7e-5ba8-ba01-9ff8af3dc283.html
