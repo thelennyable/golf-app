@@ -33,6 +33,12 @@ Cycle 1 (all PASS, independent verifier, cut-only repairs):
 3. Walking Uptown (Main Street stores) 968 w, 49 claims, 17 cuts
 4. Don't Say Yes and Mean No (teachers) 777 w, 41 claims, 24 cuts
 5. The Kendallville Foundries (working-plants) 1,085 w, 42 claims, 14 cuts. Drive copy is named kendallville-smelled-like-money.md (title was cut; Drive cannot rename from here).
+Cycle 2 (all PASS):
+6. Chopping Town (drive-in stands) 1,078 w, 52 claims, 10 cuts. Title may collide with the cruising chapter: rename one at structure.
+7. That Little Store (neighborhood groceries) ~1,000 w, 49 claims, 12 cuts
+8. The Best Ice Cream (Palace of Sweets, Puritan/Atz) 921 w, 58 claims, 6 cuts
+9. I Loved North Side (grade schools) 877 w, 38 claims, 4 cuts
+10. Mom Would Send Me There (Harman's IGA) 553 w, 31 claims, 13 cuts (short)
 Lessons: writers embellished (brief now bans invented texture); single-comment title phrase fails dosage (brief now requires 3+).
 Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).
 - Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),
