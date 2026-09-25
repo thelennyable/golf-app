@@ -47,7 +47,7 @@ What you cannot get back is a dollar's worth of gas and a whole Friday night to 
 
 *Sources checked:*
 *Chopping town, the loop, the Redwood's food, carhops and parking lot, Kelsey's root beer, Little League and football, coney sauce, Whopper sauce, pay, the DQ's hand-made treats and the new DQ's lot: comment dump for this chapter (three harvested posts).*
-*Redwood across U.S. 6 from the DQ; Kelsey's at Riley Road and U.S. 6; chopping town as turning off U.S. 6 into the restaurant lots: kpcnews.com/article_c2117589-9b75-5de9-8b00-61b5365ac281.html (Dennis Nartker, "Farewell to an old hangout", search snippet; page fetch blocked).*
+*Redwood, Kelsey's and the DQ as drive-ins along U.S. 6; chopping town as turning off U.S. 6 into the restaurant lots: Dennis Nartker, "Farewell to an old hangout", kpcnews.com/article_c2117589-9b75-5de9-8b00-61b5365ac281.html (search snippets; page fetch blocked).*
 *DQ at the corner of U.S. 6 and S.R. 3 North; Bob Shook added the char-broiled Brazier burger: same Nartker article (search snippet).*
 *DQ closed December 2004, building torn down: kpcnews.com/article_5c682720-7e3e-5f35-a079-8a3fe72b7326.html, "Kendallville may see return of Dairy Queen franchise" (search snippet; page fetch blocked).*
 *A Dairy Queen operating in Kendallville now: dairyqueen.com/en-us/locations/in/kendallville/830-w-north-st/11567/.*
