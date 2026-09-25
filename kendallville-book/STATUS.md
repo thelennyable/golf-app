@@ -39,6 +39,12 @@ Cycle 2 (all PASS):
 8. The Best Ice Cream (Palace of Sweets, Puritan/Atz) 921 w, 58 claims, 6 cuts
 9. I Loved North Side (grade schools) 877 w, 38 claims, 4 cuts
 10. Mom Would Send Me There (Harman's IGA) 553 w, 31 claims, 13 cuts (short)
+Cycle 3 (all PASS):
+11. Walk-In Sauce (Jim's Pizza) 939 w, 48 claims, 2 cuts
+12. Every Saturday (Strand, Hi-Vue) ~970 w, 47 claims, 8 cuts (1 by orchestrator after PASS; Drive v2 file)
+13. Vince and Tony (V&A, Jade Buddha) 873 w, 57 claims, 13 cuts
+14. After School and After the Bars (Chronister's, Chuck Wagon, Publix Corners Cafe) 983 w, 48 claims, 6 cuts
+15. Until They Closed the Doors (McCray plant and mansion) 874 w, 42 claims, 10 cuts
 Lessons: writers embellished (brief now bans invented texture); single-comment title phrase fails dosage (brief now requires 3+).
 Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).
 - Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),

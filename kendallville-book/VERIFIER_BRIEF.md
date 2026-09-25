@@ -20,6 +20,9 @@ Checks, in order:
    Named private individuals / single-family anecdotes: cut. Race/segregation claims: HARD-SOURCE only.
 4. Verdict table: claim | source(dump/writer) | type | verdict | evidence.
 
+5. A "They say" / legend frame does NOT rescue a single-comment claim about a named person (cycle 3: a named manager's
+   ghost kept on 1 comment, contradicted by the web, had to be cut after PASS). Cut it.
+
 Then produce the final chapter:
 - Apply fixes by cutting (joining words only). Remove the "Writer's notes" section entirely.
 - Append a footer: `---` then `*Sources checked:*` lines, each naming its source (dump, or a URL). Claims of absence
