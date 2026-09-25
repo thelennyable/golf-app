@@ -37,3 +37,4 @@ Lessons: writers embellished (brief now bans invented texture); single-comment t
 Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellick's, Allison's, Diehl's, Val's unharvested. Foundries dump has no Kraft, Flint & Walling, potato-chip threads (in POOL.tsv).
 - Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),
   not a grocery. It goes to the restaurants chapter (cycle 3): its writer must read dumps/supermarkets.txt thread 3 too.
+- Gap: grade-schools dump is all North Side; South Side, Wayne Center, Riley threads unharvested (in POOL.tsv).
