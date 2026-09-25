@@ -25,8 +25,6 @@ The bowling alley never came back. Now your own kids do not believe there was ev
 
 ---
 
----
-
 *Sources checked:*
 - Memories: tornado-1992 comment record (335 comments, 3 posts), read in full.
 - Date, formed on the west side and moved east, no fatalities, narrow miss of the fairgrounds on Kids Day, path through downtown, Mitchell Street, the bowling alley on North Park Avenue, Fairview Center and Arvada Hills: Tornado Talk, https://www.tornadotalk.com/kendallville-in-f2-tornado-july-14-1992/ ; KPC News, https://www.kpcnews.com/news/latest/article_af1aa829-8ef2-5d65-acac-f9b63d19f3f4.html ; KPC News, https://www.kpcnews.com/article_dbcb0cf3-fad6-5af3-bea0-3ac0b7c51d53.html (read through search excerpts; the pages would not load directly)
