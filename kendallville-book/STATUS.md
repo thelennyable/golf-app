@@ -38,3 +38,4 @@ Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellic
 - Carry-over: the supermarkets dump's Publix Corners postcard thread is about the Publix Corners CAFE (US 6 and SR 3),
   not a grocery. It goes to the restaurants chapter (cycle 3): its writer must read dumps/supermarkets.txt thread 3 too.
 - Gap: grade-schools dump is all North Side; South Side, Wayne Center, Riley threads unharvested (in POOL.tsv).
+- Carry-over: ice-cream-parlors dump thread 'hope chests' (Atz Furniture, Berhalter's, Clark's cedar chests for graduating girls) is off-topic there; possible passage in a Main Street chapter.

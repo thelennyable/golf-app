@@ -3,7 +3,7 @@
 
 This is for the kids with a car, or with a friend who had one, and a Friday night in front of them. It is for the carhop who was fifteen and working her very first job. It is for the Little Leaguer riding out to Kelsey's in the back of a pickup after a win, and for the family that did not go out to eat much, so that when they did, it was the Redwood, and it was a treat.
 
-You could call it cruising, or dragging, or chopping, and you were never quite sure which word was the right one. In Kendallville it was mostly chopping. You chopped town. The route was simple and it never got old: down through town, around the DQ, around the Redwood, back through town, and repeat, all night long, on a dollar's worth of gas. If you felt daring you could head east on 6 out to Kelsey's for fries and a Black Cow, which was a root beer float, and then blow that pop stand and go chop Bixler Lake before coming back around to the DQ again.
+You could call it cruising, or dragging, or chopping. In Kendallville it was mostly chopping. You chopped town. The route was simple and it never got old: down through town, around the DQ, around the Redwood, back through town, and repeat, all night long, on a dollar's worth of gas. If you felt daring you could head east on 6 out to Kelsey's for fries and a Black Cow, which was a root beer float, and then blow that pop stand and go chop Bixler Lake before coming back around to the DQ again.
 
 ## The Redwood
 
@@ -11,11 +11,11 @@ The Redwood was where the food came out to the car. Carhops brought it on trays,
 
 Ask about the Redwood and the first word back is tenderloin. The breaded pork tenderloin, the best around, and you will hear it called the best in the state of Indiana. The second word is fries. The best french fries ever, homemade, with the skins left on, and you can taste them even now. They started as real potatoes, right there where you could see them. Employees sat on the corner sidewalk in front of the parked cars peeling a humongous bag of them, and you could watch the machine cut them up outside. You might be on a date, eating a hamburger with a hot chocolate, when the side door would swing open and out of a bucket would fly potato scraps and water.
 
-The rest of the menu comes back in pieces. Shrimp baskets. Grilled cheese with dill pickles. Barbecue sandwiches, BLTs, chili and cheese burgers, deluxe hamburgers. Onion rings that were huge, or maybe just seemed that way. Strawberry pie. Cherry Cokes. Twist cones, which for some families were a rare treat.
+The rest of the menu comes back in pieces. Shrimp baskets. Grilled cheese with dill pickles. Barbecue sandwiches, BLTs, chili and cheese burgers, deluxe hamburgers. Onion rings that were huge, or maybe just seemed that way. Strawberry pie. Cherry Cokes. Twist cones, a rare treat if your family did not go out much.
 
 Inside there was a dining room, and for families it was the Friday night place, or the place you went after church. On the west wall stood a grey box that turned hams under red heat lamps, and the smell of it filled the whole dining room.
 
-The man in charge was strict with the teenagers. He did not like you cruising through his lot, and if you chopped through without buying anything he would come out and yell, and you could get chased out of the parking lot for it. Sitting too long in the drive-in with nothing but a Coke did not go over well either. And don't forget the speed bumps. You spun your tires going over them, trying to freak out whoever was in front of you.
+The man in charge was strict with the teenagers. He did not like you cruising through his lot, and if you chopped through without buying anything he would come out and yell, and you could get chased out of the parking lot for it. And don't forget the speed bumps. You spun your tires going over them, trying to freak out whoever was in front of you.
 
 ## Kelsey's
 
@@ -29,7 +29,7 @@ The Whopper had its own sauce, and the people who made it still cannot agree on 
 
 For a great many Kendallville teenagers, Kelsey's was the first job. Carhops made fifty cents an hour, plus tips, and thank goodness for the tips. Kels gave you a nickname. On a Saturday night things could slow down around half past nine, and you would ask whether you might close after the last customer, and Kels would say let's wait a little while. Then the cars would start pulling in from Cold Springs, and you stayed open until one or two in the morning.
 
-There was a nine-hole miniature golf course out there for a while. There was a white dog that came every day at opening for a hot dog, saved from the night before, and trotted off with it. There was the stop on the way home from swimming at Round Lake. And down the road there was an A&W as well, where the burgers came as Papa, Mama and Baby.
+There was a nine-hole miniature golf course out there for a while. There was a white dog that came every day at opening for a hot dog, saved from the night before, and trotted off with it. And down the road there was an A&W as well, where the burgers came as Papa, Mama and Baby.
 
 ## The DQ
 
@@ -37,7 +37,7 @@ The Dairy Queen sat at the corner of U.S. 6 and State Road 3. You chopped the DQ
 
 Bob Shook brought in the Brazier burger, flame grilled right in front of you, and at lunch the grill and the fryers could get backed up, and the wait was worth it. The Dilly Bars and Buster Bars and ice cream sandwiches were made by hand right there, and weighed, and they were twice the size they are now, and no two were alike. The banana splits came with nuts and cherries. The peanut buster parfaits were at least twice as big.
 
-Most everyone you knew had either worked there or still did. It was a first job for decade after decade of high schoolers, and more than one of them met the person they would marry there. Chopping town was still going strong in the eighties, and then it slowly died off.
+Most everyone you knew had either worked there or still did. It was a first job for decade after decade of high schoolers, and some of them met the person they would marry there. Chopping town was still going strong in the eighties, and then it slowly died off.
 
 The old DQ closed in December 2004 and was torn down. There is a Dairy Queen in Kendallville again, on a newer lot, and it is hard to get in and out of. The Dilly Bars there are tiny, and they come out of a machine instead of being made in front of you. The Redwood is gone, and so is Kelsey's.
 
