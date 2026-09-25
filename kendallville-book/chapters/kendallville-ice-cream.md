@@ -33,8 +33,6 @@ That is how it goes with places like these. The building was never really the po
 
 ---
 
----
-
 *Sources checked:*
 - The Palace of Sweets, its menu, booths, jukeboxes, pinball and jobs, and every memory of the ice cream plant, its flavors and its workers: residents' recollections (two memory posts; a third, about graduation hope chests, was set aside as unrelated).
 - Kenny Blech ran the Palace of Sweets at 215-217 S. Main St., 1933-1975: KPC News, https://www.kpcnews.com/archives/features/kvdowntown/article_88ad58a6-281d-5f4e-a9d5-cd3133613aab.html and https://www.kpcnews.com/columnists/dennis_nartker/kpcnews/article_8f917731-7e9a-5868-9d68-74bd0dc9afd0.html (read via search summaries).
