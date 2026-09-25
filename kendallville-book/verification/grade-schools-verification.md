@@ -64,7 +64,7 @@ Web limits: en.wikipedia.org, ns.eastnoble.net, nces.ed.gov, greatschools.org an
 3. CUT: "A good day was one you got to spend in the class picture and not in Mr. Lung's office."
 4. CUT: "There was the teacher you hoped you would not get, because your older sister had been in trouble with her."
 5. REMOVED: "## Writer's notes (not for print)" section.
-6. ADDED: footer `---` / `*Sources checked:*` (three lines, each naming its source; the absence line was searched before writing).
+6. ADDED: footer `---` / `*Sources checked:*` (three lines, each naming its source; the absence line was searched before writing). Body sentences added: none.
 No sentence added to the body.
 
 ## Final sweep (body above the footer)

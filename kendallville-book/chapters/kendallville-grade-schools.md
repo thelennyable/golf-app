@@ -27,5 +27,5 @@ The old North Side is gone, and there is a newer North Side now. If you toured t
 
 *Sources checked:*
 - Teachers, rooms, recess, library, filmstrips, class pictures and the newer North Side building: the comment record in grade-schools.txt (three North Side threads, 255 comments), counted comment by comment.
-- North Side, South Side and Wayne Center as current East Noble elementary schools in Kendallville (North Side at 302 E Harding St): https://www.usnews.com/education/k12/elementary-schools/indiana/east-noble-school-corporation-111611 and https://ns.eastnoble.net/
+- North Side, South Side and Wayne Center as current East Noble elementary schools in Kendallville: https://www.usnews.com/education/k12/elementary-schools/indiana/east-noble-school-corporation-111611 (North Side's own site, https://ns.eastnoble.net/, appears in search as North Side Elementary School, Kendallville).
 - Teacher and principal names, and the date the old North Side building came down, were searched on the web on 25 Sep 2026 and not found; they rest on the comment record only.
