@@ -28,6 +28,12 @@ the orchestrator handles delivery). Also read the "verification defects" section
 laundering, HARD-SOURCE category for race/segregation).
 
 Must-haves:
+- NO INVENTED TEXTURE (added after cycle 1: verifiers cut 11-16 lines per chapter, mostly writer embellishment).
+  Every concrete image, action, sound, procedure, time of day, adjective of fact ("electric", "early fall") and every
+  "nobody agrees" must trace to a dump comment. Do not supply the scene around a memory (the slap you could hear, what
+  the lifeguard made you do, what your mother knew). Do not move a detail from one place or context to another. The
+  prose can be warm and rhythmic in HOW it says things, never in WHAT it adds. If a paragraph feels thin, go back to
+  the dump for another real detail; never fill it. Shorter and true beats longer and embroidered: 800 words is fine.
 - Step 0: confirm what the comments are actually about.
 - 800-1,200 words. Feeling first, history second. Open on who the place was for. End on loss without wallowing.
 - Title pulled from a phrase residents actually wrote, format first line: `# Title` then `*Place*` on the next line.
