@@ -4,7 +4,7 @@ Independent book-verification-pass, 25 Sep 2026. Chapter not written by this ver
 
 **Web method note:** WebFetch to cfnoble.org, gen.nobleco.lib.in.us, bank-map.com and weichert.com was refused by the egress proxy. Every web confirmation below rests on WebSearch result text attributed to the named URL, not a full-page read.
 
-**Overall verdict: PASS** after cuts. 46 claims checked, 12 cuts (11 in the body plus the title).
+**Overall verdict: PASS** after cuts. 49 claims checked, 13 cuts (12 in the body plus the title).
 
 **Most serious problem:** the Baker Brothers paragraph was built on a named private man (Harvey "Brack" Baker) through family and family-friend anecdotes: the stock-car fine-tuning before weekly fairground races (1 comment, Hal Hanes), the car number 67 matching the phone number (2 comments: Duane Hanes, confirmed by Paula Baker Smith), the bubblegum-pink colour (1 comment, "as I recall"). No web source for any of it or for the owners' names. Cut under the named-private-individual rule; the "as it is remembered" hedge does not rescue it (brief item 5). Owners "Paul and Harvey Baker" also cut (no web confirmation; drive-in precedent: owner not printed when not web-confirmed). The business name "Baker Brothers Texaco" stays (post title, Paula Baker Smith x2, Duane Hanes).
 
