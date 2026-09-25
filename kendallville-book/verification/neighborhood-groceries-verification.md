@@ -39,7 +39,7 @@ Run on original body and on final body: no hits (pattern list from the skill plu
 | Best meat in town (south end will tell you) | dump | plural | confirmed | Kaough, Amy Blue Sage, Mortimore, Bruce Haines, Mapes-Bottjer, Krotzer |
 | Sandwiches made to order out of the case, huge, loaded | dump | mechanics | confirmed | Barry Haines, Amanda Luther Holmer, Liane Harworth |
 | Roast beef and Colby; ham/turkey/Colby/lettuce/mayo; best bologna | dump, 1 each | product | confirmed | Dallas Williams; Steve Hoyt; Eddie McDonald |
-| .49 in the nineties | dump, 2 | price | confirmed (memory) | Eric Morr (worked there), Jasten Tuttle |
+| $1.49 in the nineties | dump, 2 | price | confirmed (memory) | Eric Morr (worked there), Jasten Tuttle |
 | Better than same sandwich at home | dump, 1 | atmosphere | keep | Shell |
 | Workers from Reliable, foundries, Dalton, King Seeley came at noon | dump | plural | confirmed | Reliable: Eric Morr, John Stone; foundries: Morr, Pattee-Chiles, Dallas Williams, Reba Bardsley; Dalton: Shell; King Seeley: Peggy Miller |
 | Newman's Friday check cashing and subs | dump, 1 | memory | confirmed as 2nd person | Bryan Hurst |
