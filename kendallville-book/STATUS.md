@@ -71,3 +71,9 @@ Gaps: Main Street dump holds only Penney's/Klinkenberg's/Connie's; Sears, Sellic
 - Carry-over: mccray dump 'ice house' thread is the Sheridan Street ice plant (City Dairy, ice cut at Bixler); possible passage. Chronister's could fold into Main Street at structure.
 - DRIVE DUPLICATE: chapters/kendallville-every-saturday.md (original, contains a cut ghost line) must be deleted; keep kendallville-every-saturday-v2-VERIFIED.md.
 - Christmas verified at 573 words: short. Fold into Main Street at structure, or harvest more Christmas threads (POOL.tsv).
+
+## Structure draft (25 Sep 2026)
+KENDALLVILLE - TABLE OF CONTENTS.md (Drive 1uftOFBrEc0YjZ8w2IxFfrCLVZub24NsW): 6 parts, 25 chapters with one proposed merge
+(Harman's IGA into That Little Store; needs Lenny's OK and a verification pass on the joins). ~85-92 pages 6x9.
+Waiting on Lenny: title (3 candidates, pick = "Kendallville, Indiana: When We Walked Everywhere"), author name
+(AUTHOR-NAMES.md on the PC), the merge, Drive duplicate cleanup. Then book-interior-builder.
