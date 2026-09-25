@@ -3,7 +3,7 @@
 
 Jim's Pizza belonged to Friday night. Your parents called it in, or you did, from a number you still have memorized, and after enough Fridays the voice on the other end knew what you wanted before you got past your name. Maybe your house had it on Saturday night after church instead, or on Sunday night with chocolate shakes made in the blender. It was supper and it was the treat, both at once. If Jim's Pizza does not show up in your blood test, you might as well be from another country.
 
-It came from Wayne Street, and a good part of Kendallville grew up within reach of it. You could live a few blocks away on Wood Street, or down the street, or next door, or across the street for thirty years, and the smell of that pizza was simply part of the neighborhood, along with the doughnuts being made at the grocery across the way.
+It came from Wayne Street, and a good part of Kendallville grew up within reach of it. You could live a few blocks away on Wood Street, or down the street, or next door, or across the street for thirty years, and the smell of that pizza was simply part of the neighborhood.
 
 ## Where it came from
 
@@ -25,7 +25,7 @@ And there is the walk-in sauce. It is the pizza sauce before it gets thinned out
 
 That is not grease. It is pepperoni juice, or pepperoni sweat, and it is enough sauce for anybody. The thick crust is there to soak it up, and the double crust keeps it from soaking the cardboard. Walk-in sauce on top and bottom is heartburn city, and worth it, and if you feel it going down you know it is good. Jim's goes down with an Alka-Seltzer chaser and a glass of water on the nightstand.
 
-Not everybody. There are people in Kendallville who never cared for it, who found it too greasy, and who would rather make their own.
+Not everybody. There are people in Kendallville who never cared for it.
 
 The next morning, if any of it made it to the refrigerator, you ate it cold, peeled carefully off the cardboard. Cold Jim's for breakfast. There is no wrong way to eat a Jim's.
 
@@ -39,36 +39,9 @@ Jim's Pizza is still on Wayne Street, and Mark and Wendy will take your order. Y
 
 ---
 
-## Writer's notes (not for print)
-
-Dump read in full (511 comments, three threads; the tool returned the whole file, ending cleanly after the third thread). Step 0: threads 1 and 2 are about Jim's Pizza; thread 3 (Jim Sprandel, 108 comments) is about Dr. Stallman's office next door and was used only for the smell of Jim's next door (Zachary Anderson) and IGA selling Jim's (Larry Moore; not used in the end).
-
-Title: "walk-in sauce" / "walking sauce" / "walk in sauce" appears in 20+ distinct comments (Cammi Rink, Bryan Hurst, Brad Wolf, Lori Fiandt Smurr, Cory Mellott, James Jarrett, Doug Gillespie, Katie Haas, Tiffany Parr, Charmin Hicks, Curt Parker, Charles Jordan, Deborah Kaough, Drew Englehart, Brian Collins, Heather Lovett Keipper, Joshua Buhro, etc.).
-
-Checkable claims:
-- Jim Wigginton started it in the early sixties in the kitchen of Chuck's Tavern. Dump: Craig Streich ("They actually started in Chucks' tavern"), Kim Heinlen Pippenger ("Jim would deliver back in those days"), 60s/early 60s in Robert Wolford, Jeannette Andrysiak Hillman, Vickie Morr Nichols, Michael Biddle; Joan Wigginton confirms her parents were the original owners. Web: KPC News, "Grubbs celebrating 30 years with Jim's Pizza," https://www.kpcnews.com/business/latest/kpcnews/article_4a321e7d-1412-5d13-b70d-2470d73b1f0b.html (search summary: started 1961 at Chuck's Tavern, Wayne Street 1962). Exact years NOT printed because the dump never states them plainly.
-- "in those days Jim would deliver": Kim Heinlen Pippenger, 1 comment (plus her parent comment "he would deliver if he wasn't real busy"). Kept as singular fact about Jim, not a plural.
-- "he and Gwen opened Jim's Pizza on Wayne Street": Vickie Morr Nichols ("Jim and Gwen Wigginton built the building and opened Jim's Pizza"); Wayne Street in post title and web (405 E. Wayne St., Yelp https://www.yelp.com/biz/jims-pizza-kendallville). Web says he added onto his Wayne Street house; I avoided "built the building" to stay out of that difference.
-- First pizza anybody in the family had tasted: Vickie Morr Nichols ("First time in my life tasting pizza"), Jeannette ("bringing real pizza to little Kendallville"). Rendered "for a lot of Kendallville ... It may have been yours." Rendered as second person only.
-- Owners John and Ruth, then Dave and Linda Grubb, now Mark and Wendy: Robert Wolford, Jeff Asher, Dan Trowbridge ("John and Ruth were second owners"), Joan Wigginton; Linda is Dave's wife (Robert Wolford); Mark and Wendy (Jerry Jansen, Joshua Buhro, ImpyNini Klop). Web: KPC "Jim's Pizza will continue unchanged with new owners," https://www.kpcnews.com/news/latest/newssun/article_00eaf01f-6363-58b6-a9c0-2bcdd8eab483.html (Raricks 1971, Grubbs 1983, Mark and Wendy Grubb took over from Dave and Linda). Rarick surname and years not printed (not in dump).
-- Grubby from Harman's IGA produce: Polly Krotzer (worked with him in produce, "We always called him Grubby, so it took me a minute to remember his name was actually Dave"), Maria Odier (worked with him at Harman's IGA). Nickname confirmed by obituary title "David 'Grubby' Grubb," https://www.tributearchive.com/obituaries/31202520/david-grubb. His 2024 death is NOT in the dump and is not printed.
-- Linda answered the phone and knew your voice: Robert Wolford, Gail Graham, ImpyNini Klop (3). "knew what you wanted before you got past your name": Marsha Moses Kingery, Gail Graham ("the usual?"), Natalie Reick Axel ("know my order by heart").
-- Number memorized: Amanda Luther Holmer, Brenda Belle (2), rendered second person.
-- Friday nights: Joshua Buhro, Gail Graham, Marsha Moses Kingery, Brenda Belle, Cheryl Stephens (5). Saturday after church: Karen Shultz (1, second person "maybe your house"). Sunday with blender shakes: Jerry Jansen (1, same).
-- Blood test line: Eric Clapp (1), set as the book's own sentence, no plural.
-- Living near it (Wood Street few blocks, across the street 30 years, next door, down the street): Fred Schlotterback, Reba Bardsley, Linda Donnelly, Andrea Brand, Zachary Anderson (5). Smell: Reba Bardsley, Zachary Anderson (2), rendered second person. Doughnuts at grocery across the street: Zachary Anderson (1).
-- Jobs: Jeff Asher (washing dishes, about $20 a week), Lloyd Beckberger (first job 1971, large $4.25), Brian Smart (pizza on break), Cory Mellott (worked there as a teenager), Dan Trowbridge, John Allen Leslie's father. "Work the window": Dave Sanders ("Window Chick", 1), second person. $4.25 is one memory; kept as conditional second person, unverifiable.
-- Pepperoni most common: count across the favorites thread, pepperoni is by far the most-named topping.
-- Shorthand orders: CSSMOPep (Joshua Buhro, Bradley Buhro), CSMO (Cyndi N Ben Fetrow), PMS (Judith Rhoden).
-- Well done (Kent Becker, Michele Grimm, Sarah Middleton, Brandan Baker, Ryan Walkup, Rychelle S. Cross, Crystal Culler-Cochard); burnt (Crystal Culler-Cochard, Tracy Yates agreeing) so "some people" = 2. Double crust = doubled bottom (Ryan Walkup); ordered that way because dad did (Ryan Walkup, 1, rendered second person). Crispers for crunch in the middle pieces (Charles Jordan, Angie Gard, Tyler Grubb, Drew Englehart). Ham base (Brooke Hastings, Ashley Luttman). No top sauce (Nikki Carmichael-Shoda, ImpyNini Klop, Tracey Ehret Jones, Lisa Hurlbut Harmeyer).
-- Learning options as an adult: Kim Heinlen Pippenger (40 years before hearing of walk-in sauce), Andrea Brand, Debra K. Stouder, Diana Kilburn Hall, Debra Crager, Leeann Atkinson, Janice Richardson, Lora Carteaux, Heather Lovett Keipper, Amanda Luther Holmer (10). The "room you never saw" simile is my own figure of speech, not a claimed fact; verifier may cut it as ornament.
-- Grubby Special: repeatedly asked about (Kelli Wainwright, Sheryl Hanes, Terry Rowlison, Cathy Thiem, Crystal Lynn Rose, Heather Lovett Keipper). Contents conflict: Bernie McNulty (double crust double cheese extra sauce double pepperoni double sausage double mushroom), Lori Fiandt Smurr (double pepperoni, sausage, mushrooms, extra cheese, extra sauce, walk-in sauce, thicker crust). Kept in evocation ("Nobody's list is quite the same"). "you have to try": Bill Hart, Ryan Walkup, Brad Targgart. Named for Grubby: Cory Mellott "Dave Grubb special", Joshua Buhro.
-- Walk-in sauce: pre-water sauce kept in walk-in cooler (Lori Fiandt Smurr, Cory Mellott, Doug Gillespie, James Jarrett, Joshua Buhro); thicker/more spice/kick (James Jarrett, Ryan Walkup, Lori Fiandt Smurr); ask for it (James Jarrett); top/bottom/both (Curt Parker, Katie Haas, others); "walking sauce" (Brad Wolf, Brian Collins, Tiffany Parr, Charmin Hicks, Charles Jordan, Deborah Kaough: 6). "Plenty of people" rests on 6.
-- Grease: "pepperoni juice" (Tracey Ehret Jones), "pepperoni sweat is enough sauce" (Bobby Bolen), thick crust to soak grease (Drew Englehart), double crust keeps cardboard from soaking (Ryan Walkup), heartburn city (Adam Edsall), "if you feel it going down you know its good" (Doug Gillespie), Alka-Seltzer chaser (Howard Mapes), water on nightstand (ImpyNini Klop).
-- Holdouts: Heath Smith, Kathy Marzion, Janet Farmer, Jo Ellen ("I'd rather make my own"), Barb Rasler ("to greasy"), April Henry (6).
-- Cold next morning peeled off cardboard: Stephanie Maloney Short, Joshua Buhro; cold breakfast James Jarrett; cold next day Laurie Miller. "no wrong way to eat a Jim's": Tony Sparkman, Stephanie agreeing.
-- Exiles: Fort Wayne (Robert Wolford, 2 extra frozen; Brenda Belle; Brandon Hindenlang's coworker), Indianapolis (Gary Shultz), Alabama cooler (Debra K. Stouder), Alaska 6-10 cut in quarters with cardboard, wrapped, frozen on flight (Teresa Goodman Jervis), Charlotte (Crystal Gayle), since 1987 (Randy Combs), would kill for one (Randy Combs, with two agreeing). Each rendered as second person or single instance.
-- Still open, Mark and Wendy: dump (Jerry Jansen, Joshua Buhro) + web (Yelp updated April 2026; KPC new-owners article).
-- "the way your father always ordered it": Ryan Walkup (1), second person.
-
-Cut or not used: Research note "since 1967" (contradicted by web; nothing in dump). Blue Island/Chicago origin (1 comment; web tells a different Chicago-friend recipe story). Dick Pontius flower shop, wrong-number prank, Christmas dinner tradition, Rotary Tuesday, Dr. Stallman material, frozen at Food Town/Mallolys/IGA, "Wendy's Favorite" (2), cottage cheese, price complaints, ten-minute line.
+*Sources checked:*
+- Owner succession, Chuck's Tavern start, Wayne Street, Jim would deliver, Linda on the phone, Grubby at Harman's IGA produce, every order, sauce, grease and exile detail: the Kendallville group comment record (three threads, 511 comments).
+- Jim Wigginton began in 1961 in the Chuck's Tavern kitchen, moved to Wayne Street in 1962; John and Ruth Rarick 1971; Grubbs 1983; Mark and Wendy Grubb after Dave and Linda: KPC News, https://www.kpcnews.com/news/latest/newssun/article_00eaf01f-6363-58b6-a9c0-2bcdd8eab483.html and https://www.kpcnews.com/business/latest/kpcnews/article_4a321e7d-1412-5d13-b70d-2470d73b1f0b.html
+- The nickname Grubby and Mark and Wendy as current owners: obituary, https://www.tributearchive.com/obituaries/31202520/david-grubb (search snippet). His ten years with the Harman family's IGA: KPC obituary, https://www.legacy.com/us/obituaries/kpcnews/name/david-grubb-obituary?id=54892510 (search snippet; page itself not reachable). The produce department is in the comment record only.
+- Still open at 405 E. Wayne Street: https://www.yelp.com/biz/jims-pizza-kendallville (updated April 2026).
+- The 1971 price of $4.25 rests on the comment record alone; no web source for it was found.
